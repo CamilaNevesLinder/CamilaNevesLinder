@@ -2,7 +2,7 @@
 
 Desenvolvedora Full Stack.
 
-- **Front-end:** JavaScript, TypeScript, React, Tailwind CSS, CSS Modules
+- **Front-end:** JavaScript, TypeScript, React, Tailwind CSS
 - **Mobile:** React Native, Expo, Expo Router, NativeWind
 - **Back-end:** NestJS, TypeORM (ORM), arquitetura REST
 - **Formulários & Validação:** React Hook Form, Zod
