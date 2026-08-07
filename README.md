@@ -8,4 +8,6 @@ Desenvolvedora Full Stack.
 - **Formulários & Validação:** React Hook Form, Zod
 - **Estado & Dados:** TanStack Query, Zustand, Axios
 
+📄 Currículo: https://camilaneveslinder.github.io/curriculo/
+
 📫 Contato: camilaneveslindner@gmail.com
