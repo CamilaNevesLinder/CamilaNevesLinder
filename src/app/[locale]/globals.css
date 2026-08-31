@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-cream: #fbf7f4;
+  --color-blush: #e8d8ce;
+  --color-rose: #b98f88;
+  --color-taupe: #7a6258;
+  --color-espresso: #3b2f2a;
+
+  --font-mono: var(--font-mono-numeric), ui-monospace, monospace;
+  --font-serif: Georgia, 'Times New Roman', serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-espresso font-serif antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

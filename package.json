@@ -1,0 +1,62 @@
+{
+  "name": "camila-neves-linder",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "pnpm": {
+    "overrides": {
+      "typescript-eslint": "^8.66.0",
+      "brace-expansion@1": "^1.1.18",
+      "brace-expansion@5": "^5.0.9",
+      "braces": "^3.0.3",
+      "flatted": "^3.4.2",
+      "micromatch": "^4.0.8",
+      "minimatch@3": "^3.1.4",
+      "nanoid@3": "^3.3.18",
+      "picomatch@2": "^2.3.2"
+    }
+  },
+  "dependencies": {
+    "next": "16.3.0",
+    "next-intl": "^4.13.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.3",
+    "@types/node": "^22",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@vitest/coverage-v8": "^4.1.10",
+    "eslint": "^10.8.0",
+    "eslint-config-next": "16.2.12",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "jsdom": "^30.0.1",
+    "postcss": "^8.5.23",
+    "postcss-load-config": "^6.0.1",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "tailwindcss": "^4.3.3",
+    "typescript": "6.0.2",
+    "typescript-eslint": "^8.66.0",
+    "vitest": "^4.1.10"
+  },
+  "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
+}
