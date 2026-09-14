@@ -15,7 +15,6 @@ vi.mock('next/image', () => ({
     height,
     className,
     style,
-    // strip next/image-only props so React does not warn on DOM
     priority: _priority,
     fill: _fill,
     sizes: _sizes,

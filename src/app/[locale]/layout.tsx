@@ -3,6 +3,7 @@ import './globals.css';
 import { JetBrains_Mono, Playfair_Display } from 'next/font/google';
 import type { Metadata } from 'next';
 import NextIntlProvider from '@/providers/next-intl-provider';
+import { Sidebar } from '@/components/sidebar';
 import {
   getMessages,
   getTranslations,
@@ -81,11 +82,13 @@ export default async function LocaleLayout({
       lang={locale}
       translate="no"
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${jetBrainsMono.variable} ${playfairDisplay.variable}`}
     >
       <body>
         <NextIntlProvider locale={locale} messages={messages}>
-          {children}
+          <Sidebar />
+          <main className="pt-14 md:pl-60 md:pt-0">{children}</main>
         </NextIntlProvider>
       </body>
     </html>

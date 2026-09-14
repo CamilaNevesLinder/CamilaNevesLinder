@@ -4,5 +4,26 @@
       "title": "Camila Neves Linder — Full Stack Developer",
       "description": "Full stack, com foco em arquitetura multi-tenant e white-label — back-end em NestJS e aplicativos em React Native."
     }
+  },
+  "nav": {
+    "shortName": "Camila Linder",
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "technologies": "Tecnologias",
+    "contact": "Contato",
+    "menuOpen": "Abrir menu",
+    "menuClose": "Fechar menu",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram",
+      "email": "E-mail"
+    },
+    "settings": {
+      "label": "Configurações",
+      "language": "Idioma",
+      "darkMode": "Modo escuro"
+    }
   }
 }

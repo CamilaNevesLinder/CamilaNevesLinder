@@ -26,8 +26,18 @@ describe('navigation routing constants', () => {
     expect(routing.localePrefix).toBe('as-needed');
   });
 
-  it('defines only the root pathname', () => {
-    expect(pathnames).toEqual({ '/': '/' });
+  it('defines the localized section pathnames', () => {
+    expect(pathnames).toEqual({
+      '/': '/',
+      '/sobre': { en: '/about', 'pt-br': '/sobre', es: '/sobre-mi' },
+      '/projetos': { en: '/projects', 'pt-br': '/projetos', es: '/proyectos' },
+      '/tecnologias': {
+        en: '/technologies',
+        'pt-br': '/tecnologias',
+        es: '/tecnologias',
+      },
+      '/contato': { en: '/contact', 'pt-br': '/contato', es: '/contacto' },
+    });
     expect(routing.pathnames).toEqual(pathnames);
   });
 });

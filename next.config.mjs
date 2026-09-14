@@ -7,7 +7,6 @@ const SECURITY_HEADERS = [
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
 ];
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [

@@ -17,6 +17,15 @@
     scroll-behavior: smooth;
   }
 
+  .dark {
+    color-scheme: dark;
+    --color-cream: #1c1512;
+    --color-blush: #2a201c;
+    --color-rose: #c9a29a;
+    --color-taupe: #c2ab9e;
+    --color-espresso: #f5ece7;
+  }
+
   body {
     @apply bg-cream text-espresso font-serif antialiased;
   }

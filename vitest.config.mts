@@ -36,7 +36,6 @@ const alias = {
 export default defineConfig({
   resolve: { alias },
   test: {
-    // Vitest 4 ignores environmentMatchGlobs; split environments via projects.
     coverage,
     projects: [
       {
