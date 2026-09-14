@@ -1,6 +1,6 @@
 import './globals.css';
 
-import { JetBrains_Mono } from 'next/font/google';
+import { JetBrains_Mono, Playfair_Display } from 'next/font/google';
 import type { Metadata } from 'next';
 import NextIntlProvider from '@/providers/next-intl-provider';
 import {
@@ -17,6 +17,13 @@ const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-mono-numeric',
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  weight: '700',
+  display: 'swap',
+  variable: '--font-playfair',
 });
 
 export function generateStaticParams() {
@@ -74,7 +81,7 @@ export default async function LocaleLayout({
       lang={locale}
       translate="no"
       suppressHydrationWarning
-      className={jetBrainsMono.variable}
+      className={`${jetBrainsMono.variable} ${playfairDisplay.variable}`}
     >
       <body>
         <NextIntlProvider locale={locale} messages={messages}>

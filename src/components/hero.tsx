@@ -18,7 +18,7 @@ export function Hero() {
             <p className="text-taupe mb-[18px] font-mono text-sm uppercase tracking-wide">
               Florianópolis, SC
             </p>
-            <h1 className="text-espresso text-[68px] font-bold leading-[0.95] tracking-tight">
+            <h1 className="font-display text-espresso text-[68px] font-bold leading-[0.95] tracking-tight">
               Camila Neves Linder
             </h1>
             <p className="text-rose text-[68px] font-bold italic leading-[0.95] tracking-tight">
@@ -41,7 +41,7 @@ export function Hero() {
         <div className="bg-rose/40 my-9 h-px w-full" />
 
         <p className="text-taupe text-[23px] leading-relaxed">
-          Do banco de dados à interface — arquitetura, API e aplicação no ar.
+          Do banco de dados à interface, arquitetura, API e aplicação no ar.
         </p>
 
         <div className="mt-[26px] flex flex-wrap gap-2.5">

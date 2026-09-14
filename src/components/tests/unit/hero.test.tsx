@@ -15,7 +15,7 @@ describe('Hero', () => {
 
     expect(
       screen.getByText(
-        'Do banco de dados à interface — arquitetura, API e aplicação no ar.',
+        'Do banco de dados à interface, arquitetura, API e aplicação no ar.',
       ),
     ).toBeInTheDocument();
   });
