@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 const TAGS = [
   'TypeScript',
@@ -10,6 +13,8 @@ const TAGS = [
 ];
 
 export function Hero() {
+  const t = useTranslations('hero');
+
   return (
     <section className="bg-cream flex min-h-[70vh] items-center justify-center px-6 py-16">
       <div className="border-rose/40 bg-cream/[0.18] w-full max-w-[960px] rounded-[30px] border p-[60px] shadow-[0_6px_18px_color-mix(in_srgb,var(--color-espresso)_6%,transparent)] backdrop-blur-md">
@@ -22,7 +27,7 @@ export function Hero() {
               Camila Neves Linder
             </h1>
             <p className="text-rose text-[68px] font-bold italic leading-[0.95] tracking-tight">
-              full stack developer.
+              {t('tagline')}
             </p>
           </div>
 
@@ -41,7 +46,7 @@ export function Hero() {
         <div className="bg-rose/40 my-9 h-px w-full" />
 
         <p className="text-taupe text-[23px] leading-relaxed">
-          Do banco de dados à interface, arquitetura, API e aplicação no ar.
+          {t('description')}
         </p>
 
         <div className="mt-[26px] flex flex-wrap gap-2.5">
@@ -60,13 +65,13 @@ export function Hero() {
             href="#work"
             className="text-espresso font-mono text-[17px] underline underline-offset-[5px]"
           >
-            Ver trabalho →
+            {t('workCta')}
           </a>
           <a
             href="#contact"
             className="text-espresso font-mono text-[17px] underline underline-offset-[5px]"
           >
-            Entrar em contato →
+            {t('contactCta')}
           </a>
         </div>
       </div>

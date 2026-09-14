@@ -1,17 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen, renderWithProviders } from '@/tests/utils/render';
 import { Hero } from '@/components/hero';
 
 describe('Hero', () => {
   it('renders the name and role', () => {
-    render(<Hero />);
+    renderWithProviders(<Hero />);
 
     expect(screen.getByText('Camila Neves Linder')).toBeInTheDocument();
-    expect(screen.getByText('full stack developer.')).toBeInTheDocument();
+    expect(screen.getByText('desenvolvedora full stack.')).toBeInTheDocument();
   });
 
   it('renders the description line', () => {
-    render(<Hero />);
+    renderWithProviders(<Hero />);
 
     expect(
       screen.getByText(
@@ -21,7 +21,7 @@ describe('Hero', () => {
   });
 
   it('renders every stack tag', () => {
-    render(<Hero />);
+    renderWithProviders(<Hero />);
 
     for (const tag of [
       'TypeScript',
@@ -36,27 +36,27 @@ describe('Hero', () => {
   });
 
   it('renders the work CTA link', () => {
-    render(<Hero />);
+    renderWithProviders(<Hero />);
 
     const cta = screen.getByRole('link', { name: 'Ver trabalho →' });
     expect(cta).toHaveAttribute('href', '#work');
   });
 
   it('renders the contact CTA link', () => {
-    render(<Hero />);
+    renderWithProviders(<Hero />);
 
     const cta = screen.getByRole('link', { name: 'Entrar em contato →' });
     expect(cta).toHaveAttribute('href', '#contact');
   });
 
   it('renders the location', () => {
-    render(<Hero />);
+    renderWithProviders(<Hero />);
 
     expect(screen.getByText('Florianópolis, SC')).toBeInTheDocument();
   });
 
   it('renders the profile photo with alt text', () => {
-    render(<Hero />);
+    renderWithProviders(<Hero />);
 
     expect(screen.getByAltText('Camila Neves Linder')).toBeInTheDocument();
   });

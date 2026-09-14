@@ -5,6 +5,12 @@
       "description": "Full stack, com foco em arquitetura multi-tenant e white-label — back-end em NestJS e aplicativos em React Native."
     }
   },
+  "hero": {
+    "tagline": "desenvolvedora full stack.",
+    "description": "Do banco de dados à interface, arquitetura, API e aplicação no ar.",
+    "workCta": "Ver trabalho →",
+    "contactCta": "Entrar em contato →"
+  },
   "nav": {
     "shortName": "Camila Linder",
     "home": "Início",
