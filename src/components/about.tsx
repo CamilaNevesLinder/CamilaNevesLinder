@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/ui/separator';
 import { CHESS_PROFILE_URL, type ChessStats } from '@/lib/chess';
 import { JiujitsuGallery } from '@/components/jiujitsu-gallery';
+import { BookGallery } from '@/components/book-gallery';
 
 const ITEM_KEYS = ['jiujitsu', 'books', 'chess', 'english'] as const;
 
@@ -96,6 +97,7 @@ export function About({ chessStats }: { chessStats: ChessStats | null }) {
               {t(`outsideCode.items.${key}.description`)}
             </p>
             {key === 'jiujitsu' && <JiujitsuGallery />}
+            {key === 'books' && <BookGallery />}
             {key === 'chess' && <ChessWidget stats={chessStats} />}
           </div>
         ))}

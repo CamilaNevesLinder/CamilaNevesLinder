@@ -139,7 +139,22 @@
         },
         "books": {
           "title": "Livros",
-          "description": "Leio bastante fora do trabalho. Alguns dos livros que mais recomendo: Como Fazer Amigos e Influenciar Pessoas, Inteligência Emocional: A Teoria Revolucionária que Redefine o Que É Ser Inteligente, Essencialismo, Mais Esperto que o Diabo, A Coragem de Não Agradar, Nação Dopamina, A Coragem de Ser Feliz, O Milagre da Manhã, Nietzsche para Estressados, Kafka para Sobrecarregados, As Coisas que Você Só Vê Quando Desacelera, A Elevação da Mente a Deus, A Hora da Estrela e Quarto de Despejo."
+          "description": "Leio bastante fora do trabalho. Alguns dos livros que mais recomendo estão abaixo.",
+          "gallery": {
+            "01": "Como Fazer Amigos e Influenciar Pessoas",
+            "02": "Inteligência Emocional",
+            "03": "Essencialismo",
+            "04": "Mais Esperto que o Diabo",
+            "05": "A Coragem de Não Agradar",
+            "06": "Nação Dopamina",
+            "07": "A Coragem de Ser Feliz",
+            "08": "O Milagre da Manhã",
+            "09": "Nietzsche para Estressados",
+            "10": "Kafka para Sobrecarregados",
+            "11": "As Coisas que Você Só Vê Quando Desacelera",
+            "13": "A Hora da Estrela",
+            "14": "Quarto de Despejo"
+          }
         },
         "chess": {
           "title": "Xadrez",

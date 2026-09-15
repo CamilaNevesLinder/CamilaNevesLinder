@@ -55,4 +55,32 @@ describe('About', () => {
       screen.getByText('Stats do Chess.com indisponíveis no momento.'),
     ).toBeInTheDocument();
   });
+
+  it('renders all 13 book covers with their titles', () => {
+    renderWithProviders(<About chessStats={CHESS_STATS} />);
+
+    expect(
+      screen.getByText('Como Fazer Amigos e Influenciar Pessoas'),
+    ).toBeInTheDocument();
+    expect(screen.getByText('Kafka para Sobrecarregados')).toBeInTheDocument();
+    expect(screen.getByText('Quarto de Despejo')).toBeInTheDocument();
+    expect(
+      screen.queryByText('A Elevação da Mente a Deus'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('renders all 12 jiu-jitsu photos with captions', () => {
+    renderWithProviders(<About chessStats={CHESS_STATS} />);
+
+    expect(
+      screen.getByText(
+        '13 de setembro de 2025 - faixa azul - campeonato Compnet de luta casada',
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getAllByText(
+        '13 de abril de 2025 - faixa azul - campeonato Compnet, 1º lugar',
+      ),
+    ).toHaveLength(5);
+  });
 });
