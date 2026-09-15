@@ -1,4 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
+import { About } from '@/components/about';
+import { getChessStats } from '@/lib/chess';
 
 export default async function SobrePage({
   params,
@@ -8,14 +10,7 @@ export default async function SobrePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return (
-    <section className="mx-auto max-w-[720px] px-6 py-24">
-      <h1 className="text-espresso font-serif text-[40px] font-bold">
-        Sobre mim
-      </h1>
-      <p className="text-taupe mt-4 text-lg leading-relaxed">
-        Conteúdo em breve.
-      </p>
-    </section>
-  );
+  const chessStats = await getChessStats();
+
+  return <About chessStats={chessStats} />;
 }
