@@ -4,5 +4,132 @@
       "title": "Camila Neves Linder — Full Stack Developer",
       "description": "Full stack, com foco em arquitetura multi-tenant e white-label — back-end em NestJS e aplicativos em React Native."
     }
+  },
+  "hero": {
+    "tagline": "desenvolvedora full stack.",
+    "description": "Do banco de dados à interface, arquitetura, API e aplicação no ar.",
+    "workCta": "Ver trabalho →",
+    "contactCta": "Entrar em contato →"
+  },
+  "projects": {
+    "heading": "Projetos selecionados",
+    "items": {
+      "learningApp": {
+        "title": "App multi-instituição de ensino",
+        "description": "Portal do aluno com acesso a cursos integrados via Moodle, notas, calendário e um caderno de anotações. Inclui painel administrativo onde cada instituição parceira personaliza marca e cores."
+      },
+      "wellnessApp": {
+        "title": "App de comunidade e bem-estar",
+        "description": "Posts de foto e áudio em comunidades, diário pessoal, agenda de hobbies e tarefas. Login social e notificações push, com painel próprio pra moderar denúncias e usuários."
+      },
+      "gymPlatform": {
+        "title": "Plataforma de gestão para academias",
+        "description": "Sistema multi-tenant: cada academia com seus próprios dados e configurações. Cobrança de mensalidades com renovação automática via Mercado Pago e Asaas, testes automatizados e integração contínua."
+      },
+      "musicSite": {
+        "title": "Site institucional para escola de música",
+        "description": "Construído do zero até a publicação. Seções de apresentação, professores e catálogo de instrumentos, com animações e boa aparência no celular. Contato com mapa e link direto pro WhatsApp."
+      }
+    }
+  },
+  "aiProcess": {
+    "label": "IA First",
+    "heading": "IA no fluxo de desenvolvimento",
+    "intro": "Uso IA como parte do processo, não como atalho. Toda tarefa passa por três etapas, com revisão humana em cada uma.",
+    "steps": {
+      "plan": {
+        "title": "Plano",
+        "description": "Cada tarefa começa com um plano dividindo o problema em etapas, escrito e revisado antes de qualquer código."
+      },
+      "spec": {
+        "title": "Especificação",
+        "description": "A partir do plano, uma especificação detalha requisitos e limites de cada etapa, revisada antes da IA implementar."
+      },
+      "review": {
+        "title": "Revisão",
+        "description": "Todo código gerado passa por revisão manual, testes automatizados e verificação real antes de considerar pronto."
+      }
+    }
+  },
+  "experience": {
+    "label": "Experiência",
+    "items": {
+      "onilearning": {
+        "company": "Onilearning",
+        "role": "Desenvolvedora Full Stack",
+        "topics": {
+          "topic1": "Portal do aluno multiplataforma em React Native e Expo (Expo Router, NativeWind), integrado ao Moodle, com notas, calendário e caderno de anotações",
+          "topic2": "App de bem-estar com comunidades, diário pessoal e notificações push, com login social via Firebase",
+          "topic3": "Painéis administrativos em Next.js com shadcn/ui, TanStack Query e Zustand pro estado da aplicação",
+          "topic4": "APIs em NestJS com TypeORM, MySQL e upload de arquivos via AWS S3"
+        }
+      },
+      "ritmar": {
+        "company": "Ritmar",
+        "role": "Desenvolvedora Full Stack",
+        "topics": {
+          "topic1": "Plataforma de gestão multi-tenant para academias, com back-end em NestJS e front-ends em Next.js e React",
+          "topic2": "Cobrança de mensalidades com Mercado Pago e Asaas, com renovação automática de assinaturas",
+          "topic3": "Testes automatizados e pipeline de integração contínua no GitHub Actions",
+          "topic4": "Cada academia com seus próprios dados e configurações isolados dentro do mesmo sistema"
+        }
+      },
+      "praca22": {
+        "company": "Praça 22 Escola de Música",
+        "role": "Desenvolvedora Full Stack",
+        "topics": {
+          "topic1": "Site institucional (React e Vite) construído do zero até a publicação",
+          "topic2": "Seções de apresentação, professores e catálogo de instrumentos, com animações e ícones via lucide-react",
+          "topic3": "Layout responsivo com Tailwind CSS e boa aparência no celular",
+          "topic4": "Contato integrado com mapa incorporado e link direto pro WhatsApp"
+        }
+      },
+      "minceJoias": {
+        "company": "Mince Joias",
+        "role": "Desenvolvedora Front-end",
+        "topics": {
+          "topic1": "Loja de joias online com catálogo, carrinho e checkout, construída em Next.js e TypeScript",
+          "topic2": "Telas do painel administrativo onde a dona da loja atualiza produtos e acompanha pedidos",
+          "topic3": "Interface estilizada com Tailwind CSS, em colaboração com o back-end em MongoDB e deploy na AWS",
+          "topic4": "Layout responsivo, testado em diferentes tamanhos de tela"
+        }
+      }
+    }
+  },
+  "education": {
+    "label": "Formações e cursos",
+    "items": {
+      "ads": {
+        "title": "Análise e Desenvolvimento de Sistemas",
+        "institution": "Unisul",
+        "status": "Graduação em andamento"
+      },
+      "alura": {
+        "title": "Trilhas de Front-end e Full Stack",
+        "institution": "Alura",
+        "status": "Formação complementar"
+      }
+    }
+  },
+  "nav": {
+    "shortName": "Camila Linder",
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "technologies": "Tecnologias",
+    "contact": "Contato",
+    "menuOpen": "Abrir menu",
+    "menuClose": "Fechar menu",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram",
+      "email": "E-mail"
+    },
+    "settings": {
+      "label": "Configurações",
+      "language": "Idioma",
+      "darkMode": "Modo escuro"
+    }
   }
 }

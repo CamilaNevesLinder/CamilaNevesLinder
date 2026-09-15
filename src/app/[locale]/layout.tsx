@@ -1,8 +1,9 @@
 import './globals.css';
 
-import { JetBrains_Mono } from 'next/font/google';
+import { JetBrains_Mono, Playfair_Display } from 'next/font/google';
 import type { Metadata } from 'next';
 import NextIntlProvider from '@/providers/next-intl-provider';
+import { Sidebar } from '@/components/sidebar';
 import {
   getMessages,
   getTranslations,
@@ -17,6 +18,13 @@ const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-mono-numeric',
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  weight: '700',
+  display: 'swap',
+  variable: '--font-playfair',
 });
 
 export function generateStaticParams() {
@@ -74,11 +82,13 @@ export default async function LocaleLayout({
       lang={locale}
       translate="no"
       suppressHydrationWarning
-      className={jetBrainsMono.variable}
+      data-scroll-behavior="smooth"
+      className={`${jetBrainsMono.variable} ${playfairDisplay.variable}`}
     >
       <body>
         <NextIntlProvider locale={locale} messages={messages}>
-          {children}
+          <Sidebar />
+          <main className="pt-14 md:pl-60 md:pt-0">{children}</main>
         </NextIntlProvider>
       </body>
     </html>
