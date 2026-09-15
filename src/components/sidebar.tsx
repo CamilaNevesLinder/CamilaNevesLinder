@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import {
@@ -12,7 +12,6 @@ import {
   MessageCircle,
   Settings,
   User,
-  X,
 } from 'lucide-react';
 import {
   GithubIcon,
@@ -27,6 +26,22 @@ import {
   usePathname,
 } from '@/lib/navigation';
 import { SOCIAL_LINKS } from '@/lib/site';
+import { cn } from '@/lib/utils';
+import { Button, buttonVariants } from '@/components/ui/button';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { X } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import { Switch } from '@/components/ui/switch';
 
 type NavLabelKey = 'home' | 'about' | 'projects' | 'technologies' | 'contact';
 
@@ -48,9 +63,6 @@ const LOCALE_LABELS: Record<Locale, string> = {
   es: 'ES',
 };
 
-const SOCIAL_LINK_CLASSNAME =
-  'flex size-11 items-center justify-center rounded-md text-taupe hover:text-espresso';
-
 const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
@@ -63,6 +75,9 @@ function readStoredTheme(): boolean {
   return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
 }
 
+const NAV_LINK_CLASSNAME =
+  'h-auto justify-start gap-3 px-3 py-3 font-mono text-sm uppercase tracking-wide';
+
 export function Sidebar() {
   const t = useTranslations('nav');
   const currentLocale = useLocale();
@@ -70,49 +85,24 @@ export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isDark, setIsDark] = useState(readStoredTheme);
-  const settingsRef = useRef<HTMLDivElement>(null);
-
-  const closeMenu = () => setIsOpen(false);
 
   useIsomorphicLayoutEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
   }, [isDark]);
 
-  useEffect(() => {
-    if (!isSettingsOpen) return;
-
-    function handlePointerDown(event: MouseEvent) {
-      if (!settingsRef.current?.contains(event.target as Node)) {
-        setIsSettingsOpen(false);
-      }
-    }
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
-        setIsSettingsOpen(false);
-      }
-    }
-
-    document.addEventListener('mousedown', handlePointerDown);
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('mousedown', handlePointerDown);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isSettingsOpen]);
-
-  function toggleDarkMode() {
-    setIsDark((current) => {
-      const next = !current;
-      try {
-        localStorage.setItem('theme', next ? 'dark' : 'light');
-      } catch {}
-      return next;
-    });
+  function toggleDarkMode(checked: boolean) {
+    setIsDark(checked);
+    try {
+      localStorage.setItem('theme', checked ? 'dark' : 'light');
+    } catch {}
   }
 
   const profileLink = (
-    <Link href="/" onClick={closeMenu} className="flex items-center gap-3">
+    <Link
+      href="/"
+      onClick={() => setIsOpen(false)}
+      className="flex items-center gap-3"
+    >
       <Image
         src="/camila.png"
         alt="Camila Neves Linder"
@@ -126,12 +116,69 @@ export function Sidebar() {
     </Link>
   );
 
-  const footer = (
-    <div className="border-rose/40 flex items-center gap-1 border-t pt-2">
+  const settingsPopover = (
+    <Popover open={isSettingsOpen} onOpenChange={setIsSettingsOpen}>
+      <PopoverTrigger
+        render={
+          <Button
+            variant="ghost"
+            size="icon"
+            className="ml-auto"
+            aria-label={t('settings.label')}
+          />
+        }
+      >
+        <Settings size={18} aria-hidden="true" />
+      </PopoverTrigger>
+      <PopoverContent align="end" side="top" className="w-48">
+        <p className="text-taupe font-mono text-xs uppercase tracking-wide">
+          {t('settings.language')}
+        </p>
+        <div className="flex gap-1">
+          {locales.map((locale) => (
+            <Link
+              key={locale}
+              href={pathname}
+              locale={locale}
+              onClick={() => setIsSettingsOpen(false)}
+              className={cn(
+                buttonVariants({
+                  variant: locale === currentLocale ? 'secondary' : 'ghost',
+                  size: 'sm',
+                }),
+                'h-auto flex-1 font-mono text-xs uppercase',
+              )}
+            >
+              {LOCALE_LABELS[locale]}
+            </Link>
+          ))}
+        </div>
+        <Separator />
+        <div className="flex items-center justify-between">
+          <span className="text-taupe font-mono text-xs uppercase tracking-wide">
+            {t('settings.darkMode')}
+          </span>
+          <Switch
+            checked={isDark}
+            onCheckedChange={toggleDarkMode}
+            aria-label={t('settings.darkMode')}
+          />
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+
+  const socialLinkClassName = buttonVariants({
+    variant: 'ghost',
+    size: 'icon',
+  });
+
+  const socialLinks = (
+    <div className="border-border flex items-center gap-1 border-t pt-2">
       <a
         href={SOCIAL_LINKS.email}
         aria-label={t('social.email')}
-        className={SOCIAL_LINK_CLASSNAME}
+        className={socialLinkClassName}
       >
         <Mail size={18} aria-hidden="true" />
       </a>
@@ -140,7 +187,7 @@ export function Sidebar() {
         target="_blank"
         rel="noreferrer"
         aria-label={t('social.github')}
-        className={SOCIAL_LINK_CLASSNAME}
+        className={socialLinkClassName}
       >
         <GithubIcon size={18} aria-hidden="true" />
       </a>
@@ -149,7 +196,7 @@ export function Sidebar() {
         target="_blank"
         rel="noreferrer"
         aria-label={t('social.linkedin')}
-        className={SOCIAL_LINK_CLASSNAME}
+        className={socialLinkClassName}
       >
         <LinkedinIcon size={18} aria-hidden="true" />
       </a>
@@ -158,69 +205,11 @@ export function Sidebar() {
         target="_blank"
         rel="noreferrer"
         aria-label={t('social.instagram')}
-        className={SOCIAL_LINK_CLASSNAME}
+        className={socialLinkClassName}
       >
         <InstagramIcon size={18} aria-hidden="true" />
       </a>
-
-      <div className="relative ml-auto" ref={settingsRef}>
-        <button
-          type="button"
-          onClick={() => setIsSettingsOpen((open) => !open)}
-          aria-label={t('settings.label')}
-          aria-expanded={isSettingsOpen}
-          className={SOCIAL_LINK_CLASSNAME}
-        >
-          <Settings size={18} aria-hidden="true" />
-        </button>
-
-        {isSettingsOpen && (
-          <div className="border-rose/40 bg-cream absolute bottom-full right-0 mb-2 w-48 rounded-lg border p-3 shadow-lg">
-            <p className="text-taupe mb-2 font-mono text-xs uppercase tracking-wide">
-              {t('settings.language')}
-            </p>
-            <div className="mb-3 flex gap-1">
-              {locales.map((locale) => (
-                <Link
-                  key={locale}
-                  href={pathname}
-                  locale={locale}
-                  onClick={() => setIsSettingsOpen(false)}
-                  className={`flex-1 rounded-md py-1.5 text-center font-mono text-xs uppercase tracking-wide ${
-                    locale === currentLocale
-                      ? 'bg-rose/20 text-espresso'
-                      : 'text-taupe hover:text-espresso'
-                  }`}
-                >
-                  {LOCALE_LABELS[locale]}
-                </Link>
-              ))}
-            </div>
-
-            <div className="border-rose/40 flex items-center justify-between border-t pt-3">
-              <span className="text-taupe font-mono text-xs uppercase tracking-wide">
-                {t('settings.darkMode')}
-              </span>
-              <button
-                type="button"
-                role="switch"
-                aria-checked={isDark}
-                aria-label={t('settings.darkMode')}
-                onClick={toggleDarkMode}
-                className={`relative h-6 w-11 rounded-full transition-colors ${
-                  isDark ? 'bg-rose' : 'bg-taupe/40'
-                }`}
-              >
-                <span
-                  className={`bg-espresso absolute left-0.5 top-0.5 size-5 rounded-full transition-transform ${
-                    isDark ? 'translate-x-[22px]' : 'translate-x-0'
-                  }`}
-                />
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
+      {settingsPopover}
     </div>
   );
 
@@ -234,11 +223,11 @@ export function Sidebar() {
               key={href}
               href={href}
               onClick={onNavigate}
-              className={`flex items-center gap-3 rounded-lg px-3 py-3 font-mono text-sm uppercase tracking-wide transition-colors ${
-                isActive
-                  ? 'bg-rose/20 text-espresso'
-                  : 'text-taupe hover:text-espresso'
-              }`}
+              className={cn(
+                buttonVariants({ variant: 'ghost' }),
+                NAV_LINK_CLASSNAME,
+                isActive ? 'bg-accent text-accent-foreground' : 'text-taupe',
+              )}
             >
               <Icon size={18} aria-hidden="true" />
               {t(labelKey)}
@@ -251,43 +240,48 @@ export function Sidebar() {
 
   return (
     <>
-      <aside className="border-rose/40 bg-cream fixed inset-y-0 left-0 hidden w-60 flex-col justify-between border-r p-6 md:flex">
+      <aside className="border-border bg-background fixed inset-y-0 left-0 hidden w-60 flex-col justify-between border-r p-6 md:flex">
         <div className="flex flex-col gap-8">
           {profileLink}
           {renderNavLinks()}
         </div>
-        {footer}
+        {socialLinks}
       </aside>
 
-      <header className="border-rose/40 bg-cream fixed inset-x-0 top-0 z-40 flex h-14 items-center justify-between border-b px-4 md:hidden">
+      <header className="border-border bg-background fixed inset-x-0 top-0 z-40 flex h-14 items-center justify-between border-b px-4 md:hidden">
         {profileLink}
-        <button
-          type="button"
-          onClick={() => setIsOpen(true)}
-          aria-label={t('menuOpen')}
-          className="text-espresso flex size-11 items-center justify-center"
-        >
-          <Menu size={22} aria-hidden="true" />
-        </button>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger
+            render={
+              <Button variant="ghost" size="icon" aria-label={t('menuOpen')} />
+            }
+          >
+            <Menu size={22} aria-hidden="true" />
+          </SheetTrigger>
+          <SheetContent
+            side="left"
+            showCloseButton={false}
+            className="bg-background flex w-full max-w-none flex-col gap-8 p-6"
+          >
+            <div className="flex items-center justify-between">
+              {profileLink}
+              <SheetClose
+                render={
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    aria-label={t('menuClose')}
+                  />
+                }
+              >
+                <X size={22} aria-hidden="true" />
+              </SheetClose>
+            </div>
+            {renderNavLinks(() => setIsOpen(false))}
+            {socialLinks}
+          </SheetContent>
+        </Sheet>
       </header>
-
-      {isOpen && (
-        <div className="bg-cream fixed inset-0 z-50 flex flex-col gap-8 p-6 md:hidden">
-          <div className="flex items-center justify-between">
-            {profileLink}
-            <button
-              type="button"
-              onClick={closeMenu}
-              aria-label={t('menuClose')}
-              className="text-espresso flex size-11 items-center justify-center"
-            >
-              <X size={22} aria-hidden="true" />
-            </button>
-          </div>
-          {renderNavLinks(closeMenu)}
-          {footer}
-        </div>
-      )}
     </>
   );
 }

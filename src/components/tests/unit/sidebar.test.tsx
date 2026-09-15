@@ -54,10 +54,8 @@ describe('Sidebar', () => {
     usePathname.mockReturnValue('/projetos');
     renderWithProviders(<Sidebar />);
 
-    expect(screen.getByText('Projetos').closest('a')).toHaveClass('bg-rose/20');
-    expect(screen.getByText('Sobre').closest('a')).not.toHaveClass(
-      'bg-rose/20',
-    );
+    expect(screen.getByText('Projetos').closest('a')).toHaveClass('bg-accent');
+    expect(screen.getByText('Sobre').closest('a')).not.toHaveClass('bg-accent');
   });
 
   it('renders the social links with accessible names', () => {
@@ -103,7 +101,7 @@ describe('Sidebar', () => {
 
     await user.click(screen.getByRole('button', { name: 'Configurações' }));
 
-    expect(screen.getByText('PT-BR').closest('a')).toHaveClass('bg-rose/20');
+    expect(screen.getByText('PT-BR').closest('a')).toHaveClass('bg-secondary');
     expect(screen.getByText('EN')).toBeInTheDocument();
     expect(screen.getByText('ES')).toBeInTheDocument();
   });

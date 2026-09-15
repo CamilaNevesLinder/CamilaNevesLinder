@@ -11,6 +11,27 @@
     "workCta": "View work →",
     "contactCta": "Get in touch →"
   },
+  "projects": {
+    "heading": "Projects",
+    "items": {
+      "learningApp": {
+        "title": "Multi-institution learning app",
+        "description": "Student portal with course access integrated through Moodle, grades, calendar and a note-taking notebook. Includes an admin panel where each partner institution customizes brand and colors."
+      },
+      "wellnessApp": {
+        "title": "Community and wellness app",
+        "description": "Photo and audio posts in communities, personal journal, hobby and task schedule. Social login and push notifications, with its own panel to moderate reports and users."
+      },
+      "gymPlatform": {
+        "title": "Gym management platform",
+        "description": "Multi-tenant system: each gym with its own data and settings. Membership billing with automatic renewal through Mercado Pago and Asaas, automated tests and continuous integration."
+      },
+      "musicSite": {
+        "title": "Music school website",
+        "description": "Built from scratch through to launch. Sections for introduction, teachers and an instrument catalog, with animations and a solid mobile experience. Contact section with map and a direct WhatsApp link."
+      }
+    }
+  },
   "nav": {
     "shortName": "Camila Linder",
     "home": "Home",
