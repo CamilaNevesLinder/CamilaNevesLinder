@@ -47,6 +47,7 @@ Projeto usa shadcn/ui (`components.json`, estilo `base-nova`, primitivos `@base-
 Os tokens semânticos do shadcn (`--background`, `--foreground`, `--primary`, `--card`, `--popover`, `--muted`, `--accent`, `--border`, `--ring` etc, em `src/app/[locale]/globals.css`) **não são cores novas** — cada um referencia um dos 5 tokens da tabela acima via `var(--color-*)`. Isso significa que qualquer componente shadcn novo (`npx shadcn add ...`) já nasce na paleta certa automaticamente, claro e escuro, sem precisar de cor extra.
 
 Ao adicionar um componente shadcn:
+
 - Não aceitar cor literal que a CLI eventualmente sugerir (ex: `oklch(...)`) — sempre mapear pro token semântico existente.
 - Pra link estilizado como botão, usar `buttonVariants({...})` como className num `<a>`/`Link` normal — nunca `<Button render={<a/>}>`, pois isso muda o role de acessibilidade de "link" pra "button".
 - `nativeButton={false}` é obrigatório em qualquer `<Button render={...}>` cujo elemento renderizado não seja um `<button>` de verdade (Base UI avisa/loga erro em dev se esquecer).

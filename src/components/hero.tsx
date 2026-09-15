@@ -22,7 +22,7 @@ export function Hero() {
 
   return (
     <section className="bg-cream flex min-h-[70vh] items-center justify-center px-6 py-16">
-      <Card className="border-rose/40 bg-cream/[0.18] w-full max-w-[960px] rounded-[30px] border p-[60px] shadow-[0_6px_18px_color-mix(in_srgb,var(--color-espresso)_6%,transparent)] ring-0 backdrop-blur-md">
+      <Card className="border-rose/40 bg-cream/[0.18] w-full max-w-[960px] rounded-[30px] border p-[60px] shadow-none ring-0 backdrop-blur-md">
         <div className="flex items-center justify-between gap-7">
           <div>
             <p className="text-taupe mb-[18px] font-mono text-sm uppercase tracking-wide">

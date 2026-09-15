@@ -6,7 +6,7 @@ describe('Projects', () => {
   it('renders the section heading', () => {
     renderWithProviders(<Projects />);
 
-    expect(screen.getByText('Projetos')).toBeInTheDocument();
+    expect(screen.getByText('Projetos selecionados')).toBeInTheDocument();
   });
 
   it('renders every project title', () => {

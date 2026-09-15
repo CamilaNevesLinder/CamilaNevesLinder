@@ -12,7 +12,7 @@
     "contactCta": "Get in touch →"
   },
   "projects": {
-    "heading": "Projects",
+    "heading": "Selected projects",
     "items": {
       "learningApp": {
         "title": "Multi-institution learning app",
@@ -29,6 +29,85 @@
       "musicSite": {
         "title": "Music school website",
         "description": "Built from scratch through to launch. Sections for introduction, teachers and an instrument catalog, with animations and a solid mobile experience. Contact section with map and a direct WhatsApp link."
+      }
+    }
+  },
+  "aiProcess": {
+    "label": "AI First",
+    "heading": "AI in the development flow",
+    "intro": "I use AI as part of the process, not as a shortcut. Every task goes through three steps, with human review at each one.",
+    "steps": {
+      "plan": {
+        "title": "Plan",
+        "description": "Every task starts with a plan breaking the problem into steps, written and reviewed before any code."
+      },
+      "spec": {
+        "title": "Specification",
+        "description": "From the plan, a specification details the requirements and constraints of each step, reviewed before AI implements it."
+      },
+      "review": {
+        "title": "Review",
+        "description": "All generated code goes through manual review, automated tests and real verification before it counts as done."
+      }
+    }
+  },
+  "experience": {
+    "label": "Experience",
+    "items": {
+      "onilearning": {
+        "company": "Onilearning",
+        "role": "Full Stack Developer",
+        "topics": {
+          "topic1": "Cross-platform student portal in React Native and Expo (Expo Router, NativeWind), integrated with Moodle, with grades, calendar and a note-taking notebook",
+          "topic2": "Wellness app with communities, personal journal and push notifications, with social login through Firebase",
+          "topic3": "Admin panels in Next.js with shadcn/ui, TanStack Query and Zustand for application state",
+          "topic4": "APIs in NestJS with TypeORM, MySQL and file uploads through AWS S3"
+        }
+      },
+      "ritmar": {
+        "company": "Ritmar",
+        "role": "Full Stack Developer",
+        "topics": {
+          "topic1": "Multi-tenant gym management platform, with a NestJS back-end and Next.js and React front-ends",
+          "topic2": "Membership billing with Mercado Pago and Asaas, with automatic subscription renewal",
+          "topic3": "Automated tests and a continuous integration pipeline on GitHub Actions",
+          "topic4": "Each gym with its own data and settings isolated within the same system"
+        }
+      },
+      "praca22": {
+        "company": "Praça 22 Escola de Música",
+        "role": "Full Stack Developer",
+        "topics": {
+          "topic1": "Institutional website (React and Vite) built from scratch through launch",
+          "topic2": "Introduction, teachers and instrument catalog sections, with animations and lucide-react icons",
+          "topic3": "Responsive layout with Tailwind CSS and a solid mobile experience",
+          "topic4": "Contact section integrated with an embedded map and a direct WhatsApp link"
+        }
+      },
+      "minceJoias": {
+        "company": "Mince Joias",
+        "role": "Front-end Developer",
+        "topics": {
+          "topic1": "Online jewelry store with catalog, cart and checkout, built in Next.js and TypeScript",
+          "topic2": "Admin panel screens where the store owner updates products and tracks orders",
+          "topic3": "Interface styled with Tailwind CSS, working alongside the back-end in MongoDB and AWS deployment",
+          "topic4": "Responsive layout, tested across different screen sizes"
+        }
+      }
+    }
+  },
+  "education": {
+    "label": "Education and courses",
+    "items": {
+      "ads": {
+        "title": "Systems Analysis and Development",
+        "institution": "Unisul",
+        "status": "Degree in progress"
+      },
+      "alura": {
+        "title": "Front-end and Full Stack tracks",
+        "institution": "Alura",
+        "status": "Continuing education"
       }
     }
   },

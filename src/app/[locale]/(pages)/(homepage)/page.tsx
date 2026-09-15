@@ -1,5 +1,8 @@
 import { Hero } from '@/components/hero';
 import { Projects } from '@/components/projects';
+import { AiProcess } from '@/components/ai-process';
+import { Experience } from '@/components/experience';
+import { Education } from '@/components/education';
 import { setRequestLocale } from 'next-intl/server';
 
 export default async function Home({
@@ -13,6 +16,9 @@ export default async function Home({
     <>
       <Hero />
       <Projects />
+      <AiProcess />
+      <Experience />
+      <Education />
     </>
   );
 }

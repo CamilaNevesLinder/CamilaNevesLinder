@@ -12,7 +12,7 @@
     "contactCta": "Contactar →"
   },
   "projects": {
-    "heading": "Proyectos",
+    "heading": "Proyectos seleccionados",
     "items": {
       "learningApp": {
         "title": "App multi-institución de enseñanza",
@@ -29,6 +29,85 @@
       "musicSite": {
         "title": "Sitio institucional para escuela de música",
         "description": "Construido desde cero hasta la publicación. Secciones de presentación, profesores y catálogo de instrumentos, con animaciones y buena apariencia en el celular. Sección de contacto con mapa y enlace directo a WhatsApp."
+      }
+    }
+  },
+  "aiProcess": {
+    "label": "IA First",
+    "heading": "IA en el flujo de desarrollo",
+    "intro": "Uso IA como parte del proceso, no como atajo. Cada tarea pasa por tres etapas, con revisión humana en cada una.",
+    "steps": {
+      "plan": {
+        "title": "Plan",
+        "description": "Cada tarea empieza con un plan que divide el problema en etapas, escrito y revisado antes de cualquier código."
+      },
+      "spec": {
+        "title": "Especificación",
+        "description": "A partir del plan, una especificación detalla los requisitos y límites de cada etapa, revisada antes de que la IA la implemente."
+      },
+      "review": {
+        "title": "Revisión",
+        "description": "Todo el código generado pasa por revisión manual, pruebas automatizadas y verificación real antes de considerarse listo."
+      }
+    }
+  },
+  "experience": {
+    "label": "Experiencia",
+    "items": {
+      "onilearning": {
+        "company": "Onilearning",
+        "role": "Desarrolladora Full Stack",
+        "topics": {
+          "topic1": "Portal del alumno multiplataforma en React Native y Expo (Expo Router, NativeWind), integrado con Moodle, con notas, calendario y un cuaderno de anotaciones",
+          "topic2": "App de bienestar con comunidades, diario personal y notificaciones push, con inicio de sesión social vía Firebase",
+          "topic3": "Paneles administrativos en Next.js con shadcn/ui, TanStack Query y Zustand para el estado de la aplicación",
+          "topic4": "APIs en NestJS con TypeORM, MySQL y subida de archivos vía AWS S3"
+        }
+      },
+      "ritmar": {
+        "company": "Ritmar",
+        "role": "Desarrolladora Full Stack",
+        "topics": {
+          "topic1": "Plataforma de gestión multi-tenant para gimnasios, con back-end en NestJS y front-ends en Next.js y React",
+          "topic2": "Cobro de mensualidades con Mercado Pago y Asaas, con renovación automática de suscripciones",
+          "topic3": "Pruebas automatizadas y pipeline de integración continua en GitHub Actions",
+          "topic4": "Cada gimnasio con sus propios datos y configuraciones aislados dentro del mismo sistema"
+        }
+      },
+      "praca22": {
+        "company": "Praça 22 Escola de Música",
+        "role": "Desarrolladora Full Stack",
+        "topics": {
+          "topic1": "Sitio institucional (React y Vite) construido desde cero hasta la publicación",
+          "topic2": "Secciones de presentación, profesores y catálogo de instrumentos, con animaciones e íconos de lucide-react",
+          "topic3": "Diseño responsivo con Tailwind CSS y buena apariencia en el celular",
+          "topic4": "Sección de contacto integrada con mapa incorporado y enlace directo a WhatsApp"
+        }
+      },
+      "minceJoias": {
+        "company": "Mince Joias",
+        "role": "Desarrolladora Front-end",
+        "topics": {
+          "topic1": "Tienda de joyas online con catálogo, carrito y checkout, construida en Next.js y TypeScript",
+          "topic2": "Pantallas del panel administrativo donde la dueña de la tienda actualiza productos y sigue los pedidos",
+          "topic3": "Interfaz con Tailwind CSS, en colaboración con el back-end en MongoDB y despliegue en AWS",
+          "topic4": "Diseño responsivo, probado en distintos tamaños de pantalla"
+        }
+      }
+    }
+  },
+  "education": {
+    "label": "Formación y cursos",
+    "items": {
+      "ads": {
+        "title": "Análisis y Desarrollo de Sistemas",
+        "institution": "Unisul",
+        "status": "Carrera en curso"
+      },
+      "alura": {
+        "title": "Rutas de Front-end y Full Stack",
+        "institution": "Alura",
+        "status": "Formación complementaria"
       }
     }
   },
