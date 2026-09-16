@@ -6,26 +6,26 @@ export type Locale = 'en' | 'pt-br' | 'es';
 export const localePrefix = 'as-needed';
 
 export type HrefValue =
-  '/' | '/sobre' | '/projetos' | '/tecnologias' | '/contato';
+  '/' | '/about' | '/projects' | '/technologies' | '/contact';
 
 export const pathnames = {
   '/': '/',
-  '/sobre': {
+  '/about': {
     en: '/about',
     'pt-br': '/sobre',
     es: '/sobre-mi',
   },
-  '/projetos': {
+  '/projects': {
     en: '/projects',
     'pt-br': '/projetos',
     es: '/proyectos',
   },
-  '/tecnologias': {
+  '/technologies': {
     en: '/technologies',
     'pt-br': '/tecnologias',
     es: '/tecnologias',
   },
-  '/contato': {
+  '/contact': {
     en: '/contact',
     'pt-br': '/contato',
     es: '/contacto',

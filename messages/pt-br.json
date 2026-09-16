@@ -111,6 +111,58 @@
       }
     }
   },
+  "about": {
+    "label": "Sobre",
+    "heading": "Além da tela",
+    "intro": "Sou uma pessoa que gosta de aprender coisas novas e de me envolver de verdade com aquilo que faço. Gosto de conhecer lugares, descobrir coisas diferentes e também tenho meus momentos mais tranquilos, aproveitando meu tempo com as pessoas que gosto.",
+    "introHobbies": "No meu tempo livre, tenho alguns hobbies que fazem parte da minha rotina e que dizem bastante sobre mim.",
+    "outsideCode": {
+      "label": "Fora do código",
+      "items": {
+        "jiujitsu": {
+          "title": "Jiu-jitsu",
+          "description": "Faixa roxa, treino há 4 anos. Dou aula pra criança na Gracie Barra e já disputei vários campeonatos. No tatame, disciplina e cabeça fria sob pressão viram hábito.",
+          "gallery": {
+            "01": "13 de setembro de 2025 - faixa azul - campeonato Compnet de luta casada",
+            "02": "19 de agosto de 2025 - faixa azul - formatura da turma de crianças que dou aula na Gracie Barra",
+            "03": "2 de maio de 2026 - faixa roxa - treino na Gracie Barra São José",
+            "04": "1º de novembro de 2023 - faixa laranja - campeonato Compnet",
+            "05": "1º de novembro de 2023 - faixa laranja - campeonato Compnet",
+            "06": "17 de dezembro - faixa verde - graduação pelo mestre André 'Déco' Rachadel",
+            "07": "23 de outubro de 2025 - faixa azul - treino na Gracie Barra Biguaçu",
+            "08": "13 de abril de 2025 - faixa azul - campeonato Compnet, 1º lugar",
+            "09": "13 de abril de 2025 - faixa azul - campeonato Compnet, 1º lugar",
+            "10": "13 de abril de 2025 - faixa azul - campeonato Compnet, 1º lugar",
+            "11": "13 de abril de 2025 - faixa azul - campeonato Compnet, 1º lugar",
+            "12": "13 de abril de 2025 - faixa azul - campeonato Compnet, 1º lugar"
+          }
+        },
+        "books": {
+          "title": "Livros",
+          "description": "Leio bastante fora do trabalho. Alguns dos livros que mais recomendo estão abaixo.",
+          "gallery": {
+            "01": "Como Fazer Amigos e Influenciar Pessoas",
+            "02": "Inteligência Emocional",
+            "03": "Essencialismo",
+            "04": "Mais Esperto que o Diabo",
+            "05": "A Coragem de Não Agradar",
+            "06": "Nação Dopamina",
+            "07": "A Coragem de Ser Feliz",
+            "08": "O Milagre da Manhã",
+            "09": "Nietzsche para Estressados",
+            "10": "Kafka para Sobrecarregados",
+            "11": "As Coisas que Você Só Vê Quando Desacelera",
+            "13": "A Hora da Estrela",
+            "14": "Quarto de Despejo"
+          }
+        },
+        "english": {
+          "title": "Inglês",
+          "description": "Entendo e leio bem; minha maior dificuldade é pronúncia, trabalho isso com o curso do Mario Vergara e o Duolingo."
+        }
+      }
+    }
+  },
   "nav": {
     "shortName": "Camila Linder",
     "home": "Início",

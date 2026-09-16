@@ -111,6 +111,58 @@
       }
     }
   },
+  "about": {
+    "label": "About",
+    "heading": "Beyond the screen",
+    "intro": "I'm someone who likes learning new things and getting genuinely involved in what I do. I enjoy getting to know new places, discovering different things, and I also have my calmer moments, spending time with the people I care about.",
+    "introHobbies": "In my free time, I have a few hobbies that are part of my routine and say a lot about me.",
+    "outsideCode": {
+      "label": "Outside the code",
+      "items": {
+        "jiujitsu": {
+          "title": "Jiu-jitsu",
+          "description": "Purple belt, training for 4 years. I teach kids at Gracie Barra and have competed in several tournaments. On the mat, discipline and staying calm under pressure become habit.",
+          "gallery": {
+            "01": "September 13, 2025 - blue belt - Compnet competition, superfight",
+            "02": "August 19, 2025 - blue belt - graduation of the kids' class I teach at Gracie Barra",
+            "03": "May 2, 2026 - purple belt - training at Gracie Barra São José",
+            "04": "November 1, 2023 - orange belt - Compnet competition",
+            "05": "November 1, 2023 - orange belt - Compnet competition",
+            "06": "December 17 - green belt - promoted by Master André 'Déco' Rachadel",
+            "07": "October 23, 2025 - blue belt - training at Gracie Barra Biguaçu",
+            "08": "April 13, 2025 - blue belt - Compnet competition, 1st place",
+            "09": "April 13, 2025 - blue belt - Compnet competition, 1st place",
+            "10": "April 13, 2025 - blue belt - Compnet competition, 1st place",
+            "11": "April 13, 2025 - blue belt - Compnet competition, 1st place",
+            "12": "April 13, 2025 - blue belt - Compnet competition, 1st place"
+          }
+        },
+        "books": {
+          "title": "Books",
+          "description": "I read a lot outside of work. Some of the books I recommend most are below.",
+          "gallery": {
+            "01": "Como Fazer Amigos e Influenciar Pessoas",
+            "02": "Inteligência Emocional",
+            "03": "Essencialismo",
+            "04": "Mais Esperto que o Diabo",
+            "05": "A Coragem de Não Agradar",
+            "06": "Nação Dopamina",
+            "07": "A Coragem de Ser Feliz",
+            "08": "O Milagre da Manhã",
+            "09": "Nietzsche para Estressados",
+            "10": "Kafka para Sobrecarregados",
+            "11": "As Coisas que Você Só Vê Quando Desacelera",
+            "13": "A Hora da Estrela",
+            "14": "Quarto de Despejo"
+          }
+        },
+        "english": {
+          "title": "English",
+          "description": "I understand and read well; pronunciation is my biggest challenge, which I work on with Mario Vergara's course and Duolingo."
+        }
+      }
+    }
+  },
   "nav": {
     "shortName": "Camila Linder",
     "home": "Home",

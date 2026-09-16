@@ -111,6 +111,58 @@
       }
     }
   },
+  "about": {
+    "label": "Sobre mí",
+    "heading": "Más allá de la pantalla",
+    "intro": "Soy una persona a la que le gusta aprender cosas nuevas e involucrarse de verdad con lo que hace. Me gusta conocer lugares, descubrir cosas diferentes y también tengo mis momentos más tranquilos, disfrutando el tiempo con las personas que quiero.",
+    "introHobbies": "En mi tiempo libre, tengo algunos hobbies que forman parte de mi rutina y que dicen bastante sobre mí.",
+    "outsideCode": {
+      "label": "Fuera del código",
+      "items": {
+        "jiujitsu": {
+          "title": "Jiu-jitsu",
+          "description": "Cinturón morado, entreno hace 4 años. Doy clases a niños en Gracie Barra y ya participé en varios campeonatos. En el tatami, la disciplina y mantener la calma bajo presión se vuelven hábito.",
+          "gallery": {
+            "01": "13 de septiembre de 2025 - cinturón azul - campeonato Compnet, lucha pactada",
+            "02": "19 de agosto de 2025 - cinturón azul - graduación de la clase de niños que enseño en Gracie Barra",
+            "03": "2 de mayo de 2026 - cinturón morado - entrenamiento en Gracie Barra São José",
+            "04": "1 de noviembre de 2023 - cinturón naranja - campeonato Compnet",
+            "05": "1 de noviembre de 2023 - cinturón naranja - campeonato Compnet",
+            "06": "17 de diciembre - cinturón verde - graduación por el maestro André 'Déco' Rachadel",
+            "07": "23 de octubre de 2025 - cinturón azul - entrenamiento en Gracie Barra Biguaçu",
+            "08": "13 de abril de 2025 - cinturón azul - campeonato Compnet, 1er lugar",
+            "09": "13 de abril de 2025 - cinturón azul - campeonato Compnet, 1er lugar",
+            "10": "13 de abril de 2025 - cinturón azul - campeonato Compnet, 1er lugar",
+            "11": "13 de abril de 2025 - cinturón azul - campeonato Compnet, 1er lugar",
+            "12": "13 de abril de 2025 - cinturón azul - campeonato Compnet, 1er lugar"
+          }
+        },
+        "books": {
+          "title": "Libros",
+          "description": "Leo bastante fuera del trabajo. Algunos de los libros que más recomiendo están abajo.",
+          "gallery": {
+            "01": "Como Fazer Amigos e Influenciar Pessoas",
+            "02": "Inteligência Emocional",
+            "03": "Essencialismo",
+            "04": "Mais Esperto que o Diabo",
+            "05": "A Coragem de Não Agradar",
+            "06": "Nação Dopamina",
+            "07": "A Coragem de Ser Feliz",
+            "08": "O Milagre da Manhã",
+            "09": "Nietzsche para Estressados",
+            "10": "Kafka para Sobrecarregados",
+            "11": "As Coisas que Você Só Vê Quando Desacelera",
+            "13": "A Hora da Estrela",
+            "14": "Quarto de Despejo"
+          }
+        },
+        "english": {
+          "title": "Inglés",
+          "description": "Entiendo y leo bien; mi mayor dificultad es la pronunciación, la trabajo con el curso de Mario Vergara y Duolingo."
+        }
+      }
+    }
+  },
   "nav": {
     "shortName": "Camila Linder",
     "home": "Inicio",

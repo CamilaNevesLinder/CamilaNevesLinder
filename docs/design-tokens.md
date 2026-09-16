@@ -42,7 +42,9 @@ Aprovado em 2026-09-14 junto com o toggle de modo escuro na sidebar. Mesma regra
 
 ## shadcn/ui
 
-Projeto usa shadcn/ui (`components.json`, estilo `base-nova`, primitivos `@base-ui/react`) pra todo componente interativo/estrutural: `Button`, `Card`, `Badge`, `Popover`, `Sheet`, `Switch`, `Separator`. Componentes ficam em `src/components/ui/` (gerados pela CLI — evitar editar à mão, prefira `npx shadcn@latest add <nome>` ou `diff`).
+Projeto usa shadcn/ui (`components.json`, estilo `base-nova`, primitivos `@base-ui/react`) pra todo componente interativo/estrutural: `Button`, `Card`, `Badge`, `Popover`, `Sheet`, `Switch`, `Separator`. Componentes seguem Atomic Design: primitivos simples ficam em `src/components/atoms/` (aliased em `components.json` como `ui`), compostos (`Carousel`, `Popover`, `Sheet`, `NavigationMenu`) ficam em `src/components/molecules/` — gerados pela CLI (evitar editar à mão, prefira `npx shadcn@latest add <nome>` ou `diff`).
+
+A CLI sempre gera componentes novos em `src/components/atoms/` (é o que o alias `ui` do `components.json` aponta). Se o componente novo for um compound component com sub-partes (trigger/content/overlay, como os já existentes em `molecules/`), mover manualmente pra `src/components/molecules/` e atualizar seus imports internos (ex: de `Button`) para `@/components/atoms/button`.
 
 Os tokens semânticos do shadcn (`--background`, `--foreground`, `--primary`, `--card`, `--popover`, `--muted`, `--accent`, `--border`, `--ring` etc, em `src/app/[locale]/globals.css`) **não são cores novas** — cada um referencia um dos 5 tokens da tabela acima via `var(--color-*)`. Isso significa que qualquer componente shadcn novo (`npx shadcn add ...`) já nasce na paleta certa automaticamente, claro e escuro, sem precisar de cor extra.
 

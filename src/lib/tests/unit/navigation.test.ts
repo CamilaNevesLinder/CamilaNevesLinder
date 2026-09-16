@@ -29,14 +29,14 @@ describe('navigation routing constants', () => {
   it('defines the localized section pathnames', () => {
     expect(pathnames).toEqual({
       '/': '/',
-      '/sobre': { en: '/about', 'pt-br': '/sobre', es: '/sobre-mi' },
-      '/projetos': { en: '/projects', 'pt-br': '/projetos', es: '/proyectos' },
-      '/tecnologias': {
+      '/about': { en: '/about', 'pt-br': '/sobre', es: '/sobre-mi' },
+      '/projects': { en: '/projects', 'pt-br': '/projetos', es: '/proyectos' },
+      '/technologies': {
         en: '/technologies',
         'pt-br': '/tecnologias',
         es: '/tecnologias',
       },
-      '/contato': { en: '/contact', 'pt-br': '/contato', es: '/contacto' },
+      '/contact': { en: '/contact', 'pt-br': '/contato', es: '/contacto' },
     });
     expect(routing.pathnames).toEqual(pathnames);
   });
