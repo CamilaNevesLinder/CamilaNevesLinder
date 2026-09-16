@@ -156,16 +156,6 @@
             "14": "Quarto de Despejo"
           }
         },
-        "chess": {
-          "title": "Xadrez",
-          "description": "Jogo quase todo dia. Stats ao vivo do Chess.com: rating, resultado e sequência de dias jogados.",
-          "streak": "{days, plural, one {# dia seguido jogando} other {# dias seguidos jogando}}",
-          "rapid": "Rapid",
-          "blitz": "Blitz",
-          "record": "{wins}V · {losses}D · {draws}E",
-          "profileLink": "Ver perfil no Chess.com",
-          "unavailable": "Stats do Chess.com indisponíveis no momento."
-        },
         "english": {
           "title": "Inglês",
           "description": "Entendo e leio bem; minha maior dificuldade é pronúncia, trabalho isso com o curso do Mario Vergara e o Duolingo."

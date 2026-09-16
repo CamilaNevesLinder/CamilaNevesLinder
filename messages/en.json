@@ -156,16 +156,6 @@
             "14": "Quarto de Despejo"
           }
         },
-        "chess": {
-          "title": "Chess",
-          "description": "I play almost every day. Live stats from Chess.com: rating, record and current playing streak.",
-          "streak": "{days, plural, one {# day playing streak} other {# days playing streak}}",
-          "rapid": "Rapid",
-          "blitz": "Blitz",
-          "record": "{wins}W · {losses}L · {draws}D",
-          "profileLink": "View Chess.com profile",
-          "unavailable": "Chess.com stats unavailable right now."
-        },
         "english": {
           "title": "English",
           "description": "I understand and read well; pronunciation is my biggest challenge, which I work on with Mario Vergara's course and Duolingo."

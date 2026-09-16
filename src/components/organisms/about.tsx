@@ -2,69 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/atoms/separator';
-import { CHESS_PROFILE_URL, type ChessStats } from '@/lib/chess';
 import { JiujitsuGallery } from '@/components/organisms/jiujitsu-gallery';
 import { BookGallery } from '@/components/organisms/book-gallery';
 
-const ITEM_KEYS = ['jiujitsu', 'books', 'chess', 'english'] as const;
+const ITEM_KEYS = ['jiujitsu', 'books', 'english'] as const;
 
-function ChessWidget({ stats }: { stats: ChessStats | null }) {
-  const t = useTranslations('about.outsideCode.items.chess');
-
-  if (!stats) {
-    return <p className="text-taupe mt-3 text-sm italic">{t('unavailable')}</p>;
-  }
-
-  return (
-    <div className="mt-4">
-      <p className="text-rose font-mono text-sm uppercase tracking-wide">
-        {t('streak', { days: stats.streakDays })}
-      </p>
-      <div className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
-        <div>
-          <p className="text-taupe font-mono text-xs uppercase tracking-wide">
-            {t('rapid')}
-          </p>
-          <p className="text-espresso text-[17px] font-bold">
-            {stats.rapid.rating}
-            <span className="text-taupe ml-2 text-sm font-normal">
-              {t('record', {
-                wins: stats.rapid.win,
-                losses: stats.rapid.loss,
-                draws: stats.rapid.draw,
-              })}
-            </span>
-          </p>
-        </div>
-        <div>
-          <p className="text-taupe font-mono text-xs uppercase tracking-wide">
-            {t('blitz')}
-          </p>
-          <p className="text-espresso text-[17px] font-bold">
-            {stats.blitz.rating}
-            <span className="text-taupe ml-2 text-sm font-normal">
-              {t('record', {
-                wins: stats.blitz.win,
-                losses: stats.blitz.loss,
-                draws: stats.blitz.draw,
-              })}
-            </span>
-          </p>
-        </div>
-      </div>
-      <a
-        href={CHESS_PROFILE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-rose mt-3 inline-block text-sm underline underline-offset-4"
-      >
-        {t('profileLink')}
-      </a>
-    </div>
-  );
-}
-
-export function About({ chessStats }: { chessStats: ChessStats | null }) {
+export function About() {
   const t = useTranslations('about');
 
   return (
@@ -98,7 +41,6 @@ export function About({ chessStats }: { chessStats: ChessStats | null }) {
             </p>
             {key === 'jiujitsu' && <JiujitsuGallery />}
             {key === 'books' && <BookGallery />}
-            {key === 'chess' && <ChessWidget stats={chessStats} />}
           </div>
         ))}
       </div>
