@@ -163,6 +163,120 @@
       }
     }
   },
+  "projectsPage": {
+    "label": "Proyectos",
+    "heading": "Lo que ya construí",
+    "items": {
+      "oniapp": {
+        "title": "Oniapp",
+        "role": "Full stack en Oniapp — mobile, panel web y API: en este frente, temas adaptativos por institución, accesibilidad y pruebas automatizadas",
+        "features": [
+          "Un único código genera apps distintas por institución educativa, cada una con su propio bundle ID, tema, ícono y URL de Moodle",
+          "Tema, colores y funciones activas (biblioteca, academy, cuaderno, notas, calendario) configurados por institución",
+          "Integración completa con Moodle: notas, calendario, cuaderno de apuntes y cursos dentro de la app",
+          "Actualización automática (OTA) vía EAS en cada push, en producción y en entorno de pruebas"
+        ],
+        "stack": [
+          "React Native",
+          "Expo",
+          "Expo Router",
+          "NativeWind",
+          "TanStack Query",
+          "Zustand",
+          "TypeScript"
+        ]
+      },
+      "oniappAdmin": {
+        "title": "Oniapp Admin",
+        "role": "Full stack en Oniapp — mobile, panel web y API: en este frente, construí buena parte de las pantallas del panel a partir de Figma, con ordenamiento de tablas e integración con endpoints",
+        "features": [
+          "Panel web donde cada institución gestiona el contenido y los usuarios de la app",
+          "Búsqueda y caché de datos con TanStack Query, formularios validados con Zod y React Hook Form",
+          "Interfaz construida con shadcn/ui y Radix UI, consistente con el resto del producto"
+        ],
+        "stack": [
+          "Next.js",
+          "TanStack Query",
+          "Zustand",
+          "Radix UI",
+          "shadcn/ui",
+          "Zod"
+        ]
+      },
+      "seja": {
+        "title": "Seja",
+        "role": "Full stack en Seja — mobile, panel web y API: en este frente, funciones de diario, agenda de hobbies, notificaciones y edición de listas",
+        "features": [
+          "App de bienestar con publicaciones de foto y audio en comunidades, diario personal y agenda de hobbies y tareas",
+          "Inicio de sesión social vía Google, Apple y Firebase, con autenticación JWT y refresh token",
+          "Notificaciones push y contenido localizado en varios idiomas con i18next",
+          "Calendario de hábitos y selector de color de tema construidos con librerías nativas de gestos y animación"
+        ],
+        "stack": [
+          "React Native",
+          "Expo",
+          "NativeWind",
+          "TanStack Query",
+          "Zustand",
+          "Firebase Auth",
+          "i18next"
+        ]
+      },
+      "sejaAdmin": {
+        "title": "Seja Admin",
+        "role": "Full stack en Seja — mobile, panel web y API: en este frente, configuración inicial del panel y ajustes de marca y estilo",
+        "features": [
+          "Panel de moderación de denuncias y gestión de usuarios de la comunidad",
+          "Misma base técnica que Oniapp Admin (Next.js, TanStack Query), con componentes Base UI/shadcn"
+        ],
+        "stack": [
+          "Next.js",
+          "Base UI",
+          "TanStack Query",
+          "Radix UI",
+          "shadcn/ui",
+          "Zod"
+        ]
+      },
+      "praca22": {
+        "title": "Praça 22",
+        "role": "Lo desarrollé sola, desde el diseño hasta la publicación",
+        "features": [
+          "Sitio institucional construido desde cero hasta la publicación, con secciones de presentación, profesores y catálogo de instrumentos",
+          "Animaciones con Framer Motion y componentes accesibles con Radix UI",
+          "Contacto integrado con mapa incorporado y enlace directo a WhatsApp"
+        ],
+        "stack": [
+          "React 19",
+          "TypeScript",
+          "Vite",
+          "Tailwind CSS 4",
+          "Framer Motion",
+          "Radix UI"
+        ]
+      },
+      "ritmar": {
+        "title": "Ritmar",
+        "role": "Participé en el desarrollo front-end",
+        "features": [
+          "Plataforma de gestión multi-tenant para gimnasios: cada uno con sus propios datos y configuraciones aislados",
+          "Cobro de mensualidades con renovación automática de suscripciones vía Mercado Pago y Asaas",
+          "Pruebas automatizadas y pipeline de integración continua en GitHub Actions"
+        ],
+        "stack": ["NestJS", "Next.js", "React"]
+      },
+      "minceJoias": {
+        "title": "Mince Joias",
+        "role": "Participé en el desarrollo front-end",
+        "features": [
+          "Tienda de joyas online con catálogo, carrito y checkout completo",
+          "Panel administrativo donde la dueña de la tienda actualiza productos y sigue los pedidos",
+          "Diseño responsive probado en diferentes tamaños de pantalla"
+        ],
+        "stack": ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "AWS"]
+      }
+    }
+  },
   "nav": {
     "shortName": "Camila Linder",
     "home": "Inicio",
