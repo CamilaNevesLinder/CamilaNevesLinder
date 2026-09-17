@@ -277,6 +277,56 @@
       }
     }
   },
+  "technologiesPage": {
+    "label": "Tecnologias",
+    "heading": "O que eu uso no dia a dia",
+    "categories": {
+      "languages": {
+        "title": "Linguagens",
+        "items": ["TypeScript", "JavaScript"]
+      },
+      "frontendMobile": {
+        "title": "Frontend & Mobile",
+        "items": [
+          "React",
+          "Next.js",
+          "React Native",
+          "Expo",
+          "Expo Router",
+          "NativeWind",
+          "Tailwind CSS",
+          "Radix UI",
+          "shadcn/ui",
+          "Framer Motion",
+          "TanStack Query",
+          "Zustand",
+          "Zod",
+          "i18next"
+        ]
+      },
+      "backend": {
+        "title": "Backend",
+        "items": ["Node.js", "NestJS", "TypeORM", "MySQL"]
+      },
+      "toolsCloud": {
+        "title": "Ferramentas & Cloud",
+        "items": ["AWS", "Docker", "GitHub Actions", "Firebase"]
+      },
+      "testing": {
+        "title": "Testes",
+        "items": ["Jest", "Vitest", "Testing Library"]
+      },
+      "architecture": {
+        "title": "Arquitetura",
+        "items": [
+          "Atomic Design",
+          "Arquitetura Escalável",
+          "SOLID",
+          "Clean Code"
+        ]
+      }
+    }
+  },
   "nav": {
     "shortName": "Camila Linder",
     "home": "Início",

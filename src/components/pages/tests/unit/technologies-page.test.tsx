@@ -3,12 +3,17 @@ import { screen, renderWithProviders } from '@/tests/utils/render';
 import { TechnologiesPage } from '@/components/pages/technologies-page';
 
 describe('TechnologiesPage', () => {
-  it('renders the coming-soon placeholder', () => {
+  it('renders the tech stack showcase', () => {
     renderWithProviders(<TechnologiesPage />);
 
     expect(
-      screen.getByRole('heading', { level: 1, name: 'Tecnologias' }),
+      screen.getByRole('heading', {
+        level: 2,
+        name: 'O que eu uso no dia a dia',
+      }),
     ).toBeInTheDocument();
-    expect(screen.getByText('Conteúdo em breve.')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Linguagens' }),
+    ).toBeInTheDocument();
   });
 });
