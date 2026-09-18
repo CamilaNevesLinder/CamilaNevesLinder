@@ -327,6 +327,31 @@
       }
     }
   },
+  "contactPage": {
+    "label": "Contato",
+    "heading": "Vamos conversar?",
+    "intro": "Manda sua mensagem por aqui, ou escolhe o canal que preferir abaixo.",
+    "form": {
+      "nameLabel": "Nome",
+      "namePlaceholder": "Seu nome",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "seu@email.com",
+      "messageLabel": "Mensagem",
+      "messagePlaceholder": "Deixa aqui os detalhes do que você procura",
+      "submit": "Enviar mensagem",
+      "submitPending": "Enviando...",
+      "successMessage": "Mensagem enviada! Retorno em breve.",
+      "errorMessage": "Não foi possível enviar sua mensagem agora. Tenta de novo mais tarde ou usa um dos links abaixo.",
+      "errors": {
+        "nameRequired": "Digita seu nome.",
+        "emailInvalid": "Digita um e-mail válido.",
+        "messageRequired": "Escreve uma mensagem (mínimo 10 caracteres)."
+      }
+    },
+    "directContact": {
+      "heading": "Outras formas de contato"
+    }
+  },
   "nav": {
     "shortName": "Camila Linder",
     "home": "Início",
@@ -340,6 +365,7 @@
       "github": "GitHub",
       "linkedin": "LinkedIn",
       "instagram": "Instagram",
+      "whatsapp": "WhatsApp",
       "email": "E-mail"
     },
     "settings": {

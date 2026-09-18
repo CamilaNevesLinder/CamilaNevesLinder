@@ -8,7 +8,7 @@ vi.mock('@/lib/navigation', () => ({
   },
 }));
 
-const { OG_IMAGE_URL, SITE_URL, localizedPath, localizedUrl } =
+const { OG_IMAGE_URL, SITE_URL, SOCIAL_LINKS, localizedPath, localizedUrl } =
   await import('@/lib/site');
 
 describe('OG_IMAGE_URL', () => {
@@ -68,5 +68,11 @@ describe('localizedUrl', () => {
     expect(localizedUrl('pt-br', '/contact')).toBe(`${SITE_URL}/contact`);
     expect(localizedUrl('en', '/contact')).toBe(`${SITE_URL}/en/contact`);
     expect(localizedUrl('es', '/contact')).toBe(`${SITE_URL}/es/contact`);
+  });
+});
+
+describe('SOCIAL_LINKS', () => {
+  it('has a WhatsApp link in wa.me format', () => {
+    expect(SOCIAL_LINKS.whatsapp).toBe('https://wa.me/5548998558324');
   });
 });

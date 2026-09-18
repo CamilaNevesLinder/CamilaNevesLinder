@@ -9,6 +9,7 @@ export const SOCIAL_LINKS = {
   github: 'https://github.com/CamilaNevesLinder',
   linkedin: 'https://www.linkedin.com/in/camila-neves-linder-76a342403/',
   instagram: 'https://www.instagram.com/camila.nevees/',
+  whatsapp: 'https://wa.me/5548998558324',
   email: 'mailto:camilaneveslindner@gmail.com',
 } as const;
 

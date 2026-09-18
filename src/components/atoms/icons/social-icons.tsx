@@ -46,3 +46,12 @@ export function InstagramIcon(props: IconProps) {
     </BaseSvg>
   );
 }
+
+export function WhatsappIcon(props: IconProps) {
+  return (
+    <BaseSvg {...props}>
+      <path d="M3 21l1.65-4.95A9 9 0 1 1 8 19.5z" />
+      <path d="M8.5 9.5c0 3 2 5.5 5 5.5.5 0 1.5-.2 1.5-1v-1.2c0-.3-.2-.5-.5-.6l-1.7-.5c-.3-.1-.6 0-.7.3l-.3.6c-1-.5-1.8-1.3-2.3-2.3l.6-.3c.3-.1.4-.4.3-.7l-.5-1.7c-.1-.3-.3-.5-.6-.5H8.5z" />
+    </BaseSvg>
+  );
+}
