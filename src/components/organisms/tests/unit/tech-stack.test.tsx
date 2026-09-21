@@ -40,4 +40,18 @@ describe('TechStack', () => {
     expect(screen.queryByText('Kotlin')).not.toBeInTheDocument();
     expect(screen.queryByText('Python')).not.toBeInTheDocument();
   });
+
+  it('scales the section and category headings down on small screens', () => {
+    renderWithProviders(<TechStack />);
+
+    expect(
+      screen.getByRole('heading', {
+        level: 2,
+        name: 'O que eu uso no dia a dia',
+      }),
+    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Linguagens' }),
+    ).toHaveClass('text-[20px]', 'sm:text-[24px]');
+  });
 });

@@ -60,4 +60,41 @@ describe('Hero', () => {
 
     expect(screen.getByAltText('Camila Neves Linder')).toBeInTheDocument();
   });
+
+  it('stacks the text and photo on small screens and switches to a row from sm', () => {
+    renderWithProviders(<Hero />);
+
+    const heading = screen.getByText('Camila Neves Linder');
+    const layoutRow = heading.closest('div')?.parentElement;
+    expect(layoutRow).toHaveClass('flex-col', 'sm:flex-row');
+  });
+
+  it('scales the heading and tagline down on small screens', () => {
+    renderWithProviders(<Hero />);
+
+    expect(screen.getByText('Camila Neves Linder')).toHaveClass(
+      'text-[40px]',
+      'sm:text-[68px]',
+    );
+    expect(screen.getByText('desenvolvedora full stack.')).toHaveClass(
+      'text-[40px]',
+      'sm:text-[68px]',
+    );
+  });
+
+  it('reduces the card padding on small screens', () => {
+    renderWithProviders(<Hero />);
+
+    const card = screen
+      .getByText('Camila Neves Linder')
+      .closest('[data-slot="card"]');
+    expect(card).toHaveClass('p-6', 'sm:p-[60px]');
+  });
+
+  it('shrinks the profile photo on small screens', () => {
+    renderWithProviders(<Hero />);
+
+    const photo = screen.getByAltText('Camila Neves Linder');
+    expect(photo.parentElement).toHaveClass('size-[120px]', 'sm:size-[180px]');
+  });
 });

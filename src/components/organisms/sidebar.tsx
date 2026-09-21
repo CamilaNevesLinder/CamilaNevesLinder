@@ -174,7 +174,7 @@ export function Sidebar() {
   });
 
   const socialLinks = (
-    <div className="border-border flex items-center gap-1 border-t pt-2">
+    <div className="border-border flex flex-wrap items-center gap-1 border-t pt-2">
       <a
         href={SOCIAL_LINKS.email}
         aria-label={t('social.email')}

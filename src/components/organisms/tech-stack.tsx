@@ -22,7 +22,7 @@ export function TechStack() {
         <p className="text-taupe mb-[18px] font-mono text-sm uppercase tracking-wide">
           {t('label')}
         </p>
-        <h2 className="text-espresso font-serif text-[32px] font-bold">
+        <h2 className="text-espresso font-serif text-[26px] font-bold sm:text-[32px]">
           {t('heading')}
         </h2>
 
@@ -32,7 +32,7 @@ export function TechStack() {
           return (
             <div key={key}>
               {index > 0 && <Separator className="bg-rose/40 my-9" />}
-              <h3 className="text-espresso font-serif text-[24px] font-bold">
+              <h3 className="text-espresso font-serif text-[20px] font-bold sm:text-[24px]">
                 {t(`categories.${key}.title`)}
               </h3>
               <div className="mt-3 flex flex-wrap gap-2">

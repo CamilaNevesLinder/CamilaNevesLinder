@@ -56,4 +56,15 @@ describe('About', () => {
       ),
     ).toHaveLength(5);
   });
+
+  it('scales the section headings down on small screens', () => {
+    renderWithProviders(<About />);
+
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Além da tela' }),
+    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Jiu-jitsu' }),
+    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+  });
 });

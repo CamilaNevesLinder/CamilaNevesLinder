@@ -27,7 +27,7 @@ export function Projects() {
         {PROJECT_ITEMS.map(({ key, tags }, index) => (
           <div key={key}>
             {index > 0 && <Separator className="bg-rose/40 my-9" />}
-            <h3 className="text-espresso font-serif text-[28px] font-bold">
+            <h3 className="text-espresso font-serif text-[22px] font-bold sm:text-[28px]">
               {t(`items.${key}.title`)}
             </h3>
             <p className="text-taupe mt-3 text-[17px] leading-relaxed">

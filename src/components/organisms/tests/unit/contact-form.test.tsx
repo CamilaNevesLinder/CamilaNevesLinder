@@ -146,4 +146,19 @@ describe('ContactForm', () => {
       'mailto:camilaneveslindner@gmail.com',
     );
   });
+
+  it('scales the section heading down on small screens', () => {
+    renderWithProviders(<ContactForm />);
+
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Vamos conversar?' }),
+    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
+  });
+
+  it('lets the direct-contact icon row wrap instead of overflowing', () => {
+    renderWithProviders(<ContactForm />);
+
+    const githubLink = screen.getByRole('link', { name: 'GitHub' });
+    expect(githubLink.parentElement).toHaveClass('flex-wrap');
+  });
 });
