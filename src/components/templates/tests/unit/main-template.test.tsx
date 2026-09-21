@@ -33,10 +33,23 @@ describe('MainTemplate', () => {
     expect(screen.getAllByText('Camila Linder')).toHaveLength(2);
     const content = screen.getByText('page content');
     expect(content).toBeInTheDocument();
-    expect(content.closest('main')).toHaveClass(
+    expect(content.closest('div')).toHaveClass(
       'pt-14',
       'md:pl-60',
       'md:pt-0',
     );
+  });
+
+  it('renders the footer after the page content', () => {
+    renderWithProviders(
+      <MainTemplate>
+        <p>page content</p>
+      </MainTemplate>,
+    );
+
+    const year = new Date().getFullYear();
+    expect(
+      screen.getByText(`© ${year} Camila Neves Linder · Desenvolvedora Full Stack`),
+    ).toBeInTheDocument();
   });
 });
