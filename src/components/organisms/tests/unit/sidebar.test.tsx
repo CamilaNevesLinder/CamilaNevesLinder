@@ -106,6 +106,42 @@ describe('Sidebar', () => {
     expect(screen.getByText('ES')).toBeInTheDocument();
   });
 
+  it('closes the mobile menu when a nav link is clicked', async () => {
+    usePathname.mockReturnValue('/');
+    const user = userEvent.setup();
+    renderWithProviders(<Sidebar />);
+
+    await user.click(screen.getByRole('button', { name: 'Abrir menu' }));
+    expect(screen.getAllByText('Sobre')).toHaveLength(2);
+
+    await user.click(screen.getAllByText('Sobre')[1]);
+    expect(screen.getAllByText('Sobre')).toHaveLength(1);
+  });
+
+  it('closes the mobile menu when the logo link is clicked', async () => {
+    usePathname.mockReturnValue('/');
+    const user = userEvent.setup();
+    renderWithProviders(<Sidebar />);
+
+    await user.click(screen.getByRole('button', { name: 'Abrir menu' }));
+    expect(screen.getAllByText('Camila Linder')).toHaveLength(3);
+
+    await user.click(screen.getAllByText('Camila Linder')[2]);
+    expect(screen.getAllByText('Camila Linder')).toHaveLength(2);
+  });
+
+  it('closes the settings popover when a locale is picked', async () => {
+    usePathname.mockReturnValue('/');
+    const user = userEvent.setup();
+    renderWithProviders(<Sidebar />);
+
+    await user.click(screen.getByRole('button', { name: 'Configurações' }));
+    expect(screen.getByText('EN')).toBeInTheDocument();
+
+    await user.click(screen.getByText('EN'));
+    expect(screen.queryByText('EN')).not.toBeInTheDocument();
+  });
+
   it('toggles dark mode on the document element', async () => {
     document.documentElement.classList.remove('dark');
     usePathname.mockReturnValue('/');
@@ -120,5 +156,35 @@ describe('Sidebar', () => {
 
     expect(toggle).toHaveAttribute('aria-checked', 'true');
     expect(document.documentElement.classList.contains('dark')).toBe(true);
+  });
+
+  it('reads a stored dark theme on mount', async () => {
+    localStorage.setItem('theme', 'dark');
+    usePathname.mockReturnValue('/');
+    const user = userEvent.setup();
+    renderWithProviders(<Sidebar />);
+
+    await user.click(screen.getByRole('button', { name: 'Configurações' }));
+    expect(screen.getByRole('switch', { name: 'Modo escuro' })).toHaveAttribute(
+      'aria-checked',
+      'true',
+    );
+
+    localStorage.removeItem('theme');
+  });
+
+  it('reads a stored light theme on mount', async () => {
+    localStorage.setItem('theme', 'light');
+    usePathname.mockReturnValue('/');
+    const user = userEvent.setup();
+    renderWithProviders(<Sidebar />);
+
+    await user.click(screen.getByRole('button', { name: 'Configurações' }));
+    expect(screen.getByRole('switch', { name: 'Modo escuro' })).toHaveAttribute(
+      'aria-checked',
+      'false',
+    );
+
+    localStorage.removeItem('theme');
   });
 });

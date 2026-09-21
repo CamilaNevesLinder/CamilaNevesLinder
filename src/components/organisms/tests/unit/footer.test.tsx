@@ -22,7 +22,9 @@ describe('Footer', () => {
 
     const year = new Date().getFullYear();
     expect(
-      screen.getByText(`© ${year} Camila Neves Linder · Desenvolvedora Full Stack`),
+      screen.getByText(
+        `© ${year} Camila Neves Linder · Desenvolvedora Full Stack`,
+      ),
     ).toBeInTheDocument();
   });
 
