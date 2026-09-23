@@ -3,28 +3,14 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
-import {
-  Code,
-  Folder,
-  House,
-  Mail,
-  Menu,
-  MessageCircle,
-  Settings,
-  User,
-} from 'lucide-react';
+import { Mail, Menu, Settings } from 'lucide-react';
 import {
   GithubIcon,
   InstagramIcon,
   LinkedinIcon,
 } from '@/components/atoms/icons/social-icons';
-import {
-  HrefValue,
-  Link,
-  Locale,
-  locales,
-  usePathname,
-} from '@/lib/navigation';
+import { Link, Locale, locales, usePathname } from '@/lib/navigation';
+import { NAV_ITEMS } from '@/lib/nav-items';
 import { SOCIAL_LINKS } from '@/lib/site';
 import { cn } from '@/lib/utils';
 import { Button, buttonVariants } from '@/components/atoms/button';
@@ -42,20 +28,6 @@ import {
 import { X } from 'lucide-react';
 import { Separator } from '@/components/atoms/separator';
 import { Switch } from '@/components/atoms/switch';
-
-type NavLabelKey = 'home' | 'about' | 'projects' | 'technologies' | 'contact';
-
-const NAV_ITEMS: {
-  href: HrefValue;
-  labelKey: NavLabelKey;
-  Icon: typeof House;
-}[] = [
-  { href: '/', labelKey: 'home', Icon: House },
-  { href: '/about', labelKey: 'about', Icon: User },
-  { href: '/projects', labelKey: 'projects', Icon: Folder },
-  { href: '/technologies', labelKey: 'technologies', Icon: Code },
-  { href: '/contact', labelKey: 'contact', Icon: MessageCircle },
-];
 
 const LOCALE_LABELS: Record<Locale, string> = {
   en: 'EN',
@@ -78,12 +50,75 @@ function readStoredTheme(): boolean {
 const NAV_LINK_CLASSNAME =
   'h-auto justify-start gap-3 px-3 py-3 font-mono text-sm uppercase tracking-wide';
 
-export function Sidebar() {
+function SettingsPopover({
+  isDark,
+  onToggleDarkMode,
+}: {
+  isDark: boolean;
+  onToggleDarkMode: (checked: boolean) => void;
+}) {
   const t = useTranslations('nav');
   const currentLocale = useLocale();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  return (
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger
+        render={
+          <Button
+            variant="ghost"
+            size="icon"
+            className="ml-auto"
+            aria-label={t('settings.label')}
+          />
+        }
+      >
+        <Settings size={18} aria-hidden="true" />
+      </PopoverTrigger>
+      <PopoverContent align="end" side="top" className="w-48">
+        <p className="text-taupe font-mono text-xs uppercase tracking-wide">
+          {t('settings.language')}
+        </p>
+        <div className="flex gap-1">
+          {locales.map((locale) => (
+            <Link
+              key={locale}
+              href={pathname}
+              locale={locale}
+              onClick={() => setIsOpen(false)}
+              className={cn(
+                buttonVariants({
+                  variant: locale === currentLocale ? 'secondary' : 'ghost',
+                  size: 'sm',
+                }),
+                'h-auto flex-1 font-mono text-xs uppercase',
+              )}
+            >
+              {LOCALE_LABELS[locale]}
+            </Link>
+          ))}
+        </div>
+        <Separator />
+        <div className="flex items-center justify-between">
+          <span className="text-taupe font-mono text-xs uppercase tracking-wide">
+            {t('settings.darkMode')}
+          </span>
+          <Switch
+            checked={isDark}
+            onCheckedChange={onToggleDarkMode}
+            aria-label={t('settings.darkMode')}
+          />
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+export function Sidebar() {
+  const t = useTranslations('nav');
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(readStoredTheme);
 
   useIsomorphicLayoutEffect(() => {
@@ -116,65 +151,13 @@ export function Sidebar() {
     </Link>
   );
 
-  const settingsPopover = (
-    <Popover open={isSettingsOpen} onOpenChange={setIsSettingsOpen}>
-      <PopoverTrigger
-        render={
-          <Button
-            variant="ghost"
-            size="icon"
-            className="ml-auto"
-            aria-label={t('settings.label')}
-          />
-        }
-      >
-        <Settings size={18} aria-hidden="true" />
-      </PopoverTrigger>
-      <PopoverContent align="end" side="top" className="w-48">
-        <p className="text-taupe font-mono text-xs uppercase tracking-wide">
-          {t('settings.language')}
-        </p>
-        <div className="flex gap-1">
-          {locales.map((locale) => (
-            <Link
-              key={locale}
-              href={pathname}
-              locale={locale}
-              onClick={() => setIsSettingsOpen(false)}
-              className={cn(
-                buttonVariants({
-                  variant: locale === currentLocale ? 'secondary' : 'ghost',
-                  size: 'sm',
-                }),
-                'h-auto flex-1 font-mono text-xs uppercase',
-              )}
-            >
-              {LOCALE_LABELS[locale]}
-            </Link>
-          ))}
-        </div>
-        <Separator />
-        <div className="flex items-center justify-between">
-          <span className="text-taupe font-mono text-xs uppercase tracking-wide">
-            {t('settings.darkMode')}
-          </span>
-          <Switch
-            checked={isDark}
-            onCheckedChange={toggleDarkMode}
-            aria-label={t('settings.darkMode')}
-          />
-        </div>
-      </PopoverContent>
-    </Popover>
-  );
-
   const socialLinkClassName = buttonVariants({
     variant: 'ghost',
     size: 'icon',
   });
 
   const socialLinks = (
-    <div className="border-border flex items-center gap-1 border-t pt-2">
+    <div className="border-border flex flex-wrap items-center gap-1 border-t pt-2">
       <a
         href={SOCIAL_LINKS.email}
         aria-label={t('social.email')}
@@ -209,7 +192,7 @@ export function Sidebar() {
       >
         <InstagramIcon size={18} aria-hidden="true" />
       </a>
-      {settingsPopover}
+      <SettingsPopover isDark={isDark} onToggleDarkMode={toggleDarkMode} />
     </div>
   );
 

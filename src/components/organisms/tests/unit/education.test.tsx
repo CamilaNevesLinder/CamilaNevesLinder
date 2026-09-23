@@ -26,4 +26,15 @@ describe('Education', () => {
       screen.getByText('Alura · Formação complementar'),
     ).toBeInTheDocument();
   });
+
+  it('scales the entry heading down on small screens', () => {
+    renderWithProviders(<Education />);
+
+    expect(
+      screen.getByRole('heading', {
+        level: 3,
+        name: 'Análise e Desenvolvimento de Sistemas',
+      }),
+    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+  });
 });

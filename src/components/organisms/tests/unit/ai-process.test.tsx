@@ -25,4 +25,15 @@ describe('AiProcess', () => {
     expect(screen.getByText('02')).toBeInTheDocument();
     expect(screen.getByText('03')).toBeInTheDocument();
   });
+
+  it('scales the section heading down on small screens', () => {
+    renderWithProviders(<AiProcess />);
+
+    expect(
+      screen.getByRole('heading', {
+        level: 2,
+        name: 'IA no fluxo de desenvolvimento',
+      }),
+    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
+  });
 });

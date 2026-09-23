@@ -24,6 +24,7 @@
 ## Task 1: Atoms layer — simple shadcn primitives + icons
 
 **Files:**
+
 - Create dir: `src/components/atoms/`
 - Move: `src/components/ui/button.tsx` → `src/components/atoms/button.tsx`
 - Move: `src/components/ui/badge.tsx` → `src/components/atoms/badge.tsx`
@@ -42,6 +43,7 @@
 - Modify: `src/components/ui/sheet.tsx` (import line only — same reason)
 
 **Interfaces:**
+
 - Produces: `Button`/`buttonVariants` from `@/components/atoms/button`, `Badge` from `@/components/atoms/badge`, `Card` (+ subparts) from `@/components/atoms/card`, `Separator` from `@/components/atoms/separator`, `Switch` from `@/components/atoms/switch`, `GithubIcon`/`InstagramIcon`/`LinkedinIcon` from `@/components/atoms/icons/social-icons`. Task 2 (molecules) consumes `Button` from this new path.
 
 - [ ] **Step 1: Move the files with git mv**
@@ -59,6 +61,7 @@ git mv src/components/icons/social-icons.tsx src/components/atoms/icons/social-i
 - [ ] **Step 2: Update `components.json` so `shadcn add` targets the new atoms folder**
 
 Change:
+
 ```json
   "aliases": {
     "components": "@/components",
@@ -68,7 +71,9 @@ Change:
     "hooks": "@/hooks"
   },
 ```
+
 To:
+
 ```json
   "aliases": {
     "components": "@/components",
@@ -82,6 +87,7 @@ To:
 - [ ] **Step 3: Update imports in `src/components/sidebar.tsx`**
 
 Change:
+
 ```tsx
 import {
   GithubIcon,
@@ -89,7 +95,9 @@ import {
   LinkedinIcon,
 } from '@/components/icons/social-icons';
 ```
+
 To:
+
 ```tsx
 import {
   GithubIcon,
@@ -99,20 +107,26 @@ import {
 ```
 
 Change:
+
 ```tsx
 import { Button, buttonVariants } from '@/components/ui/button';
 ```
+
 To:
+
 ```tsx
 import { Button, buttonVariants } from '@/components/atoms/button';
 ```
 
 Change:
+
 ```tsx
 import { Separator } from '@/components/ui/separator';
 import { Switch } from '@/components/ui/switch';
 ```
+
 To:
+
 ```tsx
 import { Separator } from '@/components/atoms/separator';
 import { Switch } from '@/components/atoms/switch';
@@ -123,11 +137,14 @@ import { Switch } from '@/components/atoms/switch';
 - [ ] **Step 4: Update imports in `src/components/projects.tsx`**
 
 Change:
+
 ```tsx
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 ```
+
 To:
+
 ```tsx
 import { Badge } from '@/components/atoms/badge';
 import { Separator } from '@/components/atoms/separator';
@@ -136,13 +153,16 @@ import { Separator } from '@/components/atoms/separator';
 - [ ] **Step 5: Update imports in `src/components/hero.tsx`**
 
 Change:
+
 ```tsx
 import { buttonVariants } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 ```
+
 To:
+
 ```tsx
 import { buttonVariants } from '@/components/atoms/button';
 import { Badge } from '@/components/atoms/badge';
@@ -153,10 +173,13 @@ import { Separator } from '@/components/atoms/separator';
 - [ ] **Step 6: Update imports in `src/components/education.tsx` and `src/components/experience.tsx`**
 
 In both files, change:
+
 ```tsx
 import { Separator } from '@/components/ui/separator';
 ```
+
 To:
+
 ```tsx
 import { Separator } from '@/components/atoms/separator';
 ```
@@ -164,10 +187,13 @@ import { Separator } from '@/components/atoms/separator';
 - [ ] **Step 7: Update import in `src/components/about.tsx`**
 
 Change:
+
 ```tsx
 import { Separator } from '@/components/ui/separator';
 ```
+
 To:
+
 ```tsx
 import { Separator } from '@/components/atoms/separator';
 ```
@@ -175,10 +201,13 @@ import { Separator } from '@/components/atoms/separator';
 - [ ] **Step 7b: Update the `Button` import in `src/components/ui/carousel.tsx` and `src/components/ui/sheet.tsx`**
 
 These two files are not moving yet (that's Task 2) — they still live in `src/components/ui/`. But both import `Button` from `@/components/ui/button`, and Step 1 just moved `button.tsx` out of that folder, so leaving this unfixed breaks typecheck. In both files, change:
+
 ```tsx
 import { Button } from '@/components/ui/button';
 ```
+
 To:
+
 ```tsx
 import { Button } from '@/components/atoms/button';
 ```
@@ -189,6 +218,7 @@ import { Button } from '@/components/atoms/button';
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all existing tests still pass (nothing in this task changes behavior, only import paths).
 
 Do not commit. This task ends after Step 8 passes.
@@ -198,6 +228,7 @@ Do not commit. This task ends after Step 8 passes.
 ## Task 2: Molecules layer — compound shadcn primitives
 
 **Files:**
+
 - Move: `src/components/ui/carousel.tsx` → `src/components/molecules/carousel.tsx`
 - Move: `src/components/ui/popover.tsx` → `src/components/molecules/popover.tsx`
 - Move: `src/components/ui/sheet.tsx` → `src/components/molecules/sheet.tsx`
@@ -207,6 +238,7 @@ Do not commit. This task ends after Step 8 passes.
 - Modify: `src/components/jiujitsu-gallery.tsx` (import lines only)
 
 **Interfaces:**
+
 - Consumes: `Button` from `@/components/atoms/button` (Task 1).
 - Produces: `Carousel`/`CarouselContent`/`CarouselItem`/`CarouselPrevious`/`CarouselNext` from `@/components/molecules/carousel`; `Popover`/`PopoverTrigger`/`PopoverContent` from `@/components/molecules/popover`; `Sheet`/`SheetTrigger`/`SheetContent`/`SheetClose` from `@/components/molecules/sheet`. Nothing in the codebase currently imports `navigation-menu` — it moves with no consumer to update.
 
@@ -218,7 +250,9 @@ git mv src/components/ui/popover.tsx src/components/molecules/popover.tsx
 git mv src/components/ui/sheet.tsx src/components/molecules/sheet.tsx
 git mv src/components/ui/navigation-menu.tsx src/components/molecules/navigation-menu.tsx
 ```
+
 `src/components/ui/` and `src/components/icons/` should now be empty — remove them:
+
 ```bash
 rmdir src/components/ui src/components/icons 2>/dev/null || true
 ```
@@ -228,6 +262,7 @@ Note: `carousel.tsx` and `sheet.tsx` already import `Button` from `@/components/
 - [ ] **Step 2: Update imports in `src/components/sidebar.tsx`**
 
 Change:
+
 ```tsx
 import {
   Popover,
@@ -241,7 +276,9 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 ```
+
 To:
+
 ```tsx
 import {
   Popover,
@@ -259,6 +296,7 @@ import {
 - [ ] **Step 3: Update the carousel import in `src/components/book-gallery.tsx` and `src/components/jiujitsu-gallery.tsx`**
 
 In both files, change:
+
 ```tsx
 import {
   Carousel,
@@ -268,7 +306,9 @@ import {
   CarouselNext,
 } from '@/components/ui/carousel';
 ```
+
 To:
+
 ```tsx
 import {
   Carousel,
@@ -285,6 +325,7 @@ import {
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all existing tests still pass.
 
 ---
@@ -292,6 +333,7 @@ Expected: no errors, all existing tests still pass.
 ## Task 3: Organisms layer — page-section components
 
 **Files:**
+
 - Move: `src/components/hero.tsx` → `src/components/organisms/hero.tsx`
 - Move: `src/components/projects.tsx` → `src/components/organisms/projects.tsx`
 - Move: `src/components/ai-process.tsx` → `src/components/organisms/ai-process.tsx`
@@ -314,6 +356,7 @@ Expected: no errors, all existing tests still pass.
 - Modify: `src/app/[locale]/(pages)/sobre/page.tsx` (import line only)
 
 **Interfaces:**
+
 - Produces: `Hero`, `Projects`, `AiProcess`, `Experience`, `Education`, `About`, `BookGallery`, `JiujitsuGallery`, `Sidebar` all from `@/components/organisms/<name>`. Task 4 (templates) consumes `Sidebar`. Task 5/6/7 (pages) consume all the others.
 
 - [ ] **Step 1: Move component files and their tests with git mv**
@@ -344,11 +387,14 @@ rmdir src/components/tests/unit src/components/tests 2>/dev/null || true
 - [ ] **Step 2: Update the cross-organism import in `src/components/organisms/about.tsx`**
 
 Change:
+
 ```tsx
 import { JiujitsuGallery } from '@/components/jiujitsu-gallery';
 import { BookGallery } from '@/components/book-gallery';
 ```
+
 To:
+
 ```tsx
 import { JiujitsuGallery } from '@/components/organisms/jiujitsu-gallery';
 import { BookGallery } from '@/components/organisms/book-gallery';
@@ -369,10 +415,13 @@ In each of the 7 moved test files, update the component import to the new `organ
 - [ ] **Step 4: Update `src/app/[locale]/layout.tsx`**
 
 Change:
+
 ```tsx
 import { Sidebar } from '@/components/sidebar';
 ```
+
 To:
+
 ```tsx
 import { Sidebar } from '@/components/organisms/sidebar';
 ```
@@ -380,6 +429,7 @@ import { Sidebar } from '@/components/organisms/sidebar';
 - [ ] **Step 5: Update `src/app/[locale]/(pages)/(homepage)/page.tsx`**
 
 Change:
+
 ```tsx
 import { Hero } from '@/components/hero';
 import { Projects } from '@/components/projects';
@@ -387,7 +437,9 @@ import { AiProcess } from '@/components/ai-process';
 import { Experience } from '@/components/experience';
 import { Education } from '@/components/education';
 ```
+
 To:
+
 ```tsx
 import { Hero } from '@/components/organisms/hero';
 import { Projects } from '@/components/organisms/projects';
@@ -401,10 +453,13 @@ import { Education } from '@/components/organisms/education';
 - [ ] **Step 6: Update `src/app/[locale]/(pages)/sobre/page.tsx`**
 
 Change:
+
 ```tsx
 import { About } from '@/components/about';
 ```
+
 To:
+
 ```tsx
 import { About } from '@/components/organisms/about';
 ```
@@ -415,6 +470,7 @@ import { About } from '@/components/organisms/about';
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all existing tests still pass.
 
 Do not commit. This task ends after Step 7 passes.
@@ -424,11 +480,13 @@ Do not commit. This task ends after Step 7 passes.
 ## Task 4: Templates layer — extract MainTemplate
 
 **Files:**
+
 - Create: `src/components/templates/main-template.tsx`
 - Create: `src/components/templates/tests/unit/main-template.test.tsx`
 - Modify: `src/app/[locale]/layout.tsx`
 
 **Interfaces:**
+
 - Consumes: `Sidebar` from `@/components/organisms/sidebar` (Task 3).
 - Produces: `MainTemplate` (named export, props `{ children: React.ReactNode }`) from `@/components/templates/main-template`. Task 5/6/7 do not consume this directly — only `layout.tsx` does.
 
@@ -480,6 +538,7 @@ describe('MainTemplate', () => {
 ```bash
 pnpm vitest run src/components/templates/tests/unit/main-template.test.tsx
 ```
+
 Expected: FAIL with a module-not-found error for `@/components/templates/main-template`.
 
 - [ ] **Step 3: Create `src/components/templates/main-template.tsx`**
@@ -502,37 +561,44 @@ export function MainTemplate({ children }: { children: React.ReactNode }) {
 ```bash
 pnpm vitest run src/components/templates/tests/unit/main-template.test.tsx
 ```
+
 Expected: PASS.
 
 - [ ] **Step 5: Update `src/app/[locale]/layout.tsx` to use `MainTemplate`**
 
 Change:
+
 ```tsx
 import NextIntlProvider from '@/providers/next-intl-provider';
 import { Sidebar } from '@/components/organisms/sidebar';
 ```
+
 To:
+
 ```tsx
 import NextIntlProvider from '@/providers/next-intl-provider';
 import { MainTemplate } from '@/components/templates/main-template';
 ```
 
 Change:
+
 ```tsx
-      <body>
-        <NextIntlProvider locale={locale} messages={messages}>
-          <Sidebar />
-          <main className="pt-14 md:pl-60 md:pt-0">{children}</main>
-        </NextIntlProvider>
-      </body>
+<body>
+  <NextIntlProvider locale={locale} messages={messages}>
+    <Sidebar />
+    <main className="pt-14 md:pl-60 md:pt-0">{children}</main>
+  </NextIntlProvider>
+</body>
 ```
+
 To:
+
 ```tsx
-      <body>
-        <NextIntlProvider locale={locale} messages={messages}>
-          <MainTemplate>{children}</MainTemplate>
-        </NextIntlProvider>
-      </body>
+<body>
+  <NextIntlProvider locale={locale} messages={messages}>
+    <MainTemplate>{children}</MainTemplate>
+  </NextIntlProvider>
+</body>
 ```
 
 - [ ] **Step 6: Typecheck and run the full unit suite**
@@ -541,6 +607,7 @@ To:
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass (the app still renders the same DOM as before — `MainTemplate` reproduces the exact previous markup).
 
 Do not commit. This task ends after Step 6 passes.
@@ -550,11 +617,13 @@ Do not commit. This task ends after Step 6 passes.
 ## Task 5: Pages layer — HomePage
 
 **Files:**
+
 - Create: `src/components/pages/home-page.tsx`
 - Create: `src/components/pages/tests/unit/home-page.test.tsx`
 - Modify: `src/app/[locale]/(pages)/(homepage)/page.tsx`
 
 **Interfaces:**
+
 - Consumes: `Hero`, `Projects`, `AiProcess`, `Experience`, `Education` from `@/components/organisms/*` (Task 3).
 - Produces: `HomePage` (named export, no props) from `@/components/pages/home-page`.
 
@@ -585,6 +654,7 @@ describe('HomePage', () => {
 ```bash
 pnpm vitest run src/components/pages/tests/unit/home-page.test.tsx
 ```
+
 Expected: FAIL with a module-not-found error for `@/components/pages/home-page`.
 
 - [ ] **Step 3: Create `src/components/pages/home-page.tsx`**
@@ -614,6 +684,7 @@ export function HomePage() {
 ```bash
 pnpm vitest run src/components/pages/tests/unit/home-page.test.tsx
 ```
+
 Expected: PASS.
 
 - [ ] **Step 5: Simplify `src/app/[locale]/(pages)/(homepage)/page.tsx` to use `HomePage`**
@@ -641,6 +712,7 @@ export default async function Home({
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass.
 
 Do not commit. This task ends after Step 6 passes.
@@ -650,11 +722,13 @@ Do not commit. This task ends after Step 6 passes.
 ## Task 6: Pages layer — AboutPage
 
 **Files:**
+
 - Create: `src/components/pages/about-page.tsx`
 - Create: `src/components/pages/tests/unit/about-page.test.tsx`
 - Modify: `src/app/[locale]/(pages)/sobre/page.tsx`
 
 **Interfaces:**
+
 - Consumes: `About` from `@/components/organisms/about` (Task 3), `ChessStats` type from `@/lib/chess`.
 - Produces: `AboutPage` (named export, props `{ chessStats: ChessStats | null }`) from `@/components/pages/about-page`.
 
@@ -699,6 +773,7 @@ describe('AboutPage', () => {
 ```bash
 pnpm vitest run src/components/pages/tests/unit/about-page.test.tsx
 ```
+
 Expected: FAIL with a module-not-found error for `@/components/pages/about-page`.
 
 - [ ] **Step 3: Create `src/components/pages/about-page.tsx`**
@@ -717,6 +792,7 @@ export function AboutPage({ chessStats }: { chessStats: ChessStats | null }) {
 ```bash
 pnpm vitest run src/components/pages/tests/unit/about-page.test.tsx
 ```
+
 Expected: PASS.
 
 - [ ] **Step 5: Simplify `src/app/[locale]/(pages)/sobre/page.tsx` to use `AboutPage`**
@@ -748,6 +824,7 @@ export default async function SobrePage({
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass.
 
 Do not commit. This task ends after Step 6 passes.
@@ -757,6 +834,7 @@ Do not commit. This task ends after Step 6 passes.
 ## Task 7: Pages layer — placeholder pages (Projects/Technologies/Contact)
 
 **Files:**
+
 - Create: `src/components/pages/projects-page.tsx`
 - Create: `src/components/pages/technologies-page.tsx`
 - Create: `src/components/pages/contact-page.tsx`
@@ -768,6 +846,7 @@ Do not commit. This task ends after Step 6 passes.
 - Modify: `src/app/[locale]/(pages)/contato/page.tsx`
 
 **Interfaces:**
+
 - Produces: `ProjectsPage`, `TechnologiesPage`, `ContactPage` (named exports, no props) from `@/components/pages/projects-page`, `@/components/pages/technologies-page`, `@/components/pages/contact-page`.
 
 These three pages are today static Portuguese "coming soon" placeholders with no organism to compose — moving that exact markup into a `pages/*` component keeps the wrapper pattern consistent even before real content exists. Implementing the actual page content is explicitly out of scope (see spec).
@@ -836,6 +915,7 @@ describe('ContactPage', () => {
 ```bash
 pnpm vitest run src/components/pages/tests/unit/projects-page.test.tsx src/components/pages/tests/unit/technologies-page.test.tsx src/components/pages/tests/unit/contact-page.test.tsx
 ```
+
 Expected: all three FAIL with a module-not-found error.
 
 - [ ] **Step 3: Create the three page components**
@@ -896,6 +976,7 @@ export function ContactPage() {
 ```bash
 pnpm vitest run src/components/pages/tests/unit/projects-page.test.tsx src/components/pages/tests/unit/technologies-page.test.tsx src/components/pages/tests/unit/contact-page.test.tsx
 ```
+
 Expected: all three PASS.
 
 - [ ] **Step 5: Simplify the three route files**
@@ -960,6 +1041,7 @@ export default async function ContatoPage({
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass.
 
 Do not commit. This task ends after Step 6 passes.
@@ -969,6 +1051,7 @@ Do not commit. This task ends after Step 6 passes.
 ## Task 8: Rename route folders to English + update navigation config
 
 **Files:**
+
 - Move: `src/app/[locale]/(pages)/(homepage)/` → `src/app/[locale]/(pages)/(home)/`
 - Move: `src/app/[locale]/(pages)/sobre/` → `src/app/[locale]/(pages)/about/`
 - Move: `src/app/[locale]/(pages)/projetos/` → `src/app/[locale]/(pages)/projects/`
@@ -979,7 +1062,8 @@ Do not commit. This task ends after Step 6 passes.
 - Modify: `src/components/organisms/tests/unit/sidebar.test.tsx` (active-route assertion only)
 
 **Interfaces:**
-- No new exports. This task only renames route-group folders (no effect on the URL — Next.js route groups in parentheses are stripped from the path) and changes the *internal* `next-intl` pathname keys from Portuguese to English. The per-locale URL values (`en`/`pt-br`/`es`) are untouched, so `/sobre`, `/projetos`, `/tecnologias`, `/contato` (pt-br), `/about`, `/projects`, `/technologies`, `/contact` (en), and `/sobre-mi`, `/proyectos`, `/tecnologias`, `/contacto` (es) all keep resolving exactly as before.
+
+- No new exports. This task only renames route-group folders (no effect on the URL — Next.js route groups in parentheses are stripped from the path) and changes the _internal_ `next-intl` pathname keys from Portuguese to English. The per-locale URL values (`en`/`pt-br`/`es`) are untouched, so `/sobre`, `/projetos`, `/tecnologias`, `/contato` (pt-br), `/about`, `/projects`, `/technologies`, `/contact` (en), and `/sobre-mi`, `/proyectos`, `/tecnologias`, `/contacto` (es) all keep resolving exactly as before.
 
 - [ ] **Step 1: Rename the route folders with git mv**
 
@@ -1029,6 +1113,7 @@ export const pathnames = {
 - [ ] **Step 3: Update `NAV_ITEMS` in `src/components/organisms/sidebar.tsx`**
 
 Change:
+
 ```tsx
 const NAV_ITEMS: {
   href: HrefValue;
@@ -1042,7 +1127,9 @@ const NAV_ITEMS: {
   { href: '/contato', labelKey: 'contact', Icon: MessageCircle },
 ];
 ```
+
 To:
+
 ```tsx
 const NAV_ITEMS: {
   href: HrefValue;
@@ -1059,26 +1146,30 @@ const NAV_ITEMS: {
 
 - [ ] **Step 4: Fix the now-stale route in `src/components/organisms/tests/unit/sidebar.test.tsx`**
 
-This test mocks `usePathname` with the *internal* href key, which is changing from `/projetos` to `/projects`. Change:
-```tsx
-  it('highlights the active section', () => {
-    usePathname.mockReturnValue('/projetos');
-    renderWithProviders(<Sidebar />);
+This test mocks `usePathname` with the _internal_ href key, which is changing from `/projetos` to `/projects`. Change:
 
-    expect(screen.getByText('Projetos').closest('a')).toHaveClass('bg-accent');
-    expect(screen.getByText('Sobre').closest('a')).not.toHaveClass('bg-accent');
-  });
+```tsx
+it('highlights the active section', () => {
+  usePathname.mockReturnValue('/projetos');
+  renderWithProviders(<Sidebar />);
+
+  expect(screen.getByText('Projetos').closest('a')).toHaveClass('bg-accent');
+  expect(screen.getByText('Sobre').closest('a')).not.toHaveClass('bg-accent');
+});
 ```
+
 To:
-```tsx
-  it('highlights the active section', () => {
-    usePathname.mockReturnValue('/projects');
-    renderWithProviders(<Sidebar />);
 
-    expect(screen.getByText('Projetos').closest('a')).toHaveClass('bg-accent');
-    expect(screen.getByText('Sobre').closest('a')).not.toHaveClass('bg-accent');
-  });
+```tsx
+it('highlights the active section', () => {
+  usePathname.mockReturnValue('/projects');
+  renderWithProviders(<Sidebar />);
+
+  expect(screen.getByText('Projetos').closest('a')).toHaveClass('bg-accent');
+  expect(screen.getByText('Sobre').closest('a')).not.toHaveClass('bg-accent');
+});
 ```
+
 (Only the mocked pathname value changes — `screen.getByText('Projetos')` still finds the same rendered Portuguese label, since `NAV_LABEL` translations are unaffected by this task.)
 
 - [ ] **Step 5: Typecheck and run the full unit suite**
@@ -1087,6 +1178,7 @@ To:
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass, including the updated `sidebar.test.tsx`.
 
 - [ ] **Step 6: Run the full verification suite for the whole refactor**
@@ -1097,6 +1189,7 @@ pnpm typecheck
 pnpm test:coverage
 pnpm build
 ```
+
 Expected: lint clean, typecheck clean, coverage thresholds (90% lines/functions/branches/statements) still met, production build succeeds. If `pnpm build` boots a dev server for manual smoke-testing, visit `/`, `/about`/`/sobre`/`/sobre-mi` (per locale), `/projects`/`/projetos`/`/proyectos`, `/technologies`/`/tecnologias`, `/contact`/`/contato`/`/contacto` and confirm every page still renders with no console errors and the sidebar nav still highlights the active route.
 
 Do not commit. This is the final task — once Step 6 is clean, the whole refactor is done and sits in the working tree uncommitted for the user to review.

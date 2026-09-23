@@ -45,4 +45,15 @@ describe('ProjectShowcase', () => {
       screen.getAllByText('Participei do desenvolvimento front-end'),
     ).toHaveLength(2);
   });
+
+  it('scales the section and item headings down on small screens', () => {
+    renderWithProviders(<ProjectShowcase />);
+
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'O que eu já construí' }),
+    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Oniapp' }),
+    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+  });
 });

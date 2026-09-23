@@ -51,4 +51,12 @@ describe('Experience', () => {
     ).toBeInTheDocument();
     expect(screen.getByText(/Loja de joias online/)).toBeInTheDocument();
   });
+
+  it('scales the company heading down on small screens', () => {
+    renderWithProviders(<Experience />);
+
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Onilearning' }),
+    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+  });
 });

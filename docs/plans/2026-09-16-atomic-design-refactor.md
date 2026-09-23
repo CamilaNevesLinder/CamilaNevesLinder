@@ -67,13 +67,13 @@ src/
 
 ## Renomeação de rotas
 
-| Pasta atual | Pasta nova |
-|---|---|
-| `(homepage)/` | `(home)/` |
-| `sobre/` | `about/` |
-| `projetos/` | `projects/` |
+| Pasta atual    | Pasta nova      |
+| -------------- | --------------- |
+| `(homepage)/`  | `(home)/`       |
+| `sobre/`       | `about/`        |
+| `projetos/`    | `projects/`     |
 | `tecnologias/` | `technologies/` |
-| `contato/` | `contact/` |
+| `contato/`     | `contact/`      |
 
 Verificar `src/lib/navigation.ts` (config de `pathnames` do next-intl): se as chaves internas já usam os nomes acima, só confirmar; se usam nomes em português, renomear a chave junto (sem alterar os valores de URL por idioma).
 

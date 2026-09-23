@@ -13,7 +13,7 @@ export function AiProcess() {
         <p className="text-taupe mb-[18px] font-mono text-sm uppercase tracking-wide">
           {t('label')}
         </p>
-        <h2 className="text-espresso font-serif text-[32px] font-bold">
+        <h2 className="text-espresso font-serif text-[26px] font-bold sm:text-[32px]">
           {t('heading')}
         </h2>
         <p className="text-taupe mt-3 text-[17px] leading-relaxed">

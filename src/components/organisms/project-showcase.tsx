@@ -23,7 +23,7 @@ export function ProjectShowcase() {
         <p className="text-taupe mb-[18px] font-mono text-sm uppercase tracking-wide">
           {t('label')}
         </p>
-        <h2 className="text-espresso font-serif text-[32px] font-bold">
+        <h2 className="text-espresso font-serif text-[26px] font-bold sm:text-[32px]">
           {t('heading')}
         </h2>
 
@@ -34,7 +34,7 @@ export function ProjectShowcase() {
           return (
             <div key={key}>
               {index > 0 && <Separator className="bg-rose/40 my-9" />}
-              <h3 className="text-espresso font-serif text-[28px] font-bold">
+              <h3 className="text-espresso font-serif text-[22px] font-bold sm:text-[28px]">
                 {t(`items.${key}.title`)}
               </h3>
               <p className="text-rose mt-1 font-mono text-sm uppercase tracking-wide">

@@ -38,4 +38,15 @@ describe('Projects', () => {
       expect(text).not.toContain(name);
     }
   });
+
+  it('scales the project heading down on small screens', () => {
+    renderWithProviders(<Projects />);
+
+    expect(
+      screen.getByRole('heading', {
+        level: 3,
+        name: 'App multi-instituição de ensino',
+      }),
+    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+  });
 });

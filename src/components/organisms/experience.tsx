@@ -19,7 +19,7 @@ export function Experience() {
         {ITEM_KEYS.map((key, index) => (
           <div key={key}>
             {index > 0 && <Separator className="bg-rose/40 my-9" />}
-            <h3 className="text-espresso font-serif text-[28px] font-bold">
+            <h3 className="text-espresso font-serif text-[22px] font-bold sm:text-[28px]">
               {t(`items.${key}.company`)}
             </h3>
             <p className="text-rose mt-1 font-mono text-sm uppercase tracking-wide">

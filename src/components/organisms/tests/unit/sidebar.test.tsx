@@ -187,4 +187,12 @@ describe('Sidebar', () => {
 
     localStorage.removeItem('theme');
   });
+
+  it('lets the social-icon row wrap instead of overflowing', () => {
+    usePathname.mockReturnValue('/');
+    renderWithProviders(<Sidebar />);
+
+    const githubLink = screen.getAllByRole('link', { name: 'GitHub' })[0];
+    expect(githubLink.parentElement).toHaveClass('flex-wrap');
+  });
 });

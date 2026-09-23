@@ -10,11 +10,13 @@ Construir a página `/technologies` (hoje placeholder "Conteúdo em breve.") lis
 ## Escopo e método de levantamento
 
 Levantei tecnologias de 3 fontes:
+
 1. Componentes já existentes no site (`Hero`'s `TAGS`, `Experience`, `ProjectShowcase` — stack de cada projeto).
 2. Breakdown de linguagem (`gh api repos/.../languages`) de todos os repositórios pessoais (`CamilaNevesLinder/*`) e da org `Onilearning-Mobile`.
 3. Confirmação direta com a usuária sobre o que manter/excluir.
 
 **Excluído explicitamente** (com o porquê):
+
 - `MongoDB` — usuária confirmou que não tem domínio disso (aparecia como tech do projeto Mince Joias, mas não é skill pessoal dela).
 - `Kotlin` — só pasta nativa gerada automaticamente pelo Expo prebuild no repo `Bem-estar-app` (4498 bytes vs 75288 de TypeScript), não código escrito à mão.
 - `Angular`, `Ionic`, `Cordova`, `PHP`, `Java`, `Objective-C`, `Gherkin`, `SCSS`, `Mustache` — vêm do repo `Onilearning-Mobile/app-moodle` (e `app-moodle-original`), que é uma cópia do código-fonte oficial open source do Moodle Mobile App, não autoria da usuária ou da equipe.
