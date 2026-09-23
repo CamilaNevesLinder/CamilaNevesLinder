@@ -9,6 +9,7 @@
 **Tech Stack:** Next.js 16 App Router, React 19, next-intl 4, Tailwind v4 (default breakpoints: `sm` 640px / `md` 768px / `lg` 1024px), Vitest 4 + Testing Library — no new dependencies.
 
 **Spec:** No separate spec file — this is a bounded visual fix. Design was approved in chat on 2026-09-21, based on a static-analysis audit of every organism/page under `src/components/`. Audit findings:
+
 - **Critical:** `hero.tsx` is the only component in the whole site with a fixed 68px heading, a fixed 180px photo, and a fixed 60px card padding, none of which shrink below `sm:`. On a 375px viewport this overflows the page horizontally (no `overflow-x-hidden` exists anywhere today to contain it).
 - **Medium:** seven other organisms (`about`, `education`, `experience`, `projects`, `project-showcase`, `tech-stack`, `contact-form`) use fixed 24–32px headings with no breakpoint — doesn't break layout, but is disproportionately large on a phone. Two social-icon rows (`sidebar.tsx:177`, `contact-form.tsx:159`) have no `flex-wrap`, which is fine today but fragile.
 - **Already fine, no task needed:** `footer.tsx` (`flex-col sm:flex-row`, already tested), `book-gallery.tsx`/`jiujitsu-gallery.tsx` (responsive `basis-*` carousel items), `ai-process.tsx` (`sm:grid-cols-3`), `sidebar.tsx`/`main-template.tsx` shell (mobile-first, `md:` switches to desktop aside), `contact-form.tsx`'s form fields (already `flex-col`, fluid width), all `next/image` usage (fluid `object-cover` containers). The project has no custom breakpoints (`@theme` only defines colors/fonts) and no `viewport` override, so Next.js's default `width=device-width, initial-scale=1` applies — nothing to change there.
@@ -36,42 +37,42 @@
 Append to `src/components/organisms/tests/unit/hero.test.tsx` (inside the existing `describe('Hero', () => { ... })` block, after the last `it`):
 
 ```tsx
-  it('stacks the text and photo on small screens and switches to a row from sm', () => {
-    renderWithProviders(<Hero />);
+it('stacks the text and photo on small screens and switches to a row from sm', () => {
+  renderWithProviders(<Hero />);
 
-    const heading = screen.getByText('Camila Neves Linder');
-    const layoutRow = heading.closest('div')?.parentElement;
-    expect(layoutRow).toHaveClass('flex-col', 'sm:flex-row');
-  });
+  const heading = screen.getByText('Camila Neves Linder');
+  const layoutRow = heading.closest('div')?.parentElement;
+  expect(layoutRow).toHaveClass('flex-col', 'sm:flex-row');
+});
 
-  it('scales the heading and tagline down on small screens', () => {
-    renderWithProviders(<Hero />);
+it('scales the heading and tagline down on small screens', () => {
+  renderWithProviders(<Hero />);
 
-    expect(screen.getByText('Camila Neves Linder')).toHaveClass(
-      'text-[40px]',
-      'sm:text-[68px]',
-    );
-    expect(screen.getByText('desenvolvedora full stack.')).toHaveClass(
-      'text-[40px]',
-      'sm:text-[68px]',
-    );
-  });
+  expect(screen.getByText('Camila Neves Linder')).toHaveClass(
+    'text-[40px]',
+    'sm:text-[68px]',
+  );
+  expect(screen.getByText('desenvolvedora full stack.')).toHaveClass(
+    'text-[40px]',
+    'sm:text-[68px]',
+  );
+});
 
-  it('reduces the card padding on small screens', () => {
-    renderWithProviders(<Hero />);
+it('reduces the card padding on small screens', () => {
+  renderWithProviders(<Hero />);
 
-    const card = screen
-      .getByText('Camila Neves Linder')
-      .closest('[data-slot="card"]');
-    expect(card).toHaveClass('p-6', 'sm:p-[60px]');
-  });
+  const card = screen
+    .getByText('Camila Neves Linder')
+    .closest('[data-slot="card"]');
+  expect(card).toHaveClass('p-6', 'sm:p-[60px]');
+});
 
-  it('shrinks the profile photo on small screens', () => {
-    renderWithProviders(<Hero />);
+it('shrinks the profile photo on small screens', () => {
+  renderWithProviders(<Hero />);
 
-    const photo = screen.getByAltText('Camila Neves Linder');
-    expect(photo.parentElement).toHaveClass('size-[120px]', 'sm:size-[180px]');
-  });
+  const photo = screen.getByAltText('Camila Neves Linder');
+  expect(photo.parentElement).toHaveClass('size-[120px]', 'sm:size-[180px]');
+});
 ```
 
 - [ ] **Step 2: Run the tests to verify they fail**
@@ -167,103 +168,104 @@ Do not commit — leave the change staged/unstaged for the project owner to revi
 Append to `src/components/organisms/tests/unit/about.test.tsx` (inside `describe('About', ...)`):
 
 ```tsx
-  it('scales the section headings down on small screens', () => {
-    renderWithProviders(<About />);
+it('scales the section headings down on small screens', () => {
+  renderWithProviders(<About />);
 
-    expect(
-      screen.getByRole('heading', { level: 2, name: 'Além da tela' }),
-    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
-    expect(
-      screen.getByRole('heading', { level: 3, name: 'Jiu-jitsu' }),
-    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
-  });
+  expect(
+    screen.getByRole('heading', { level: 2, name: 'Além da tela' }),
+  ).toHaveClass('text-[26px]', 'sm:text-[32px]');
+  expect(
+    screen.getByRole('heading', { level: 3, name: 'Jiu-jitsu' }),
+  ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+});
 ```
 
 Append to `src/components/organisms/tests/unit/education.test.tsx` (inside `describe('Education', ...)`):
 
 ```tsx
-  it('scales the entry heading down on small screens', () => {
-    renderWithProviders(<Education />);
+it('scales the entry heading down on small screens', () => {
+  renderWithProviders(<Education />);
 
-    expect(
-      screen.getByRole('heading', {
-        level: 3,
-        name: 'Análise e Desenvolvimento de Sistemas',
-      }),
-    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
-  });
+  expect(
+    screen.getByRole('heading', {
+      level: 3,
+      name: 'Análise e Desenvolvimento de Sistemas',
+    }),
+  ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+});
 ```
 
 Append to `src/components/organisms/tests/unit/experience.test.tsx` (inside `describe('Experience', ...)`):
 
 ```tsx
-  it('scales the company heading down on small screens', () => {
-    renderWithProviders(<Experience />);
+it('scales the company heading down on small screens', () => {
+  renderWithProviders(<Experience />);
 
-    expect(
-      screen.getByRole('heading', { level: 3, name: 'Onilearning' }),
-    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
-  });
+  expect(
+    screen.getByRole('heading', { level: 3, name: 'Onilearning' }),
+  ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+});
 ```
 
 Append to `src/components/organisms/tests/unit/projects.test.tsx` (inside `describe('Projects', ...)`):
 
 ```tsx
-  it('scales the project heading down on small screens', () => {
-    renderWithProviders(<Projects />);
+it('scales the project heading down on small screens', () => {
+  renderWithProviders(<Projects />);
 
-    expect(
-      screen.getByRole('heading', {
-        level: 3,
-        name: 'App multi-instituição de ensino',
-      }),
-    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
-  });
+  expect(
+    screen.getByRole('heading', {
+      level: 3,
+      name: 'App multi-instituição de ensino',
+    }),
+  ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+});
 ```
 
 Append to `src/components/organisms/tests/unit/project-showcase.test.tsx` (inside `describe('ProjectShowcase', ...)`):
 
 ```tsx
-  it('scales the section and item headings down on small screens', () => {
-    renderWithProviders(<ProjectShowcase />);
+it('scales the section and item headings down on small screens', () => {
+  renderWithProviders(<ProjectShowcase />);
 
-    expect(
-      screen.getByRole('heading', { level: 2, name: 'O que eu já construí' }),
-    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
-    expect(
-      screen.getByRole('heading', { level: 3, name: 'Oniapp' }),
-    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
-  });
+  expect(
+    screen.getByRole('heading', { level: 2, name: 'O que eu já construí' }),
+  ).toHaveClass('text-[26px]', 'sm:text-[32px]');
+  expect(screen.getByRole('heading', { level: 3, name: 'Oniapp' })).toHaveClass(
+    'text-[22px]',
+    'sm:text-[28px]',
+  );
+});
 ```
 
 Append to `src/components/organisms/tests/unit/tech-stack.test.tsx` (inside `describe('TechStack', ...)`):
 
 ```tsx
-  it('scales the section and category headings down on small screens', () => {
-    renderWithProviders(<TechStack />);
+it('scales the section and category headings down on small screens', () => {
+  renderWithProviders(<TechStack />);
 
-    expect(
-      screen.getByRole('heading', {
-        level: 2,
-        name: 'O que eu uso no dia a dia',
-      }),
-    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
-    expect(
-      screen.getByRole('heading', { level: 3, name: 'Linguagens' }),
-    ).toHaveClass('text-[20px]', 'sm:text-[24px]');
-  });
+  expect(
+    screen.getByRole('heading', {
+      level: 2,
+      name: 'O que eu uso no dia a dia',
+    }),
+  ).toHaveClass('text-[26px]', 'sm:text-[32px]');
+  expect(
+    screen.getByRole('heading', { level: 3, name: 'Linguagens' }),
+  ).toHaveClass('text-[20px]', 'sm:text-[24px]');
+});
 ```
 
 Append to `src/components/organisms/tests/unit/contact-form.test.tsx` (inside `describe('ContactForm', ...)`):
 
 ```tsx
-  it('scales the section heading down on small screens', () => {
-    renderWithProviders(<ContactForm />);
+it('scales the section heading down on small screens', () => {
+  renderWithProviders(<ContactForm />);
 
-    expect(
-      screen.getByRole('heading', { level: 2, name: 'Vamos conversar?' }),
-    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
-  });
+  expect(
+    screen.getByRole('heading', { level: 2, name: 'Vamos conversar?' }),
+  ).toHaveClass('text-[26px]', 'sm:text-[32px]');
+});
 ```
 
 - [ ] **Step 2: Run the tests to verify they fail**
@@ -425,24 +427,24 @@ Do not commit — leave the change staged/unstaged for the project owner to revi
 Append to `src/components/organisms/tests/unit/sidebar.test.tsx` (inside `describe('Sidebar', ...)`):
 
 ```tsx
-  it('lets the social-icon row wrap instead of overflowing', () => {
-    usePathname.mockReturnValue('/');
-    renderWithProviders(<Sidebar />);
+it('lets the social-icon row wrap instead of overflowing', () => {
+  usePathname.mockReturnValue('/');
+  renderWithProviders(<Sidebar />);
 
-    const githubLink = screen.getAllByRole('link', { name: 'GitHub' })[0];
-    expect(githubLink.parentElement).toHaveClass('flex-wrap');
-  });
+  const githubLink = screen.getAllByRole('link', { name: 'GitHub' })[0];
+  expect(githubLink.parentElement).toHaveClass('flex-wrap');
+});
 ```
 
 Append to `src/components/organisms/tests/unit/contact-form.test.tsx` (inside `describe('ContactForm', ...)`):
 
 ```tsx
-  it('lets the direct-contact icon row wrap instead of overflowing', () => {
-    renderWithProviders(<ContactForm />);
+it('lets the direct-contact icon row wrap instead of overflowing', () => {
+  renderWithProviders(<ContactForm />);
 
-    const githubLink = screen.getByRole('link', { name: 'GitHub' });
-    expect(githubLink.parentElement).toHaveClass('flex-wrap');
-  });
+  const githubLink = screen.getByRole('link', { name: 'GitHub' });
+  expect(githubLink.parentElement).toHaveClass('flex-wrap');
+});
 ```
 
 - [ ] **Step 2: Run the tests to verify they fail**
@@ -505,17 +507,17 @@ Do not commit — leave the change staged/unstaged for the project owner to revi
 In `src/app/[locale]/globals.css`, inside the `@layer base { ... }` block, replace:
 
 ```css
-  body {
-    @apply bg-background text-foreground font-serif antialiased;
-  }
+body {
+  @apply bg-background text-foreground font-serif antialiased;
+}
 ```
 
 with:
 
 ```css
-  body {
-    @apply bg-background text-foreground font-serif overflow-x-hidden antialiased;
-  }
+body {
+  @apply bg-background text-foreground overflow-x-hidden font-serif antialiased;
+}
 ```
 
 - [ ] **Step 2: Full test suite (regression check)**

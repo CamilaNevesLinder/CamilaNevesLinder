@@ -24,11 +24,13 @@
 ## Task 1: `ProjectShowcase` organism + pt-br content
 
 **Files:**
+
 - Create: `src/components/organisms/project-showcase.tsx`
 - Create: `src/components/organisms/tests/unit/project-showcase.test.tsx`
 - Modify: `messages/pt-br.json`
 
 **Interfaces:**
+
 - Produces: `ProjectShowcase` (named export, no props) from `@/components/organisms/project-showcase`. Task 3 consumes it.
 - Consumes: `Card` from `@/components/atoms/card`, `Badge` from `@/components/atoms/badge` (both already exist).
 
@@ -76,11 +78,13 @@ describe('ProjectShowcase', () => {
 ```bash
 pnpm vitest run src/components/organisms/tests/unit/project-showcase.test.tsx
 ```
+
 Expected: FAIL with a module-not-found error for `@/components/organisms/project-showcase`.
 
 - [ ] **Step 3: Add the `projectsPage` namespace to `messages/pt-br.json`**
 
 Change:
+
 ```json
         "english": {
           "title": "Inglês",
@@ -91,7 +95,9 @@ Change:
   },
   "nav": {
 ```
+
 To:
+
 ```json
         "english": {
           "title": "Inglês",
@@ -248,6 +254,7 @@ export function ProjectShowcase() {
 ```bash
 pnpm vitest run src/components/organisms/tests/unit/project-showcase.test.tsx
 ```
+
 Expected: PASS (2/2).
 
 - [ ] **Step 6: Typecheck and run the full unit suite**
@@ -256,6 +263,7 @@ Expected: PASS (2/2).
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass.
 
 Do not commit — the project owner commits manually.
@@ -265,10 +273,12 @@ Do not commit — the project owner commits manually.
 ## Task 2: EN/ES translations
 
 **Files:**
+
 - Modify: `messages/en.json`
 - Modify: `messages/es.json`
 
 **Interfaces:**
+
 - No new exports. Pure content addition — `ProjectShowcase` (Task 1) already reads `projectsPage.*` generically via `t()`/`t.raw()`, so it works against any locale once the keys exist.
 
 This is translation of the pt-br copy added in Task 1, not new content — same shape, same 7 keys, same array lengths per item.
@@ -276,6 +286,7 @@ This is translation of the pt-br copy added in Task 1, not new content — same 
 - [ ] **Step 1: Add `projectsPage` to `messages/en.json`**
 
 Change:
+
 ```json
         "english": {
           "title": "English",
@@ -286,7 +297,9 @@ Change:
   },
   "nav": {
 ```
+
 To:
+
 ```json
         "english": {
           "title": "English",
@@ -371,6 +384,7 @@ To:
 - [ ] **Step 2: Add `projectsPage` to `messages/es.json`**
 
 Change:
+
 ```json
         "english": {
           "title": "Inglés",
@@ -381,7 +395,9 @@ Change:
   },
   "nav": {
 ```
+
 To:
+
 ```json
         "english": {
           "title": "Inglés",
@@ -469,6 +485,7 @@ To:
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass (Task 1's tests only assert pt-br content, so this step is a safety check that the JSON is still valid — no test currently exercises en/es strings).
 
 Do not commit.
@@ -478,10 +495,12 @@ Do not commit.
 ## Task 3: Wire `ProjectsPage` to `ProjectShowcase`
 
 **Files:**
+
 - Modify: `src/components/pages/projects-page.tsx`
 - Modify: `src/components/pages/tests/unit/projects-page.test.tsx`
 
 **Interfaces:**
+
 - Consumes: `ProjectShowcase` from `@/components/organisms/project-showcase` (Task 1).
 
 `src/app/[locale]/(pages)/projects/page.tsx` needs no change — it already just renders `<ProjectsPage />`.
@@ -514,6 +533,7 @@ describe('ProjectsPage', () => {
 ```bash
 pnpm vitest run src/components/pages/tests/unit/projects-page.test.tsx
 ```
+
 Expected: FAIL — the current `ProjectsPage` renders the "Conteúdo em breve." placeholder, not the heading "O que eu já construí".
 
 - [ ] **Step 3: Replace `src/components/pages/projects-page.tsx`**
@@ -531,6 +551,7 @@ export function ProjectsPage() {
 ```bash
 pnpm vitest run src/components/pages/tests/unit/projects-page.test.tsx
 ```
+
 Expected: PASS.
 
 - [ ] **Step 5: Typecheck and run the full unit suite**
@@ -539,6 +560,7 @@ Expected: PASS.
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass.
 
 Do not commit.
@@ -557,6 +579,7 @@ pnpm typecheck
 pnpm test:coverage
 pnpm build
 ```
+
 Expected: lint clean (aside from the pre-existing `main-template.test.tsx` prettier warning, unrelated to this work), typecheck clean, all tests passing, production build succeeds. Coverage threshold may still show the pre-existing shortfall documented in the atomic-design refactor plan (unrelated shadcn primitives) — do not attempt to fix that here, it's out of scope.
 
 - [ ] **Step 2: Manual smoke check**

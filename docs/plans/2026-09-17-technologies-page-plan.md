@@ -22,11 +22,13 @@
 ## Task 1: `TechStack` organism + pt-br content
 
 **Files:**
+
 - Create: `src/components/organisms/tech-stack.tsx`
 - Create: `src/components/organisms/tests/unit/tech-stack.test.tsx`
 - Modify: `messages/pt-br.json`
 
 **Interfaces:**
+
 - Produces: `TechStack` (named export, no props) from `@/components/organisms/tech-stack`. Task 3 consumes it.
 - Consumes: `Separator` from `@/components/atoms/separator`, `Badge` from `@/components/atoms/badge` (both already exist).
 
@@ -76,11 +78,13 @@ describe('TechStack', () => {
 ```bash
 pnpm vitest run src/components/organisms/tests/unit/tech-stack.test.tsx
 ```
+
 Expected: FAIL with a module-not-found error for `@/components/organisms/tech-stack`.
 
 - [ ] **Step 3: Add the `technologiesPage` namespace to `messages/pt-br.json`**
 
 Change:
+
 ```json
         "stack": ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "AWS"]
       }
@@ -88,7 +92,9 @@ Change:
   },
   "nav": {
 ```
+
 To:
+
 ```json
         "stack": ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "AWS"]
       }
@@ -196,6 +202,7 @@ export function TechStack() {
 ```bash
 pnpm vitest run src/components/organisms/tests/unit/tech-stack.test.tsx
 ```
+
 Expected: PASS (3/3).
 
 - [ ] **Step 6: Typecheck and run the full unit suite**
@@ -204,6 +211,7 @@ Expected: PASS (3/3).
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass.
 
 Do not commit — the project owner commits manually.
@@ -213,11 +221,13 @@ Do not commit — the project owner commits manually.
 ## Task 2: EN/ES translations + locale-parity test
 
 **Files:**
+
 - Modify: `messages/en.json`
 - Modify: `messages/es.json`
 - Create: `src/tests/unit/messages-technologies-page.test.ts`
 
 **Interfaces:**
+
 - No new exports. `TechStack` (Task 1) already reads `technologiesPage.*` generically via `t()`/`t.raw()`, so it works against any locale once the keys exist.
 
 Technology/tool names in `items` arrays are proper nouns and stay byte-identical across all 3 locales — only `label`, `heading`, and each category's `title` are translated.
@@ -225,6 +235,7 @@ Technology/tool names in `items` arrays are proper nouns and stay byte-identical
 - [ ] **Step 1: Add `technologiesPage` to `messages/en.json`**
 
 Change:
+
 ```json
         "stack": ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "AWS"]
       }
@@ -232,7 +243,9 @@ Change:
   },
   "nav": {
 ```
+
 To:
+
 ```json
         "stack": ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "AWS"]
       }
@@ -281,6 +294,7 @@ To:
 - [ ] **Step 2: Add `technologiesPage` to `messages/es.json`**
 
 Change:
+
 ```json
         "stack": ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "AWS"]
       }
@@ -288,7 +302,9 @@ Change:
   },
   "nav": {
 ```
+
 To:
+
 ```json
         "stack": ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "AWS"]
       }
@@ -356,12 +372,8 @@ describe('technologiesPage message parity', () => {
     expect(Object.keys(ptBr.technologiesPage.categories)).toEqual(
       CATEGORY_KEYS,
     );
-    expect(Object.keys(en.technologiesPage.categories)).toEqual(
-      CATEGORY_KEYS,
-    );
-    expect(Object.keys(es.technologiesPage.categories)).toEqual(
-      CATEGORY_KEYS,
-    );
+    expect(Object.keys(en.technologiesPage.categories)).toEqual(CATEGORY_KEYS);
+    expect(Object.keys(es.technologiesPage.categories)).toEqual(CATEGORY_KEYS);
   });
 
   it('has matching items array lengths per category across all locales', () => {
@@ -389,9 +401,11 @@ describe('technologiesPage message parity', () => {
 ```
 
 Run it directly to confirm it's picked up by the `unit-node` vitest project and passes:
+
 ```bash
 pnpm vitest run src/tests/unit/messages-technologies-page.test.ts
 ```
+
 Expected: PASS (3/3). If it reports "No test files found", stop and report NEEDS_CONTEXT — do not guess at a different file location (the sibling file `messages-projects-page.test.ts` at the same path already proves this glob works).
 
 - [ ] **Step 4: Typecheck and run the full unit suite**
@@ -400,6 +414,7 @@ Expected: PASS (3/3). If it reports "No test files found", stop and report NEEDS
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass.
 
 Do not commit.
@@ -409,10 +424,12 @@ Do not commit.
 ## Task 3: Wire `TechnologiesPage` to `TechStack`
 
 **Files:**
+
 - Modify: `src/components/pages/technologies-page.tsx`
 - Modify: `src/components/pages/tests/unit/technologies-page.test.tsx`
 
 **Interfaces:**
+
 - Consumes: `TechStack` from `@/components/organisms/tech-stack` (Task 1).
 
 `src/app/[locale]/(pages)/technologies/page.tsx` needs no change — it already just renders `<TechnologiesPage />`.
@@ -448,6 +465,7 @@ describe('TechnologiesPage', () => {
 ```bash
 pnpm vitest run src/components/pages/tests/unit/technologies-page.test.tsx
 ```
+
 Expected: FAIL — the current `TechnologiesPage` renders the "Conteúdo em breve." placeholder, not the tech stack heading.
 
 - [ ] **Step 3: Replace `src/components/pages/technologies-page.tsx`**
@@ -465,6 +483,7 @@ export function TechnologiesPage() {
 ```bash
 pnpm vitest run src/components/pages/tests/unit/technologies-page.test.tsx
 ```
+
 Expected: PASS.
 
 - [ ] **Step 5: Typecheck and run the full unit suite**
@@ -473,6 +492,7 @@ Expected: PASS.
 pnpm typecheck
 pnpm test:unit
 ```
+
 Expected: no errors, all tests pass.
 
 Do not commit.
@@ -491,6 +511,7 @@ pnpm typecheck
 pnpm test:coverage
 pnpm build
 ```
+
 Expected: lint clean (aside from the pre-existing `main-template.test.tsx` prettier warning, unrelated to this work), typecheck clean, all tests passing, production build succeeds. The `pnpm test:coverage` 90% global threshold is a documented pre-existing shortfall (untested shadcn primitives from before this feature) — do not attempt to fix it here, it's out of scope. This task's own new files (`tech-stack.tsx`, `technologies-page.tsx`) should show full coverage since every branch is exercised by Task 1-3's tests.
 
 - [ ] **Step 2: Manual smoke check**

@@ -61,12 +61,13 @@ describe('Hero', () => {
     expect(screen.getByAltText('Camila Neves Linder')).toBeInTheDocument();
   });
 
-  it('stacks the text and photo on small screens and switches to a row from sm', () => {
+  it('always centers the name/tagline/photo block', () => {
     renderWithProviders(<Hero />);
 
     const heading = screen.getByText('Camila Neves Linder');
     const layoutRow = heading.closest('div')?.parentElement;
-    expect(layoutRow).toHaveClass('flex-col', 'sm:flex-row');
+    expect(layoutRow).toHaveClass('flex-col', 'items-center', 'text-center');
+    expect(layoutRow).not.toHaveClass('sm:flex-row');
   });
 
   it('scales the heading and tagline down on small screens', () => {

@@ -23,7 +23,7 @@ export function Hero() {
   return (
     <section className="bg-cream flex min-h-[70vh] items-center justify-center px-6 py-16">
       <Card className="border-rose/40 bg-cream/[0.18] w-full max-w-[960px] rounded-[30px] border p-6 shadow-none ring-0 backdrop-blur-md sm:p-[60px]">
-        <div className="flex flex-col items-start gap-7 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col items-center gap-7 text-center">
           <div>
             <p className="text-taupe mb-[18px] font-mono text-sm uppercase tracking-wide">
               Florianópolis, SC
@@ -31,7 +31,7 @@ export function Hero() {
             <h1 className="font-display text-espresso text-[40px] font-bold leading-[0.95] tracking-tight sm:text-[68px]">
               Camila Neves Linder
             </h1>
-            <p className="text-rose text-[40px] font-bold italic leading-[0.95] tracking-tight sm:text-[68px]">
+            <p className="text-rose mt-2 text-[40px] font-bold italic leading-[0.95] tracking-tight sm:mt-0 sm:text-[68px]">
               {t('tagline')}
             </p>
           </div>
@@ -50,11 +50,11 @@ export function Hero() {
 
         <Separator className="bg-rose/40 my-9" />
 
-        <p className="text-taupe text-[23px] leading-relaxed">
+        <p className="text-taupe text-center text-[23px] leading-relaxed">
           {t('description')}
         </p>
 
-        <div className="mt-[26px] flex flex-wrap gap-2.5">
+        <div className="mt-[26px] flex flex-wrap justify-center gap-2.5">
           {TAGS.map((tag) => (
             <Badge
               key={tag}
@@ -65,7 +65,7 @@ export function Hero() {
           ))}
         </div>
 
-        <div className="mt-[26px] flex flex-wrap items-center gap-[30px]">
+        <div className="mt-[26px] flex flex-wrap items-center justify-center gap-[30px]">
           <a
             href="#work"
             className={cn(
