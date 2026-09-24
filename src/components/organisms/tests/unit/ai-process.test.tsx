@@ -12,13 +12,13 @@ describe('AiProcess', () => {
     ).toBeInTheDocument();
   });
 
-  it('renders the steps in plan, spec, review order', () => {
+  it('renders the steps in spec, plan, review order', () => {
     renderWithProviders(<AiProcess />);
 
     const titles = screen.getAllByRole('heading', { level: 3 });
     expect(titles.map((title) => title.textContent)).toEqual([
-      'Plano',
       'Especificação',
+      'Plano',
       'Revisão',
     ]);
     expect(screen.getByText('01')).toBeInTheDocument();

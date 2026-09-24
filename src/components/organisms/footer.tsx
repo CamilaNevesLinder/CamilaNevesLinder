@@ -19,7 +19,7 @@ export function Footer() {
 
   return (
     <footer className="border-border bg-cream border-t px-6 py-10">
-      <div className="mx-auto flex max-w-[720px] flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mx-auto flex max-w-[960px] flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex flex-col gap-4">
           <p className="text-taupe font-mono text-xs uppercase tracking-wide">
             {t('rights', { year })}

@@ -1,6 +1,22 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { screen, renderWithProviders } from '@/tests/utils/render';
 import { Hero } from '@/components/organisms/hero';
+
+vi.mock('@/lib/navigation', () => ({
+  Link: ({
+    href,
+    children,
+    className,
+  }: {
+    href: string;
+    children: React.ReactNode;
+    className?: string;
+  }) => (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  ),
+}));
 
 describe('Hero', () => {
   it('renders the name and role', () => {
@@ -35,18 +51,18 @@ describe('Hero', () => {
     }
   });
 
-  it('renders the work CTA link', () => {
+  it('links the work CTA to the projects page', () => {
     renderWithProviders(<Hero />);
 
     const cta = screen.getByRole('link', { name: 'Ver trabalho →' });
-    expect(cta).toHaveAttribute('href', '#work');
+    expect(cta).toHaveAttribute('href', '/projects');
   });
 
-  it('renders the contact CTA link', () => {
+  it('links the contact CTA to the contact page', () => {
     renderWithProviders(<Hero />);
 
     const cta = screen.getByRole('link', { name: 'Entrar em contato →' });
-    expect(cta).toHaveAttribute('href', '#contact');
+    expect(cta).toHaveAttribute('href', '/contact');
   });
 
   it('renders the location', () => {
@@ -61,13 +77,17 @@ describe('Hero', () => {
     expect(screen.getByAltText('Camila Neves Linder')).toBeInTheDocument();
   });
 
-  it('always centers the name/tagline/photo block', () => {
+  it('centers the name/tagline/photo block on mobile and keeps the desktop row from sm', () => {
     renderWithProviders(<Hero />);
 
     const heading = screen.getByText('Camila Neves Linder');
     const layoutRow = heading.closest('div')?.parentElement;
     expect(layoutRow).toHaveClass('flex-col', 'items-center', 'text-center');
-    expect(layoutRow).not.toHaveClass('sm:flex-row');
+    expect(layoutRow).toHaveClass(
+      'sm:flex-row',
+      'sm:justify-between',
+      'sm:text-left',
+    );
   });
 
   it('scales the heading and tagline down on small screens', () => {

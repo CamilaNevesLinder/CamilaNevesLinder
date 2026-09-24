@@ -39,11 +39,11 @@
     "steps": {
       "plan": {
         "title": "Plano",
-        "description": "Cada tarefa começa com um plano dividindo o problema em etapas, escrito e revisado antes de qualquer código."
+        "description": "A partir da especificação, um plano divide o problema em etapas, revisado antes da IA implementar."
       },
       "spec": {
         "title": "Especificação",
-        "description": "A partir do plano, uma especificação detalha requisitos e limites de cada etapa, revisada antes da IA implementar."
+        "description": "Cada tarefa começa com uma especificação que detalha requisitos e limites, escrita e revisada antes de qualquer código."
       },
       "review": {
         "title": "Revisão",
@@ -153,12 +153,30 @@
             "10": "Kafka para Sobrecarregados",
             "11": "As Coisas que Você Só Vê Quando Desacelera",
             "13": "A Hora da Estrela",
-            "14": "Quarto de Despejo"
+            "14": "Quarto de Despejo",
+            "15": "Rápido e Devagar",
+            "16": "Dom Casmurro"
           }
         },
         "english": {
           "title": "Inglês",
-          "description": "Entendo e leio bem; minha maior dificuldade é pronúncia, trabalho isso com o curso do Mario Vergara e o Duolingo."
+          "description": "Uso inglês no dia a dia, no trabalho e fora dele. Sigo estudando para ganhar mais fluência na fala.",
+          "skills": {
+            "reading": "Leitura",
+            "listening": "Escuta",
+            "writing": "Escrita",
+            "speaking": "Fala"
+          },
+          "ratingLabel": "{skill}: {rating} de 5",
+          "study": {
+            "label": "Como estudo",
+            "items": {
+              "marioVergara": "Curso do Mario Vergara",
+              "duolingo": "Duolingo",
+              "foreignFilms": "Filmes estrangeiros",
+              "conversation": "Conversação"
+            }
+          }
         }
       }
     }

@@ -143,7 +143,7 @@ export function Sidebar() {
         alt="Camila Neves Linder"
         width={40}
         height={40}
-        className="size-10 shrink-0 rounded-full object-cover object-[center_20%]"
+        className="size-10 shrink-0 rounded-lg object-cover object-[center_20%]"
       />
       <span className="text-espresso font-mono text-sm uppercase tracking-wide">
         {t('shortName')}

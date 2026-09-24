@@ -37,7 +37,7 @@ export function Projects() {
               {tags.map((tag) => (
                 <Badge
                   key={tag}
-                  className="bg-rose/[0.32] text-espresso h-auto rounded-[3px] px-4 py-2 font-mono text-[15px] uppercase tracking-wide"
+                  className="bg-rose/[0.32] text-espresso h-auto rounded-lg px-4 py-2 font-mono text-[15px] uppercase tracking-wide"
                 >
                   {tag}
                 </Badge>
