@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/atoms/separator';
 import { JiujitsuGallery } from '@/components/organisms/jiujitsu-gallery';
 import { BookGallery } from '@/components/organisms/book-gallery';
+import { EnglishSkills } from '@/components/organisms/english-skills';
 
 const ITEM_KEYS = ['jiujitsu', 'books', 'english'] as const;
 
@@ -41,6 +42,7 @@ export function About() {
             </p>
             {key === 'jiujitsu' && <JiujitsuGallery />}
             {key === 'books' && <BookGallery />}
+            {key === 'english' && <EnglishSkills />}
           </div>
         ))}
       </div>

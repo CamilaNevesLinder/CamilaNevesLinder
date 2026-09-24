@@ -39,7 +39,7 @@ export function TechStack() {
                 {items.map((item) => (
                   <Badge
                     key={item}
-                    className="bg-rose/[0.32] text-espresso h-auto rounded-[3px] px-3 py-1 font-mono text-xs uppercase tracking-wide"
+                    className="bg-rose/[0.32] text-espresso h-auto rounded-lg px-3 py-1 font-mono text-xs uppercase tracking-wide"
                   >
                     {item}
                   </Badge>

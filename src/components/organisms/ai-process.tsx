@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-const STEP_KEYS = ['plan', 'spec', 'review'] as const;
+const STEP_KEYS = ['spec', 'plan', 'review'] as const;
 
 export function AiProcess() {
   const t = useTranslations('aiProcess');

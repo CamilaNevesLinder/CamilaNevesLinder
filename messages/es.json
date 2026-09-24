@@ -39,11 +39,11 @@
     "steps": {
       "plan": {
         "title": "Plan",
-        "description": "Cada tarea empieza con un plan que divide el problema en etapas, escrito y revisado antes de cualquier código."
+        "description": "A partir de la especificación, un plan divide el problema en etapas, revisado antes de que la IA lo implemente."
       },
       "spec": {
         "title": "Especificación",
-        "description": "A partir del plan, una especificación detalla los requisitos y límites de cada etapa, revisada antes de que la IA la implemente."
+        "description": "Cada tarea empieza con una especificación que detalla requisitos y límites, escrita y revisada antes de cualquier código."
       },
       "review": {
         "title": "Revisión",
@@ -153,12 +153,30 @@
             "10": "Kafka para Sobrecarregados",
             "11": "As Coisas que Você Só Vê Quando Desacelera",
             "13": "A Hora da Estrela",
-            "14": "Quarto de Despejo"
+            "14": "Quarto de Despejo",
+            "15": "Rápido e Devagar",
+            "16": "Dom Casmurro"
           }
         },
         "english": {
           "title": "Inglés",
-          "description": "Entiendo y leo bien; mi mayor dificultad es la pronunciación, la trabajo con el curso de Mario Vergara y Duolingo."
+          "description": "Uso el inglés en el día a día, en el trabajo y fuera de él. Sigo estudiando para ganar más fluidez al hablar.",
+          "skills": {
+            "reading": "Lectura",
+            "listening": "Comprensión auditiva",
+            "writing": "Escritura",
+            "speaking": "Expresión oral"
+          },
+          "ratingLabel": "{skill}: {rating} de 5",
+          "study": {
+            "label": "Cómo estudio",
+            "items": {
+              "marioVergara": "Curso de Mario Vergara",
+              "duolingo": "Duolingo",
+              "foreignFilms": "Películas extranjeras",
+              "conversation": "Conversación"
+            }
+          }
         }
       }
     }

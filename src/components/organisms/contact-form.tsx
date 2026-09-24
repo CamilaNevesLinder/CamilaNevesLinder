@@ -23,8 +23,13 @@ import { cn } from '@/lib/utils';
 
 const DIRECT_LINK_CLASSNAME = cn(
   buttonVariants({ variant: 'ghost', size: 'icon-lg' }),
-  'border-rose/30',
+  'border-rose/30 size-12',
 );
+
+const LABEL_CLASSNAME =
+  'text-espresso font-mono text-sm uppercase tracking-wide';
+
+const FIELD_CLASSNAME = 'px-4 text-[17px] md:text-[17px]';
 
 export function ContactForm() {
   const t = useTranslations('contactPage');
@@ -43,7 +48,7 @@ export function ContactForm() {
 
   return (
     <section className="bg-cream flex justify-center px-6 py-16">
-      <div className="w-full max-w-[720px]">
+      <div className="w-full max-w-[960px]">
         <p className="text-taupe mb-[18px] font-mono text-sm uppercase tracking-wide">
           {t('label')}
         </p>
@@ -54,11 +59,11 @@ export function ContactForm() {
           {t('intro')}
         </p>
 
-        <Card className="border-rose/40 mt-9 rounded-[24px] border p-8 shadow-none ring-0">
+        <Card className="border-rose/40 mt-9 rounded-lg border p-6 shadow-none ring-0 sm:p-10">
           <form
             ref={formRef}
             action={formAction}
-            className="flex flex-col gap-5"
+            className="flex flex-col gap-7"
             noValidate
           >
             <input
@@ -71,9 +76,12 @@ export function ContactForm() {
             />
 
             <div className="flex flex-col gap-2">
-              <Label htmlFor="contact-name">{t('form.nameLabel')}</Label>
+              <Label htmlFor="contact-name" className={LABEL_CLASSNAME}>
+                {t('form.nameLabel')}
+              </Label>
               <Input
                 id="contact-name"
+                className={cn(FIELD_CLASSNAME, 'h-12')}
                 name="name"
                 placeholder={t('form.namePlaceholder')}
                 aria-invalid={Boolean(state.fieldErrors.name)}
@@ -85,7 +93,7 @@ export function ContactForm() {
                 <p
                   id="contact-name-error"
                   role="alert"
-                  className="text-destructive text-sm"
+                  className="text-destructive text-[15px]"
                 >
                   {t(`form.errors.${state.fieldErrors.name}`)}
                 </p>
@@ -93,9 +101,12 @@ export function ContactForm() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label htmlFor="contact-email">{t('form.emailLabel')}</Label>
+              <Label htmlFor="contact-email" className={LABEL_CLASSNAME}>
+                {t('form.emailLabel')}
+              </Label>
               <Input
                 id="contact-email"
+                className={cn(FIELD_CLASSNAME, 'h-12')}
                 name="email"
                 type="email"
                 placeholder={t('form.emailPlaceholder')}
@@ -108,7 +119,7 @@ export function ContactForm() {
                 <p
                   id="contact-email-error"
                   role="alert"
-                  className="text-destructive text-sm"
+                  className="text-destructive text-[15px]"
                 >
                   {t(`form.errors.${state.fieldErrors.email}`)}
                 </p>
@@ -116,9 +127,12 @@ export function ContactForm() {
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label htmlFor="contact-message">{t('form.messageLabel')}</Label>
+              <Label htmlFor="contact-message" className={LABEL_CLASSNAME}>
+                {t('form.messageLabel')}
+              </Label>
               <Textarea
                 id="contact-message"
+                className={cn(FIELD_CLASSNAME, 'min-h-40 py-3')}
                 name="message"
                 rows={5}
                 placeholder={t('form.messagePlaceholder')}
@@ -133,18 +147,22 @@ export function ContactForm() {
                 <p
                   id="contact-message-error"
                   role="alert"
-                  className="text-destructive text-sm"
+                  className="text-destructive text-[15px]"
                 >
                   {t(`form.errors.${state.fieldErrors.message}`)}
                 </p>
               )}
             </div>
 
-            <Button type="submit" disabled={pending} className="self-start">
+            <Button
+              type="submit"
+              disabled={pending}
+              className="h-12 self-start px-8 font-mono text-[15px] uppercase tracking-wide"
+            >
               {pending ? t('form.submitPending') : t('form.submit')}
             </Button>
 
-            <p aria-live="polite" className="text-sm">
+            <p aria-live="polite" className="text-[15px]">
               {state.status === 'success' && t('form.successMessage')}
               {state.status === 'error' &&
                 Object.keys(state.fieldErrors).length === 0 &&

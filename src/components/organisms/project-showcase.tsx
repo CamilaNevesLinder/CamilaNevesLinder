@@ -27,37 +27,39 @@ export function ProjectShowcase() {
           {t('heading')}
         </h2>
 
-        {PROJECT_KEYS.map((key, index) => {
-          const features = t.raw(`items.${key}.features`) as string[];
-          const stack = t.raw(`items.${key}.stack`) as string[];
+        <div className="mt-12">
+          {PROJECT_KEYS.map((key, index) => {
+            const features = t.raw(`items.${key}.features`) as string[];
+            const stack = t.raw(`items.${key}.stack`) as string[];
 
-          return (
-            <div key={key}>
-              {index > 0 && <Separator className="bg-rose/40 my-9" />}
-              <h3 className="text-espresso font-serif text-[22px] font-bold sm:text-[28px]">
-                {t(`items.${key}.title`)}
-              </h3>
-              <p className="text-rose mt-1 font-mono text-sm uppercase tracking-wide">
-                {t(`items.${key}.role`)}
-              </p>
-              <ul className="text-taupe mt-3 list-disc space-y-1.5 pl-5 text-[17px] leading-relaxed">
-                {features.map((feature) => (
-                  <li key={feature}>{feature}</li>
-                ))}
-              </ul>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {stack.map((tech) => (
-                  <Badge
-                    key={tech}
-                    className="bg-rose/[0.32] text-espresso h-auto rounded-[3px] px-3 py-1 font-mono text-xs uppercase tracking-wide"
-                  >
-                    {tech}
-                  </Badge>
-                ))}
+            return (
+              <div key={key}>
+                {index > 0 && <Separator className="bg-rose/40 my-12" />}
+                <h3 className="text-espresso font-serif text-[22px] font-bold sm:text-[28px]">
+                  {t(`items.${key}.title`)}
+                </h3>
+                <p className="text-espresso/85 mt-3 text-[18px] leading-relaxed">
+                  {t(`items.${key}.role`)}
+                </p>
+                <ul className="text-taupe marker:text-rose mt-5 list-disc space-y-2 pl-5 text-[16px] leading-relaxed">
+                  {features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {stack.map((tech) => (
+                    <Badge
+                      key={tech}
+                      className="bg-rose/[0.32] text-espresso h-auto rounded-lg px-3 py-1 font-mono text-xs uppercase tracking-wide"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

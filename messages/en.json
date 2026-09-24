@@ -39,11 +39,11 @@
     "steps": {
       "plan": {
         "title": "Plan",
-        "description": "Every task starts with a plan breaking the problem into steps, written and reviewed before any code."
+        "description": "From the specification, a plan breaks the problem into steps, reviewed before AI implements it."
       },
       "spec": {
         "title": "Specification",
-        "description": "From the plan, a specification details the requirements and constraints of each step, reviewed before AI implements it."
+        "description": "Every task starts with a specification detailing requirements and constraints, written and reviewed before any code."
       },
       "review": {
         "title": "Review",
@@ -153,12 +153,30 @@
             "10": "Kafka para Sobrecarregados",
             "11": "As Coisas que Você Só Vê Quando Desacelera",
             "13": "A Hora da Estrela",
-            "14": "Quarto de Despejo"
+            "14": "Quarto de Despejo",
+            "15": "Rápido e Devagar",
+            "16": "Dom Casmurro"
           }
         },
         "english": {
           "title": "English",
-          "description": "I understand and read well; pronunciation is my biggest challenge, which I work on with Mario Vergara's course and Duolingo."
+          "description": "I use English every day, at work and beyond. I keep studying to gain more fluency in speaking.",
+          "skills": {
+            "reading": "Reading",
+            "listening": "Listening",
+            "writing": "Writing",
+            "speaking": "Speaking"
+          },
+          "ratingLabel": "{skill}: {rating} out of 5",
+          "study": {
+            "label": "How I study",
+            "items": {
+              "marioVergara": "Mario Vergara's course",
+              "duolingo": "Duolingo",
+              "foreignFilms": "Foreign films",
+              "conversation": "Conversation practice"
+            }
+          }
         }
       }
     }
