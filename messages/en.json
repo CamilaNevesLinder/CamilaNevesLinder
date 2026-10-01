@@ -177,6 +177,14 @@
               "conversation": "Conversation practice"
             }
           }
+        },
+        "languages": {
+          "title": "Other languages",
+          "description": "I am very curious about learning new languages. Besides English, I also dedicate myself to German and Spanish.",
+          "items": {
+            "german": "German",
+            "spanish": "Spanish"
+          }
         }
       }
     }

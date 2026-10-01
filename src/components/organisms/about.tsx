@@ -5,8 +5,9 @@ import { Separator } from '@/components/atoms/separator';
 import { JiujitsuGallery } from '@/components/organisms/jiujitsu-gallery';
 import { BookGallery } from '@/components/organisms/book-gallery';
 import { EnglishSkills } from '@/components/organisms/english-skills';
+import { OtherLanguages } from '@/components/organisms/other-languages';
 
-const ITEM_KEYS = ['jiujitsu', 'books', 'english'] as const;
+const ITEM_KEYS = ['jiujitsu', 'books', 'english', 'languages'] as const;
 
 export function About() {
   const t = useTranslations('about');
@@ -43,6 +44,7 @@ export function About() {
             {key === 'jiujitsu' && <JiujitsuGallery />}
             {key === 'books' && <BookGallery />}
             {key === 'english' && <EnglishSkills />}
+            {key === 'languages' && <OtherLanguages />}
           </div>
         ))}
       </div>

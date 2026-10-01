@@ -18,7 +18,7 @@ describe('About', () => {
     ).toBeInTheDocument();
   });
 
-  it('renders all three outside-the-code items in order', () => {
+  it('renders all four outside-the-code items in order', () => {
     renderWithProviders(<About />);
 
     const titles = screen.getAllByRole('heading', { level: 3 });
@@ -26,6 +26,7 @@ describe('About', () => {
       'Jiu-jitsu',
       'Livros',
       'Inglês',
+      'Outras línguas',
     ]);
   });
 

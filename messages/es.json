@@ -177,6 +177,14 @@
               "conversation": "Conversación"
             }
           }
+        },
+        "languages": {
+          "title": "Otros idiomas",
+          "description": "Tengo mucha curiosidad por aprender nuevos idiomas. Además del inglés, también me dedico al alemán y al español.",
+          "items": {
+            "german": "Alemán",
+            "spanish": "Español"
+          }
         }
       }
     }

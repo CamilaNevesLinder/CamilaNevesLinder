@@ -21,7 +21,7 @@ const STUDY_ITEMS = [
   { key: 'conversation' },
 ] as const;
 
-const STUDY_BADGE_CLASSNAME =
+export const STUDY_BADGE_CLASSNAME =
   'bg-rose/[0.32] text-espresso h-auto rounded-lg px-3 py-1 font-mono text-xs uppercase tracking-wide';
 
 export function EnglishSkills() {
