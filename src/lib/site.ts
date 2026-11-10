@@ -1,7 +1,7 @@
 import { routing } from '@/lib/navigation';
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.camilanevenslinder.com.br';
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.camilaneveslinder.com.br';
 
 export const OG_IMAGE_URL = `${SITE_URL}/opengraph-image.png`;
 
