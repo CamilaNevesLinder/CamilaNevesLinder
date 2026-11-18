@@ -19,6 +19,7 @@ export function HomePage() {
       <ServiceAreas />
       <SectionDivider number="02" label={t('projects')} />
       <Projects />
+      <SectionDivider number="03" label={t('aiProcess')} />
       <AiProcess />
       <Experience />
       <Education />

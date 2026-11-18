@@ -43,21 +43,20 @@
     }
   },
   "aiProcess": {
-    "label": "IA First",
-    "heading": "IA en el flujo de desarrollo",
-    "intro": "Uso IA como parte del proceso, no como atajo. Cada tarea pasa por tres etapas, con revisión humana en cada una.",
+    "heading": "IA en el proceso, <em>yo al mando</em>",
+    "note": "↳ revisión humana en cada etapa",
     "steps": {
-      "plan": {
-        "title": "Plan",
-        "description": "A partir de la especificación, un plan divide el problema en etapas, revisado antes de que la IA lo implemente."
-      },
       "spec": {
         "title": "Especificación",
-        "description": "Cada tarea empieza con una especificación que detalla requisitos y límites, escrita y revisada antes de cualquier código."
+        "description": "Requisitos y límites escritos antes de cualquier código."
+      },
+      "plan": {
+        "title": "Plan",
+        "description": "El problema se divide en pasos pequeños, revisados por mí."
       },
       "review": {
         "title": "Revisión",
-        "description": "Todo el código generado pasa por revisión manual, pruebas automatizadas y verificación real antes de considerarse listo."
+        "description": "Lectura manual, pruebas y verificación real antes de darlo por hecho."
       }
     }
   },
@@ -423,7 +422,8 @@
   "home": {
     "sections": {
       "serviceAreas": "Lo que hago",
-      "projects": "Proyectos"
+      "projects": "Proyectos",
+      "aiProcess": "Cómo trabajo"
     },
     "serviceAreas": {
       "label": "Lo que hago",

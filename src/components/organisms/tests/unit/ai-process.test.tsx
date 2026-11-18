@@ -3,37 +3,26 @@ import { screen, renderWithProviders } from '@/tests/utils/render';
 import { AiProcess } from '@/components/organisms/ai-process';
 
 describe('AiProcess', () => {
-  it('renders the label and heading', () => {
+  it('renders the heading with emphasis and the handwritten note', () => {
     renderWithProviders(<AiProcess />);
 
-    expect(screen.getByText('IA First')).toBeInTheDocument();
-    expect(
-      screen.getByText('IA no fluxo de desenvolvimento'),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+      'IA no processo, eu no controle',
+    );
+    expect(screen.getByText('↳ revisão humana em cada etapa')).toHaveClass(
+      'font-hand',
+    );
   });
 
-  it('renders the steps in spec, plan, review order', () => {
+  it('renders the steps in spec, plan, review order with hand numbers', () => {
     renderWithProviders(<AiProcess />);
 
-    const titles = screen.getAllByRole('heading', { level: 3 });
-    expect(titles.map((title) => title.textContent)).toEqual([
-      'Especificação',
-      'Plano',
-      'Revisão',
-    ]);
-    expect(screen.getByText('01')).toBeInTheDocument();
-    expect(screen.getByText('02')).toBeInTheDocument();
-    expect(screen.getByText('03')).toBeInTheDocument();
-  });
-
-  it('scales the section heading down on small screens', () => {
-    renderWithProviders(<AiProcess />);
-
-    expect(
-      screen.getByRole('heading', {
-        level: 2,
-        name: 'IA no fluxo de desenvolvimento',
-      }),
-    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
+    const steps = screen.getAllByRole('listitem');
+    expect(steps).toHaveLength(3);
+    expect(steps[0]).toHaveTextContent(
+      '1.EspecificaçãoRequisitos e limites escritos antes de qualquer código.',
+    );
+    expect(steps[1]).toHaveTextContent('2.Plano');
+    expect(steps[2]).toHaveTextContent('3.Revisão');
   });
 });

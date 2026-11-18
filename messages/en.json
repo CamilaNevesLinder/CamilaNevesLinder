@@ -43,21 +43,20 @@
     }
   },
   "aiProcess": {
-    "label": "AI First",
-    "heading": "AI in the development flow",
-    "intro": "I use AI as part of the process, not as a shortcut. Every task goes through three steps, with human review at each one.",
+    "heading": "AI in the process, <em>me in control</em>",
+    "note": "↳ human review at every step",
     "steps": {
-      "plan": {
-        "title": "Plan",
-        "description": "From the specification, a plan breaks the problem into steps, reviewed before AI implements it."
-      },
       "spec": {
         "title": "Specification",
-        "description": "Every task starts with a specification detailing requirements and constraints, written and reviewed before any code."
+        "description": "Requirements and limits written before any code."
+      },
+      "plan": {
+        "title": "Plan",
+        "description": "The problem becomes small steps, reviewed by me."
       },
       "review": {
         "title": "Review",
-        "description": "All generated code goes through manual review, automated tests and real verification before it counts as done."
+        "description": "Manual reading, tests and real verification before done."
       }
     }
   },
@@ -423,7 +422,8 @@
   "home": {
     "sections": {
       "serviceAreas": "What I do",
-      "projects": "Projects"
+      "projects": "Projects",
+      "aiProcess": "How I work"
     },
     "serviceAreas": {
       "label": "What I do",

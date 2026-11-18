@@ -1,40 +1,46 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-
-const STEP_KEYS = ['spec', 'plan', 'review'] as const;
+import { SectionHeading } from '@/components/atoms/section-heading';
+import { AI_PROCESS_STEPS } from '@/lib/ai-process-steps';
 
 export function AiProcess() {
   const t = useTranslations('aiProcess');
 
   return (
-    <section className="bg-cream flex justify-center px-6 py-16">
-      <div className="w-full max-w-[960px]">
-        <p className="text-taupe mb-[18px] font-mono text-sm uppercase tracking-wide">
-          {t('label')}
+    <section className="md:pb-30 mx-auto max-w-[1160px] px-4 pb-24 sm:px-6">
+      <div className="border-line bg-paper relative rounded-[28px] border bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_35px,color-mix(in_srgb,var(--color-rose)_24%,transparent)_35px,color-mix(in_srgb,var(--color-rose)_24%,transparent)_36px)] py-14 pl-[clamp(40px,7vw,96px)] pr-[clamp(24px,5vw,64px)]">
+        <span
+          aria-hidden="true"
+          className="bg-dusty absolute inset-y-0 left-[clamp(20px,4vw,56px)] w-[1.5px] opacity-60"
+        />
+        <SectionHeading>
+          {t.rich('heading', { em: (chunks) => <em>{chunks}</em> })}
+        </SectionHeading>
+        <p className="font-hand text-clay-deep mb-10 mt-3 text-2xl">
+          {t('note')}
         </p>
-        <h2 className="text-espresso font-serif text-[26px] font-bold sm:text-[32px]">
-          {t('heading')}
-        </h2>
-        <p className="text-taupe mt-3 text-[17px] leading-relaxed">
-          {t('intro')}
-        </p>
-
-        <div className="mt-10 grid gap-9 sm:grid-cols-3">
-          {STEP_KEYS.map((key, index) => (
-            <div key={key}>
-              <p className="text-rose font-mono text-sm">
-                {String(index + 1).padStart(2, '0')}
-              </p>
-              <h3 className="text-espresso mt-2 font-serif text-[20px] font-bold">
+        <ol className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-7">
+          {AI_PROCESS_STEPS.map(({ key, Icon }, index) => (
+            <li key={key} className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="font-hand text-dusty text-[40px] leading-none"
+                >
+                  {index + 1}.
+                </span>
+                <span className="bg-sand text-clay-deep grid size-10 place-items-center rounded-xl">
+                  <Icon size={20} strokeWidth={1.6} aria-hidden="true" />
+                </span>
+              </div>
+              <h3 className="text-espresso text-[19px] font-semibold">
                 {t(`steps.${key}.title`)}
               </h3>
-              <p className="text-taupe mt-2 text-[15px] leading-relaxed">
-                {t(`steps.${key}.description`)}
-              </p>
-            </div>
+              <p className="text-mocha">{t(`steps.${key}.description`)}</p>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

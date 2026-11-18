@@ -18,7 +18,9 @@ describe('HomePage', () => {
     expect(
       screen.getByRole('heading', { name: 'Coisas que eu coloquei no ar' }),
     ).toBeInTheDocument();
-    expect(screen.getByText('IA First')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'IA no processo, eu no controle' }),
+    ).toBeInTheDocument();
     expect(screen.getByText('Experiência')).toBeInTheDocument();
     expect(screen.getByText('Formações e cursos')).toBeInTheDocument();
   });
