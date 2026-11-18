@@ -10,13 +10,20 @@ vi.mock('@/lib/navigation', () => ({
     children,
     className,
     'aria-label': ariaLabel,
+    'aria-current': ariaCurrent,
   }: {
     href: string;
     children: React.ReactNode;
     className?: string;
     'aria-label'?: string;
+    'aria-current'?: 'page';
   }) => (
-    <a href={href} className={className} aria-label={ariaLabel}>
+    <a
+      href={href}
+      className={className}
+      aria-label={ariaLabel}
+      aria-current={ariaCurrent}
+    >
       {children}
     </a>
   ),
@@ -50,23 +57,58 @@ describe('BottomNav', () => {
     );
   });
 
-  it('highlights the active section and leaves the rest muted', () => {
+  it('marks the active section as current page and highlights it', () => {
     usePathname.mockReturnValue('/projects');
     renderWithProviders(<BottomNav />);
 
-    expect(screen.getByRole('link', { name: 'Projetos' })).toHaveClass(
-      'text-espresso',
+    const active = screen.getByRole('link', { name: 'Projetos' });
+    expect(active).toHaveAttribute('aria-current', 'page');
+    expect(active).toHaveClass('bg-espresso', 'text-cream');
+    expect(screen.getByRole('link', { name: 'Sobre' })).not.toHaveAttribute(
+      'aria-current',
     );
     expect(screen.getByRole('link', { name: 'Sobre' })).toHaveClass(
-      'text-taupe',
+      'text-body',
     );
   });
 
-  it('hides on md and up, and stays fixed to the viewport bottom', () => {
+  it('shows a compact visible label for each item', () => {
     usePathname.mockReturnValue('/');
     renderWithProviders(<BottomNav />);
 
-    const nav = screen.getByRole('link', { name: 'Início' }).closest('nav');
-    expect(nav).toHaveClass('md:hidden', 'fixed', 'inset-x-0', 'bottom-0');
+    expect(screen.getByRole('link', { name: 'Tecnologias' })).toHaveTextContent(
+      'Stack',
+    );
+  });
+
+  it('floats centered above the bottom edge and hides on md and up', () => {
+    usePathname.mockReturnValue('/');
+    renderWithProviders(<BottomNav />);
+
+    const nav = screen.getByRole('navigation', { name: 'Principal' });
+    expect(nav).toHaveClass(
+      'md:hidden',
+      'fixed',
+      'left-1/2',
+      '-translate-x-1/2',
+      'max-w-[380px]',
+      'rounded-[26px]',
+    );
+  });
+
+  it('lists the sections in the redesign order', () => {
+    usePathname.mockReturnValue('/');
+    renderWithProviders(<BottomNav />);
+
+    const names = screen
+      .getAllByRole('link')
+      .map((link) => link.getAttribute('aria-label'));
+    expect(names).toEqual([
+      'Início',
+      'Projetos',
+      'Sobre',
+      'Tecnologias',
+      'Contato',
+    ]);
   });
 });

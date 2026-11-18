@@ -398,7 +398,9 @@
       "label": "Settings",
       "language": "Language",
       "darkMode": "Dark mode"
-    }
+    },
+    "technologiesCompact": "Stack",
+    "mainLabel": "Main"
   },
   "footer": {
     "rights": "© {year} Camila Neves Linder · Full Stack Developer",

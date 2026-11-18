@@ -4,14 +4,32 @@ import { HrefValue } from '@/lib/navigation';
 export type NavLabelKey =
   'home' | 'about' | 'projects' | 'technologies' | 'contact';
 
+export type NavCompactLabelKey = NavLabelKey | 'technologiesCompact';
+
 export const NAV_ITEMS: {
   href: HrefValue;
   labelKey: NavLabelKey;
+  compactLabelKey: NavCompactLabelKey;
   Icon: typeof House;
 }[] = [
-  { href: '/', labelKey: 'home', Icon: House },
-  { href: '/about', labelKey: 'about', Icon: User },
-  { href: '/projects', labelKey: 'projects', Icon: Folder },
-  { href: '/technologies', labelKey: 'technologies', Icon: Code },
-  { href: '/contact', labelKey: 'contact', Icon: MessageCircle },
+  { href: '/', labelKey: 'home', compactLabelKey: 'home', Icon: House },
+  {
+    href: '/projects',
+    labelKey: 'projects',
+    compactLabelKey: 'projects',
+    Icon: Folder,
+  },
+  { href: '/about', labelKey: 'about', compactLabelKey: 'about', Icon: User },
+  {
+    href: '/technologies',
+    labelKey: 'technologies',
+    compactLabelKey: 'technologiesCompact',
+    Icon: Code,
+  },
+  {
+    href: '/contact',
+    labelKey: 'contact',
+    compactLabelKey: 'contact',
+    Icon: MessageCircle,
+  },
 ];
