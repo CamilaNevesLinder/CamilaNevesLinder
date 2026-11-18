@@ -402,8 +402,12 @@
     "homeLink": "Camila Neves Linder, home page"
   },
   "footer": {
-    "rights": "© {year} Camila Neves Linder · Full Stack Developer",
+    "rights": "© {year} Camila Neves Linder · handmade in Floripa · v.2",
     "name": "Camila Neves Linder",
-    "role": "Full Stack Developer"
+    "tagline": "Full stack developer in Florianópolis. Apps, dashboards and APIs, from database to screen.",
+    "thanks": "thanks for stopping by!",
+    "navigationTitle": "Navigation",
+    "findMeTitle": "Find me",
+    "backToTop": "back to top"
   }
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { BrandMark } from '@/components/atoms/brand-mark';
 import { LanguageSwitch } from '@/components/molecules/language-switch';
 import { ThemeToggle } from '@/components/molecules/theme-toggle';
 import { Link, usePathname } from '@/lib/navigation';
@@ -21,12 +22,7 @@ export function SiteHeader() {
         aria-label={t('homeLink')}
         className="text-espresso flex items-center gap-2.5"
       >
-        <span
-          aria-hidden="true"
-          className="bg-espresso text-cream font-display grid size-10 place-items-center rounded-full text-xl italic"
-        >
-          c
-        </span>
+        <BrandMark />
         <span aria-hidden="true" className="font-display text-xl italic">
           {t('brand')}
           <span className="text-dusty">.</span>

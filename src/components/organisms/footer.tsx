@@ -1,16 +1,14 @@
 'use client';
 
+import { ArrowUp } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Mail } from 'lucide-react';
-import {
-  GithubIcon,
-  LinkedinIcon,
-  WhatsappIcon,
-} from '@/components/atoms/icons/social-icons';
-import { SOCIAL_LINKS } from '@/lib/site';
+import { BrandMark } from '@/components/atoms/brand-mark';
+import { Link } from '@/lib/navigation';
+import { NAV_ITEMS } from '@/lib/nav-items';
+import { SOCIAL_CHANNELS } from '@/lib/social-channels';
 
-const SOCIAL_LINK_CLASSNAME =
-  'text-taupe hover:text-espresso transition-colors';
+const FOOTER_LINK_CLASSNAME =
+  'text-body hover:text-espresso inline-flex items-center gap-2.5 py-1.5 transition-colors duration-200';
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -18,58 +16,72 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-border bg-cream border-t px-6 py-10">
-      <div className="mx-auto flex max-w-[960px] flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex flex-col gap-4">
-          <p className="text-taupe font-mono text-xs uppercase tracking-wide">
-            {t('rights', { year })}
+    <footer className="border-line-strong bg-paper relative border-t-[1.5px] border-dashed">
+      <div className="mx-auto flex max-w-[1160px] flex-wrap gap-x-14 gap-y-10 px-4 pb-9 pt-14 sm:px-6">
+        <div className="min-w-0 flex-[2_1_280px]">
+          <Link
+            href="/"
+            className="text-espresso inline-flex items-center gap-3"
+          >
+            <BrandMark className="size-11" />
+            <span className="font-display text-xl">{t('name')}</span>
+          </Link>
+          <p className="text-mocha mt-4 max-w-[340px]">{t('tagline')}</p>
+          <p className="font-hand text-clay-deep mt-3 text-2xl">
+            {t('thanks')}
           </p>
-          <div className="flex items-center gap-3">
-            <a
-              href={SOCIAL_LINKS.github}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={tNav('social.github')}
-              className={SOCIAL_LINK_CLASSNAME}
-            >
-              <GithubIcon size={18} aria-hidden="true" />
-            </a>
-            <a
-              href={SOCIAL_LINKS.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={tNav('social.linkedin')}
-              className={SOCIAL_LINK_CLASSNAME}
-            >
-              <LinkedinIcon size={18} aria-hidden="true" />
-            </a>
-            <a
-              href={SOCIAL_LINKS.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={tNav('social.whatsapp')}
-              className={SOCIAL_LINK_CLASSNAME}
-            >
-              <WhatsappIcon size={18} aria-hidden="true" />
-            </a>
-            <a
-              href={SOCIAL_LINKS.email}
-              aria-label={tNav('social.email')}
-              className={SOCIAL_LINK_CLASSNAME}
-            >
-              <Mail size={18} aria-hidden="true" />
-            </a>
-          </div>
         </div>
 
-        <div className="flex flex-col gap-1 sm:text-right">
-          <p className="font-display text-espresso text-xl font-bold">
-            {t('name')}
-          </p>
-          <p className="text-taupe font-mono text-xs uppercase tracking-wide">
-            {t('role')}
-          </p>
+        <div className="flex-[1_1_150px]">
+          <h2 className="text-taupe font-mono text-[13px] uppercase tracking-[0.08em]">
+            {t('navigationTitle')}
+          </h2>
+          <ul className="mt-3">
+            {NAV_ITEMS.map(({ href, labelKey }) => (
+              <li key={href}>
+                <Link href={href} className={FOOTER_LINK_CLASSNAME}>
+                  {tNav(labelKey)}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        <div className="flex-[1_1_200px]">
+          <h2 className="text-taupe font-mono text-[13px] uppercase tracking-[0.08em]">
+            {t('findMeTitle')}
+          </h2>
+          <ul className="mt-3">
+            {SOCIAL_CHANNELS.map(({ key, href, isExternal, Icon }) => (
+              <li key={key}>
+                <a
+                  href={href}
+                  target={isExternal ? '_blank' : undefined}
+                  rel={isExternal ? 'noreferrer' : undefined}
+                  className={FOOTER_LINK_CLASSNAME}
+                >
+                  <Icon size={18} strokeWidth={1.6} aria-hidden="true" />
+                  {tNav(`social.${key}`)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="text-taupe mx-auto flex max-w-[1160px] flex-wrap items-center justify-between gap-3 px-4 pb-5 pt-3 font-mono text-[13px] sm:px-6">
+        <span
+          aria-hidden="true"
+          className="border-line mb-2 basis-full border-t"
+        />
+        <span>{t('rights', { year })}</span>
+        <a
+          href="#inicio"
+          className="hover:text-espresso inline-flex min-h-11 items-center gap-1.5 transition-colors duration-200"
+        >
+          {t('backToTop')}
+          <ArrowUp size={16} strokeWidth={1.6} aria-hidden="true" />
+        </a>
       </div>
     </footer>
   );

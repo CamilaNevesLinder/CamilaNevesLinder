@@ -3,7 +3,15 @@ import ptBr from '../../../messages/pt-br.json';
 import en from '../../../messages/en.json';
 import es from '../../../messages/es.json';
 
-const FOOTER_KEYS = ['rights', 'name', 'role'];
+const FOOTER_KEYS = [
+  'rights',
+  'name',
+  'tagline',
+  'thanks',
+  'navigationTitle',
+  'findMeTitle',
+  'backToTop',
+];
 
 describe('footer message parity', () => {
   it('has the same keys across all locales', () => {
