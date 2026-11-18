@@ -413,5 +413,16 @@
     "navigationTitle": "Navegación",
     "findMeTitle": "Encuéntrame",
     "backToTop": "volver arriba"
+  },
+  "home": {
+    "sections": {
+      "serviceAreas": "Lo que hago"
+    },
+    "serviceAreas": {
+      "label": "Lo que hago",
+      "mobile": "Mobile",
+      "frontEnd": "Front-end",
+      "backEnd": "Back-end"
+    }
   }
 }
