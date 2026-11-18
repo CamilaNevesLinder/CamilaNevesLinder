@@ -16,23 +16,29 @@
     "beltSticker": "faja morada<br></br>en jiu-jitsu"
   },
   "projects": {
-    "heading": "Proyectos seleccionados",
+    "heading": "Cosas que <em>puse en línea</em>",
+    "seeAll": "Ver los {count}",
+    "learnMore": "Saber más",
     "items": {
       "learningApp": {
         "title": "App multi-institución de enseñanza",
-        "description": "Portal del alumno con acceso a cursos integrados vía Moodle, notas, calendario y un cuaderno de anotaciones. Incluye un panel administrativo donde cada institución socia personaliza marca y colores."
+        "line": "Un código, varias escuelas: cada una con su marca, colores y Moodle.",
+        "kind": "App mobile + panel"
       },
       "wellnessApp": {
         "title": "App de comunidad y bienestar",
-        "description": "Publicaciones de foto y audio en comunidades, diario personal, agenda de hobbies y tareas. Inicio de sesión social y notificaciones push, con un panel propio para moderar denuncias y usuarios."
+        "line": "Diario, comunidades con foto y audio, agenda de hábitos.",
+        "kind": "App mobile"
       },
       "gymPlatform": {
-        "title": "Plataforma de gestión para gimnasios",
-        "description": "Sistema multi-tenant: cada gimnasio con sus propios datos y configuraciones. Cobro de mensualidades con renovación automática vía Mercado Pago y Asaas, pruebas automatizadas e integración continua."
+        "title": "Gestión para gimnasios",
+        "line": "Multi-tenant con cobro recurrente vía Mercado Pago y Asaas.",
+        "kind": "Web + API"
       },
       "musicSite": {
-        "title": "Sitio institucional para escuela de música",
-        "description": "Construido desde cero hasta la publicación. Secciones de presentación, profesores y catálogo de instrumentos, con animaciones y buena apariencia en el celular. Sección de contacto con mapa y enlace directo a WhatsApp."
+        "title": "Escuela de música Praça 22",
+        "line": "De cero a producción: profesores, instrumentos y WhatsApp.",
+        "kind": "Sitio"
       }
     }
   },
@@ -416,7 +422,8 @@
   },
   "home": {
     "sections": {
-      "serviceAreas": "Lo que hago"
+      "serviceAreas": "Lo que hago",
+      "projects": "Proyectos"
     },
     "serviceAreas": {
       "label": "Lo que hago",

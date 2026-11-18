@@ -17,6 +17,7 @@ export function HomePage() {
       <Hero />
       <SectionDivider number="01" label={t('serviceAreas')} />
       <ServiceAreas />
+      <SectionDivider number="02" label={t('projects')} />
       <Projects />
       <AiProcess />
       <Experience />

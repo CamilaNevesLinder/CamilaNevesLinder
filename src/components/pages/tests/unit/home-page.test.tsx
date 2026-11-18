@@ -15,7 +15,9 @@ describe('HomePage', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
       'Oi, eu sou a Camila.',
     );
-    expect(screen.getByText('Projetos selecionados')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Coisas que eu coloquei no ar' }),
+    ).toBeInTheDocument();
     expect(screen.getByText('IA First')).toBeInTheDocument();
     expect(screen.getByText('Experiência')).toBeInTheDocument();
     expect(screen.getByText('Formações e cursos')).toBeInTheDocument();
