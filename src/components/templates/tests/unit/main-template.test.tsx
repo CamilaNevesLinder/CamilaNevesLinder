@@ -7,75 +7,66 @@ vi.mock('@/lib/navigation', () => ({
     href,
     children,
     className,
-    onClick,
     'aria-label': ariaLabel,
   }: {
     href: string;
     children: React.ReactNode;
     className?: string;
-    onClick?: () => void;
     'aria-label'?: string;
   }) => (
-    <a
-      href={href}
-      className={className}
-      onClick={onClick}
-      aria-label={ariaLabel}
-    >
+    <a href={href} className={className} aria-label={ariaLabel}>
       {children}
     </a>
   ),
-  locales: ['en', 'pt-br', 'es'],
+  locales: ['pt-br', 'en', 'es'],
   usePathname: () => '/',
+  routing: {
+    locales: ['pt-br', 'en', 'es'],
+    defaultLocale: 'pt-br',
+    localePrefix: 'as-needed',
+  },
 }));
 
-describe('MainTemplate', () => {
-  it('renders the sidebar and the page content', () => {
-    renderWithProviders(
-      <MainTemplate>
-        <p>page content</p>
-      </MainTemplate>,
-    );
+function renderTemplate() {
+  return renderWithProviders(
+    <MainTemplate>
+      <p>page content</p>
+    </MainTemplate>,
+  );
+}
 
-    expect(screen.getAllByText('Camila Linder')).toHaveLength(2);
+describe('MainTemplate', () => {
+  it('renders the header before the page content inside main', () => {
+    renderTemplate();
+
+    const homeLink = screen.getByRole('link', {
+      name: 'Camila Neves Linder, página inicial',
+    });
     const content = screen.getByText('page content');
-    expect(content).toBeInTheDocument();
-    expect(content.closest('div')).toHaveClass(
-      'pb-14',
-      'pt-14',
-      'md:pb-0',
-      'md:pl-60',
-      'md:pt-0',
-    );
+    expect(content.closest('main')).toBeInTheDocument();
+    expect(
+      homeLink.compareDocumentPosition(content) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
   });
 
   it('renders the footer after the page content', () => {
-    renderWithProviders(
-      <MainTemplate>
-        <p>page content</p>
-      </MainTemplate>,
-    );
+    renderTemplate();
 
-    const year = new Date().getFullYear();
-    expect(
-      screen.getByText(
-        `© ${year} Camila Neves Linder · Desenvolvedora Full Stack`,
-      ),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 
-  it('renders the bottom nav', () => {
-    renderWithProviders(
-      <MainTemplate>
-        <p>page content</p>
-      </MainTemplate>,
-    );
+  it('reserves bottom space on mobile for the floating nav', () => {
+    renderTemplate();
 
-    const bottomNav = screen
-      .getAllByRole('link', { name: 'Início' })
-      .map((link) => link.closest('nav'))
-      .find((nav) => nav?.className.includes('md:hidden'));
+    const wrapper = screen.getByRole('main').parentElement;
+    expect(wrapper).toHaveClass('pb-28', 'md:pb-0');
+  });
 
-    expect(bottomNav).toHaveClass('fixed', 'bottom-0');
+  it('renders the floating bottom nav', () => {
+    renderTemplate();
+
+    const navs = screen.getAllByRole('navigation', { name: 'Principal' });
+    expect(navs.some((nav) => nav.className.includes('fixed'))).toBe(true);
   });
 });

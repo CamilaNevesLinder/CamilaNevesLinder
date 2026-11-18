@@ -379,14 +379,11 @@
     }
   },
   "nav": {
-    "shortName": "Camila Linder",
     "home": "Home",
     "about": "About",
     "projects": "Projects",
     "technologies": "Technologies",
     "contact": "Contact",
-    "menuOpen": "Open menu",
-    "menuClose": "Close menu",
     "social": {
       "github": "GitHub",
       "linkedin": "LinkedIn",
@@ -394,18 +391,15 @@
       "whatsapp": "WhatsApp",
       "email": "Email"
     },
-    "settings": {
-      "label": "Settings",
-      "language": "Language",
-      "darkMode": "Dark mode"
-    },
     "technologiesCompact": "Stack",
     "mainLabel": "Main",
     "languageLabel": "Language",
     "theme": {
       "enableDark": "Switch to dark mode",
       "enableLight": "Switch to light mode"
-    }
+    },
+    "brand": "camila",
+    "homeLink": "Camila Neves Linder, home page"
   },
   "footer": {
     "rights": "© {year} Camila Neves Linder · Full Stack Developer",
