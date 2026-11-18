@@ -1,3 +1,4 @@
+import { PaperGrain } from '@/components/atoms/paper-grain';
 import { BottomNav } from '@/components/organisms/bottom-nav';
 import { Footer } from '@/components/organisms/footer';
 import { SiteHeader } from '@/components/organisms/site-header';
@@ -11,6 +12,7 @@ export function MainTemplate({ children }: { children: React.ReactNode }) {
         <Footer />
       </div>
       <BottomNav />
+      <PaperGrain />
     </>
   );
 }

@@ -69,4 +69,10 @@ describe('MainTemplate', () => {
     const navs = screen.getAllByRole('navigation', { name: 'Principal' });
     expect(navs.some((nav) => nav.className.includes('fixed'))).toBe(true);
   });
+
+  it('overlays the paper grain texture', () => {
+    const { container } = renderTemplate();
+
+    expect(container.querySelector('feTurbulence')).toBeInTheDocument();
+  });
 });
