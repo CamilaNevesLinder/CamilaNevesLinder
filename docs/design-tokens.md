@@ -8,11 +8,13 @@ Fonte da verdade: `src/app/[locale]/globals.css` (`@theme` block) + `src/app/[lo
 
 | Token CSS        | Fonte                              | Peso           | Uso                                          |
 | ---------------- | ---------------------------------- | -------------- | -------------------------------------------- |
-| `--font-display` | Playfair Display                   | 700            | Só título do hero (`<h1>` com o nome)        |
-| `--font-serif`   | Georgia (fallback, não é web font) | padrão do body | Corpo de texto, leitura corrida (parágrafos) |
-| `--font-mono`    | JetBrains Mono                     | padrão         | UI: labels, tags de skill, links             |
+| `--font-display` | Playfair Display                   | 400/600/700, itálico | Títulos: hero, títulos de seção, nomes       |
+| `--font-sans`    | Figtree                            | 400/500/600    | Corpo de texto (padrão do body) e botões     |
+| `--font-mono`    | JetBrains Mono                     | padrão         | UI: eyebrows numerados, labels, tags, chips  |
+| `--font-hand`    | Caveat                             | 500/600        | Só notas curtas "à mão" (ex.: "oi, prazer!") |
+| `--font-serif`   | Georgia (fallback, não é web font) | —              | Legado, não usar em componente novo          |
 
-Cada fonte tem um papel fixo — não trocar fonte de um elemento pra outra família sem instrução explícita, e não introduzir uma quarta família.
+Cada fonte tem um papel fixo — não trocar fonte de um elemento pra outra família sem instrução explícita, e não introduzir outra família. Figtree e Caveat aprovadas em 2026-11-18 no redesign v2 (`docs/redesign/`).
 
 ## Paleta de cores
 
@@ -23,6 +25,27 @@ Cada fonte tem um papel fixo — não trocar fonte de um elemento pra outra fam�
 | `--color-rose`     | `#b98f88` | Destaque, itálico, bordas, accent |
 | `--color-taupe`    | `#7a6258` | Texto secundário/labels           |
 | `--color-espresso` | `#3b2f2a` | Texto principal, alto contraste   |
+
+Extensão aprovada em 2026-11-18 (redesign v2):
+
+| Token CSS              | Claro     | Escuro    | Uso                                              |
+| ---------------------- | --------- | --------- | ------------------------------------------------ |
+| `--color-paper`        | `#fffdfb` | `#241b17` | Superfície de card, barra flutuante              |
+| `--color-sand`         | `#f2e4dd` | `#33271f` | Fundo de ícone, hover de nav                     |
+| `--color-sand-light`   | `#f7efea` | `#271e1a` | Hover de linha/lista                             |
+| `--color-line`         | `#ead9d0` | `#3b2e28` | Borda padrão                                     |
+| `--color-line-strong`  | `#e2cfc5` | `#4a3a33` | Borda de chip, campo, seta                       |
+| `--color-body`         | `#4a3b35` | `#e6d8d0` | Texto corrido                                    |
+| `--color-mocha`        | `#6b5850` | `#c9b3a7` | Texto de apoio, chips                            |
+| `--color-clay`         | `#a87169` | `#dcb0a6` | Accent forte (itálico de título, ativo) — AA     |
+| `--color-clay-deep`    | `#8a5f58` | `#d0a59c` | Eyebrow, links, ícones                           |
+| `--color-dusty`        | `#c9a29a` | `#8a6a62` | Decoração: tracejado, sublinhado, borda aberta   |
+| `--color-band`         | `#f3e7e0` | `#241b17` | Faixas de CTA                                    |
+| `--color-lilac`        | `#8f7a99` | igual     | Identidade do projeto Seja                       |
+| `--color-olive`        | `#8c8f74` | igual     | Identidade do projeto Ritmar                     |
+| `--color-ochre`        | `#c09a6b` | igual     | Identidade do projeto Praça 22                   |
+
+Variáveis auxiliares (não são cores de paleta): `--shadow-color` (sombras), `--grain-blend` e `--grain-opacity` (textura de papel).
 
 Paleta suave, tons terrosos/rosados — estética minimalista e feminina. Nenhuma cor fora dessa tabela (incluindo tons de cinza puro, azul, preto puro etc.) deve entrar no projeto sem autorização.
 

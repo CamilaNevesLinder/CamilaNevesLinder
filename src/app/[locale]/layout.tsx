@@ -1,6 +1,11 @@
 import './globals.css';
 
-import { JetBrains_Mono, Playfair_Display } from 'next/font/google';
+import {
+  Caveat,
+  Figtree,
+  JetBrains_Mono,
+  Playfair_Display,
+} from 'next/font/google';
 import type { Metadata } from 'next';
 import NextIntlProvider from '@/providers/next-intl-provider';
 import { MainTemplate } from '@/components/templates/main-template';
@@ -22,9 +27,24 @@ const jetBrainsMono = JetBrains_Mono({
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
-  weight: '700',
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-playfair',
+});
+
+const figtree = Figtree({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-figtree',
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['500', '600'],
+  display: 'swap',
+  variable: '--font-caveat',
 });
 
 export function generateStaticParams() {
@@ -83,7 +103,7 @@ export default async function LocaleLayout({
       translate="no"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${jetBrainsMono.variable} ${playfairDisplay.variable}`}
+      className={`${jetBrainsMono.variable} ${playfairDisplay.variable} ${figtree.variable} ${caveat.variable}`}
     >
       <body>
         <NextIntlProvider locale={locale} messages={messages}>

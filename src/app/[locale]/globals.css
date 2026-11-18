@@ -10,10 +10,26 @@
   --color-rose: #b98f88;
   --color-taupe: #7a6258;
   --color-espresso: #3b2f2a;
+  --color-paper: #fffdfb;
+  --color-sand: #f2e4dd;
+  --color-sand-light: #f7efea;
+  --color-line: #ead9d0;
+  --color-line-strong: #e2cfc5;
+  --color-body: #4a3b35;
+  --color-mocha: #6b5850;
+  --color-clay: #a87169;
+  --color-clay-deep: #8a5f58;
+  --color-dusty: #c9a29a;
+  --color-band: #f3e7e0;
+  --color-lilac: #8f7a99;
+  --color-olive: #8c8f74;
+  --color-ochre: #c09a6b;
 
+  --font-sans: var(--font-figtree), system-ui, sans-serif;
   --font-mono: var(--font-mono-numeric), ui-monospace, monospace;
   --font-serif: Georgia, 'Times New Roman', serif;
   --font-display: var(--font-playfair), Georgia, serif;
+  --font-hand: var(--font-caveat), cursive;
 }
 
 @theme inline {
@@ -60,7 +76,7 @@
 :root {
   --background: var(--color-cream);
   --foreground: var(--color-espresso);
-  --card: var(--color-cream);
+  --card: var(--color-paper);
   --card-foreground: var(--color-espresso);
   --popover: var(--color-cream);
   --popover-foreground: var(--color-espresso);
@@ -73,8 +89,8 @@
   --accent: var(--color-blush);
   --accent-foreground: var(--color-espresso);
   --destructive: var(--color-espresso);
-  --border: color-mix(in srgb, var(--color-rose) 40%, transparent);
-  --input: color-mix(in srgb, var(--color-rose) 40%, transparent);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
   --ring: var(--color-rose);
   --chart-1: var(--color-rose);
   --chart-2: var(--color-taupe);
@@ -90,6 +106,9 @@
   --sidebar-accent-foreground: var(--color-espresso);
   --sidebar-border: color-mix(in srgb, var(--color-rose) 40%, transparent);
   --sidebar-ring: var(--color-rose);
+  --shadow-color: rgb(59 47 42 / 0.35);
+  --grain-blend: multiply;
+  --grain-opacity: 0.09;
 }
 
 @layer base {
@@ -104,10 +123,24 @@
     --color-rose: #c9a29a;
     --color-taupe: #c2ab9e;
     --color-espresso: #f5ece7;
+    --color-paper: #241b17;
+    --color-sand: #33271f;
+    --color-sand-light: #271e1a;
+    --color-line: #3b2e28;
+    --color-line-strong: #4a3a33;
+    --color-body: #e6d8d0;
+    --color-mocha: #c9b3a7;
+    --color-clay: #dcb0a6;
+    --color-clay-deep: #d0a59c;
+    --color-dusty: #8a6a62;
+    --color-band: #241b17;
+    --shadow-color: rgb(0 0 0 / 0.6);
+    --grain-blend: screen;
+    --grain-opacity: 0.045;
   }
 
   body {
-    @apply bg-background text-foreground overflow-x-hidden font-serif antialiased;
+    @apply bg-background text-body overflow-x-hidden font-sans antialiased transition-colors duration-300;
   }
 
   @media (prefers-reduced-motion: reduce) {
