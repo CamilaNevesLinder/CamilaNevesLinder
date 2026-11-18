@@ -11,3 +11,5 @@ export const LOCALE_NAMES: Record<Locale, string> = {
   en: 'English',
   es: 'Español',
 };
+
+export const LOCALE_DISPLAY_ORDER: Locale[] = ['pt-br', 'en', 'es'];

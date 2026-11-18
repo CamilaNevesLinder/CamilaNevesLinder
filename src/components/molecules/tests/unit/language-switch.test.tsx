@@ -27,7 +27,6 @@ vi.mock('@/lib/navigation', () => ({
       {children}
     </a>
   ),
-  locales: ['pt-br', 'en', 'es'],
   usePathname: () => '/projects',
 }));
 

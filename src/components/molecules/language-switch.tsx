@@ -1,8 +1,12 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { LOCALE_NAMES, LOCALE_SHORT_LABELS } from '@/lib/locale-labels';
-import { Link, locales, usePathname } from '@/lib/navigation';
+import {
+  LOCALE_DISPLAY_ORDER,
+  LOCALE_NAMES,
+  LOCALE_SHORT_LABELS,
+} from '@/lib/locale-labels';
+import { Link, usePathname } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
 
 export function LanguageSwitch() {
@@ -15,7 +19,7 @@ export function LanguageSwitch() {
       aria-label={t('languageLabel')}
       className="border-line flex h-11 items-center rounded-full border px-1.5 font-mono text-[13px]"
     >
-      {locales.map((locale) => {
+      {LOCALE_DISPLAY_ORDER.map((locale) => {
         const isCurrent = locale === currentLocale;
         return (
           <Link
