@@ -400,7 +400,12 @@
       "darkMode": "Modo escuro"
     },
     "technologiesCompact": "Stack",
-    "mainLabel": "Principal"
+    "mainLabel": "Principal",
+    "languageLabel": "Idioma",
+    "theme": {
+      "enableDark": "Ativar modo escuro",
+      "enableLight": "Ativar modo claro"
+    }
   },
   "footer": {
     "rights": "© {year} Camila Neves Linder · Desenvolvedora Full Stack",

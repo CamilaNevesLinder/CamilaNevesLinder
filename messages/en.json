@@ -400,7 +400,12 @@
       "darkMode": "Dark mode"
     },
     "technologiesCompact": "Stack",
-    "mainLabel": "Main"
+    "mainLabel": "Main",
+    "languageLabel": "Language",
+    "theme": {
+      "enableDark": "Switch to dark mode",
+      "enableLight": "Switch to light mode"
+    }
   },
   "footer": {
     "rights": "© {year} Camila Neves Linder · Full Stack Developer",
