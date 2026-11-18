@@ -6,10 +6,14 @@
     }
   },
   "hero": {
-    "tagline": "full stack developer.",
-    "description": "From database to interface — architecture, API, and the app live in production.",
-    "workCta": "View work →",
-    "contactCta": "Get in touch →"
+    "location": "Florianópolis, Brazil · remote",
+    "title": "Hi, I'm Camila. I build <highlight>whole apps</highlight>, from database to screen.",
+    "description": "Full stack developer. React Native and Next.js up front, NestJS and MySQL behind.",
+    "workCta": "See projects",
+    "contactCta": "Talk to me",
+    "photoAlt": "Camila Neves Linder smiling",
+    "photoNote": "hi, nice to meet you!",
+    "beltSticker": "purple belt<br></br>in jiu-jitsu"
   },
   "projects": {
     "heading": "Selected projects",

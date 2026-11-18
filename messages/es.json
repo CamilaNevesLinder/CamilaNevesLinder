@@ -6,10 +6,14 @@
     }
   },
   "hero": {
-    "tagline": "desarrolladora full stack.",
-    "description": "De la base de datos a la interfaz — arquitectura, API y aplicación en producción.",
-    "workCta": "Ver trabajo →",
-    "contactCta": "Contactar →"
+    "location": "Florianópolis, Brasil · remoto",
+    "title": "Hola, soy Camila. Construyo <highlight>apps completas</highlight>, de la base de datos a la pantalla.",
+    "description": "Desarrolladora full stack. React Native y Next.js al frente, NestJS y MySQL detrás.",
+    "workCta": "Ver proyectos",
+    "contactCta": "Háblame",
+    "photoAlt": "Camila Neves Linder sonriendo",
+    "photoNote": "¡hola, un gusto!",
+    "beltSticker": "faja morada<br></br>en jiu-jitsu"
   },
   "projects": {
     "heading": "Proyectos seleccionados",

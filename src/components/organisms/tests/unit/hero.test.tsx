@@ -19,103 +19,49 @@ vi.mock('@/lib/navigation', () => ({
 }));
 
 describe('Hero', () => {
-  it('renders the name and role', () => {
+  it('renders the greeting headline with the highlighted phrase', () => {
     renderWithProviders(<Hero />);
 
-    expect(screen.getByText('Camila Neves Linder')).toBeInTheDocument();
-    expect(screen.getByText('desenvolvedora full stack.')).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading).toHaveTextContent(
+      'Oi, eu sou a Camila. Construo apps inteiros, do banco à tela.',
+    );
+    expect(screen.getByText('apps inteiros')).toHaveClass('italic');
   });
 
-  it('renders the description line', () => {
+  it('renders the location pill and the description', () => {
     renderWithProviders(<Hero />);
 
+    expect(screen.getByText('Florianópolis, SC · remoto')).toBeInTheDocument();
     expect(
       screen.getByText(
-        'Do banco de dados à interface, arquitetura, API e aplicação no ar.',
+        'Desenvolvedora full stack. React Native e Next.js na frente, NestJS e MySQL por trás.',
       ),
     ).toBeInTheDocument();
   });
 
-  it('renders every stack tag', () => {
+  it('links the primary CTA to projects and the secondary to contact', () => {
     renderWithProviders(<Hero />);
 
-    for (const tag of [
-      'TypeScript',
-      'JavaScript',
-      'React',
-      'React Native',
-      'NestJS',
-      'Next.js',
-    ]) {
-      expect(screen.getByText(tag)).toBeInTheDocument();
-    }
-  });
-
-  it('links the work CTA to the projects page', () => {
-    renderWithProviders(<Hero />);
-
-    const cta = screen.getByRole('link', { name: 'Ver trabalho →' });
-    expect(cta).toHaveAttribute('href', '/projects');
-  });
-
-  it('links the contact CTA to the contact page', () => {
-    renderWithProviders(<Hero />);
-
-    const cta = screen.getByRole('link', { name: 'Entrar em contato →' });
-    expect(cta).toHaveAttribute('href', '/contact');
-  });
-
-  it('renders the location', () => {
-    renderWithProviders(<Hero />);
-
-    expect(screen.getByText('Florianópolis, SC')).toBeInTheDocument();
-  });
-
-  it('renders the profile photo with alt text', () => {
-    renderWithProviders(<Hero />);
-
-    expect(screen.getByAltText('Camila Neves Linder')).toBeInTheDocument();
-  });
-
-  it('centers the name/tagline/photo block on mobile and keeps the desktop row from sm', () => {
-    renderWithProviders(<Hero />);
-
-    const heading = screen.getByText('Camila Neves Linder');
-    const layoutRow = heading.closest('div')?.parentElement;
-    expect(layoutRow).toHaveClass('flex-col', 'items-center', 'text-center');
-    expect(layoutRow).toHaveClass(
-      'sm:flex-row',
-      'sm:justify-between',
-      'sm:text-left',
+    expect(screen.getByRole('link', { name: 'Ver projetos' })).toHaveAttribute(
+      'href',
+      '/projects',
+    );
+    expect(screen.getByRole('link', { name: 'Fale comigo' })).toHaveAttribute(
+      'href',
+      '/contact',
     );
   });
 
-  it('scales the heading and tagline down on small screens', () => {
+  it('renders the polaroid photo with its handwritten note and belt sticker', () => {
     renderWithProviders(<Hero />);
 
-    expect(screen.getByText('Camila Neves Linder')).toHaveClass(
-      'text-[40px]',
-      'sm:text-[68px]',
+    expect(
+      screen.getByRole('img', { name: 'Camila Neves Linder sorrindo' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('oi, prazer!')).toHaveClass('font-hand');
+    expect(screen.getByText(/faixa roxa/)).toHaveTextContent(
+      'faixa roxano jiu-jitsu',
     );
-    expect(screen.getByText('desenvolvedora full stack.')).toHaveClass(
-      'text-[40px]',
-      'sm:text-[68px]',
-    );
-  });
-
-  it('reduces the card padding on small screens', () => {
-    renderWithProviders(<Hero />);
-
-    const card = screen
-      .getByText('Camila Neves Linder')
-      .closest('[data-slot="card"]');
-    expect(card).toHaveClass('p-6', 'sm:p-[60px]');
-  });
-
-  it('shrinks the profile photo on small screens', () => {
-    renderWithProviders(<Hero />);
-
-    const photo = screen.getByAltText('Camila Neves Linder');
-    expect(photo.parentElement).toHaveClass('size-[120px]', 'sm:size-[180px]');
   });
 });

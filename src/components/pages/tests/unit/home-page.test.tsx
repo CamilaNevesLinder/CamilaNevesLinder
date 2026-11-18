@@ -12,7 +12,9 @@ describe('HomePage', () => {
   it('renders every home section', () => {
     renderWithProviders(<HomePage />);
 
-    expect(screen.getByText('Camila Neves Linder')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'Oi, eu sou a Camila.',
+    );
     expect(screen.getByText('Projetos selecionados')).toBeInTheDocument();
     expect(screen.getByText('IA First')).toBeInTheDocument();
     expect(screen.getByText('Experiência')).toBeInTheDocument();
