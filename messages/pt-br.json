@@ -134,6 +134,7 @@
     "close": "Fechar",
     "myRole": "Meu papel",
     "screenshot": "print do {title} aqui",
+    "screenshotAlt": "Imagem do projeto {title}",
     "items": {
       "oniapp": {
         "title": "Oniapp",

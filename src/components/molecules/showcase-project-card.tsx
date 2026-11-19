@@ -1,6 +1,7 @@
 'use client';
 
 import { Check, Image as ImageIcon, Plus, User } from 'lucide-react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useEffect, useRef } from 'react';
 import type { ShowcaseProjectKey } from '@/lib/showcase-projects';
@@ -14,12 +15,14 @@ export function ShowcaseProjectCard({
   projectKey,
   initial,
   colorToken,
+  image,
   isOpen,
   onToggle,
 }: {
   projectKey: ShowcaseProjectKey;
   initial: string;
   colorToken: string;
+  image?: string;
   isOpen: boolean;
   onToggle: () => void;
 }) {
@@ -95,21 +98,33 @@ export function ShowcaseProjectCard({
           id={detailsId}
           className="border-line-strong mx-5 flex flex-wrap gap-8 border-t border-dashed pb-8 pt-7 sm:mx-6"
         >
-          <div className="relative grid min-h-60 flex-[1_1_280px] place-items-center overflow-hidden rounded-[18px] bg-[color-mix(in_srgb,var(--project-color)_22%,transparent)]">
-            <span
-              aria-hidden="true"
-              className={cn(
-                'bg-size-[16px_16px] absolute inset-0',
-                DOT_PATTERN,
-              )}
-            />
-            <span className="text-mocha relative flex flex-col items-center gap-2">
-              <ImageIcon size={28} strokeWidth={1.4} aria-hidden="true" />
-              <span className="font-hand text-[22px]">
-                {t('screenshot', { title })}
+          {image ? (
+            <div className="relative min-h-60 flex-[1_1_280px] overflow-hidden rounded-[18px] bg-white">
+              <Image
+                src={image}
+                alt={t('screenshotAlt', { title })}
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="object-contain p-6"
+              />
+            </div>
+          ) : (
+            <div className="relative grid min-h-60 flex-[1_1_280px] place-items-center overflow-hidden rounded-[18px] bg-[color-mix(in_srgb,var(--project-color)_22%,transparent)]">
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'bg-size-[16px_16px] absolute inset-0',
+                  DOT_PATTERN,
+                )}
+              />
+              <span className="text-mocha relative flex flex-col items-center gap-2">
+                <ImageIcon size={28} strokeWidth={1.4} aria-hidden="true" />
+                <span className="font-hand text-[22px]">
+                  {t('screenshot', { title })}
+                </span>
               </span>
-            </span>
-          </div>
+            </div>
+          )}
           <div className="flex min-w-0 flex-[999_1_420px] flex-col gap-[18px]">
             <div className="bg-sand-light flex items-start gap-3 rounded-[14px] px-4 py-3.5">
               <User

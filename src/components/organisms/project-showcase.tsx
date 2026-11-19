@@ -67,12 +67,13 @@ export function ProjectShowcase() {
 
       <section className="mx-auto max-w-[1160px] px-4 pb-24 sm:px-6 md:pb-[104px]">
         <div className="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5">
-          {visibleProjects.map(({ key, initial, colorToken }) => (
+          {visibleProjects.map(({ key, initial, colorToken, image }) => (
             <ShowcaseProjectCard
               key={key}
               projectKey={key}
               initial={initial}
               colorToken={colorToken}
+              image={image}
               isOpen={openProject === key}
               onToggle={() =>
                 setOpenProject((current) => (current === key ? null : key))

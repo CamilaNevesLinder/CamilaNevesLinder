@@ -16,13 +16,21 @@ export const SHOWCASE_PROJECTS: {
   initial: string;
   group: ProjectGroup;
   colorToken: string;
+  image?: string;
 }[] = [
-  { key: 'oniapp', initial: 'O', group: 'mobile', colorToken: '--color-rose' },
+  {
+    key: 'oniapp',
+    initial: 'O',
+    group: 'mobile',
+    colorToken: '--color-rose',
+    image: '/projects/oniapp.webp',
+  },
   {
     key: 'oniappAdmin',
     initial: 'O',
     group: 'web',
     colorToken: '--color-clay',
+    image: '/projects/oniapp.webp',
   },
   { key: 'seja', initial: 'S', group: 'mobile', colorToken: '--color-lilac' },
   { key: 'sejaAdmin', initial: 'S', group: 'web', colorToken: '--color-lilac' },
