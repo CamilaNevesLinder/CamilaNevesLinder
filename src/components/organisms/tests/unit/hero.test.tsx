@@ -53,15 +53,12 @@ describe('Hero', () => {
     );
   });
 
-  it('renders the polaroid photo with its handwritten note and belt sticker', () => {
+  it('renders the polaroid photo with its handwritten note', () => {
     renderWithProviders(<Hero />);
 
     expect(
       screen.getByRole('img', { name: 'Camila Neves Linder sorrindo' }),
     ).toBeInTheDocument();
     expect(screen.getByText('oi, prazer!')).toHaveClass('font-hand');
-    expect(screen.getByText(/faixa roxa/)).toHaveTextContent(
-      'faixa roxano jiu-jitsu',
-    );
   });
 });

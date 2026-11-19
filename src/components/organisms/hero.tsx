@@ -77,9 +77,6 @@ export function Hero() {
             {t('photoNote')}
           </figcaption>
         </figure>
-        <p className="bg-espresso text-cream font-hand -rotate-10 absolute bottom-0 right-[4%] grid size-[108px] place-items-center rounded-full text-center text-[21px] leading-[1.05] shadow-[0_10px_24px_-12px_var(--shadow-color)]">
-          {t.rich('beltSticker', { br: () => <br /> })}
-        </p>
       </div>
     </section>
   );
