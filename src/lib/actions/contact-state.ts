@@ -6,6 +6,7 @@ export type ContactFormState = {
   fieldErrors: Partial<
     Record<'name' | 'email' | 'message', ContactFieldErrorCode>
   >;
+  values?: Record<'name' | 'email' | 'message', string>;
 };
 
 export const initialContactFormState: ContactFormState = {

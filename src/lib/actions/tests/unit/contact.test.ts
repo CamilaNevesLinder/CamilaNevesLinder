@@ -47,7 +47,7 @@ describe('sendContactMessage', () => {
       buildFormData({ name: '', email: '', message: '', company: '' }),
     );
 
-    expect(result).toEqual({
+    expect(result).toMatchObject({
       status: 'error',
       fieldErrors: {
         name: 'nameRequired',
@@ -64,11 +64,26 @@ describe('sendContactMessage', () => {
       buildFormData({ ...VALID_FIELDS, email: 'not-an-email' }),
     );
 
-    expect(result).toEqual({
+    expect(result).toMatchObject({
       status: 'error',
       fieldErrors: { email: 'emailInvalid' },
     });
     expect(sendMailMock).not.toHaveBeenCalled();
+  });
+
+  it('echoes the typed values back on error so the form keeps them', async () => {
+    sendMailMock.mockRejectedValueOnce(new Error('SMTP down'));
+
+    const result = await sendContactMessage(
+      initialContactFormState,
+      buildFormData(VALID_FIELDS),
+    );
+
+    expect(result.values).toEqual({
+      name: VALID_FIELDS.name,
+      email: VALID_FIELDS.email,
+      message: VALID_FIELDS.message,
+    });
   });
 
   it('sends the email with the expected fields on valid input', async () => {
@@ -116,7 +131,7 @@ describe('sendContactMessage', () => {
       buildFormData(VALID_FIELDS),
     );
 
-    expect(result).toEqual({ status: 'error', fieldErrors: {} });
+    expect(result).toMatchObject({ status: 'error', fieldErrors: {} });
     expect(sendMailMock).not.toHaveBeenCalled();
   });
 
@@ -128,7 +143,7 @@ describe('sendContactMessage', () => {
       buildFormData(VALID_FIELDS),
     );
 
-    expect(result).toEqual({ status: 'error', fieldErrors: {} });
+    expect(result).toMatchObject({ status: 'error', fieldErrors: {} });
   });
 
   it('treats a completely missing field the same as an empty one', async () => {
@@ -140,7 +155,7 @@ describe('sendContactMessage', () => {
 
     const result = await sendContactMessage(initialContactFormState, formData);
 
-    expect(result).toEqual({
+    expect(result).toMatchObject({
       status: 'error',
       fieldErrors: { name: 'nameRequired' },
     });
@@ -154,7 +169,7 @@ describe('sendContactMessage', () => {
 
     const result = await sendContactMessage(initialContactFormState, formData);
 
-    expect(result).toEqual({
+    expect(result).toMatchObject({
       status: 'error',
       fieldErrors: {
         name: 'nameRequired',

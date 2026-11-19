@@ -18,13 +18,14 @@ export async function sendContactMessage(
     return { status: 'success', fieldErrors: {} };
   }
 
+  const values = { name, email, message };
   const fieldErrors: ContactFormState['fieldErrors'] = {};
   if (name.length < 2) fieldErrors.name = 'nameRequired';
   if (!EMAIL_REGEX.test(email)) fieldErrors.email = 'emailInvalid';
   if (message.length < 10) fieldErrors.message = 'messageRequired';
 
   if (Object.keys(fieldErrors).length > 0) {
-    return { status: 'error', fieldErrors };
+    return { status: 'error', fieldErrors, values };
   }
 
   const to = process.env.CONTACT_TO_EMAIL;
@@ -33,7 +34,7 @@ export async function sendContactMessage(
 
   if (!transport || !to || !from) {
     console.error('[contact] SMTP is not configured — message not sent');
-    return { status: 'error', fieldErrors: {} };
+    return { status: 'error', fieldErrors: {}, values };
   }
 
   try {
@@ -46,7 +47,7 @@ export async function sendContactMessage(
     });
   } catch (error) {
     console.error('[contact] failed to send message', error);
-    return { status: 'error', fieldErrors: {} };
+    return { status: 'error', fieldErrors: {}, values };
   }
 
   return { status: 'success', fieldErrors: {} };
