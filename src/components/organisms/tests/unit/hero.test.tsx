@@ -32,7 +32,7 @@ describe('Hero', () => {
   it('renders the location pill and the description', () => {
     renderWithProviders(<Hero />);
 
-    expect(screen.getByText('Florianópolis, SC · remoto')).toBeInTheDocument();
+    expect(screen.getByText('Florianópolis, SC')).toBeInTheDocument();
     expect(
       screen.getByText(
         'Desenvolvedora full stack. React Native e Next.js na frente, NestJS e MySQL por trás.',

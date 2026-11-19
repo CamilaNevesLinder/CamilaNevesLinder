@@ -6,7 +6,7 @@
     }
   },
   "hero": {
-    "location": "Florianópolis, Brazil · remote",
+    "location": "Florianópolis, Brazil",
     "title": "Hi, I'm Camila. I build <highlight>whole apps</highlight>, from database to screen.",
     "description": "Full stack developer. React Native and Next.js up front, NestJS and MySQL behind.",
     "workCta": "See projects",
