@@ -1,70 +1,67 @@
 'use client';
 
-import { useActionState, useEffect, useRef } from 'react';
+import { Check, Mail, Send } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Mail } from 'lucide-react';
-import {
-  GithubIcon,
-  LinkedinIcon,
-  WhatsappIcon,
-} from '@/components/atoms/icons/social-icons';
-import { Card } from '@/components/atoms/card';
-import { Label } from '@/components/atoms/label';
-import { Input } from '@/components/atoms/input';
-import { Textarea } from '@/components/atoms/textarea';
-import { Button, buttonVariants } from '@/components/atoms/button';
-import { SOCIAL_LINKS } from '@/lib/site';
+import { useActionState, useState } from 'react';
+import { LetterField } from '@/components/molecules/letter-field';
 import { sendContactMessage } from '@/lib/actions/contact';
 import {
   initialContactFormState,
   type ContactFormState,
 } from '@/lib/actions/contact-state';
-import { cn } from '@/lib/utils';
-
-const DIRECT_LINK_CLASSNAME = cn(
-  buttonVariants({ variant: 'ghost', size: 'icon-lg' }),
-  'border-rose/30 size-12',
-);
-
-const LABEL_CLASSNAME =
-  'text-espresso font-mono text-sm uppercase tracking-wide';
-
-const FIELD_CLASSNAME = 'px-4 text-[17px] md:text-[17px]';
 
 export function ContactForm() {
   const t = useTranslations('contactPage');
-  const tNav = useTranslations('nav');
-  const [state, formAction, pending] = useActionState<
+  const [state, formAction, isPending] = useActionState<
     ContactFormState,
     FormData
   >(sendContactMessage, initialContactFormState);
-  const formRef = useRef<HTMLFormElement>(null);
-
-  useEffect(() => {
-    if (state.status === 'success') {
-      formRef.current?.reset();
-    }
-  }, [state]);
+  const [dismissedState, setDismissedState] = useState<ContactFormState | null>(
+    null,
+  );
+  const isSent = state.status === 'success' && state !== dismissedState;
+  const { fieldErrors, values } = state;
+  const hasGenericError =
+    state.status === 'error' && Object.keys(fieldErrors).length === 0;
 
   return (
-    <section className="bg-cream flex justify-center px-6 py-16">
-      <div className="w-full max-w-[960px]">
-        <p className="text-taupe mb-[18px] font-mono text-sm uppercase tracking-wide">
-          {t('label')}
-        </p>
-        <h2 className="text-espresso font-serif text-[26px] font-bold sm:text-[32px]">
-          {t('heading')}
-        </h2>
-        <p className="text-taupe mt-3 text-[17px] leading-relaxed">
-          {t('intro')}
-        </p>
+    <div className="relative rounded-[20px] bg-[repeating-linear-gradient(135deg,var(--color-dusty)_0_14px,var(--color-paper)_14px_24px,var(--color-clay-deep)_24px_38px,var(--color-paper)_38px_48px)] p-2.5 shadow-[0_30px_60px_-36px_var(--shadow-color)]">
+      <div className="bg-paper relative rounded-xl bg-[repeating-linear-gradient(to_bottom,transparent_0,transparent_39px,color-mix(in_srgb,var(--color-rose)_24%,transparent)_39px,color-mix(in_srgb,var(--color-rose)_24%,transparent)_40px)] p-[clamp(24px,4vw,44px)]">
+        <div
+          aria-hidden="true"
+          className="border-dusty bg-cream absolute right-4 top-4 flex h-[100px] w-[84px] rotate-6 flex-col items-center justify-center gap-0.5 border-2 border-dotted p-1.5 text-center sm:right-[22px] sm:top-[22px]"
+        >
+          <Mail size={22} strokeWidth={1.4} className="text-clay-deep" />
+          <span className="text-taupe font-mono text-[9px] uppercase leading-tight">
+            {t('form.stamp')}
+          </span>
+        </div>
 
-        <Card className="border-rose/40 mt-9 rounded-lg border p-6 shadow-none ring-0 sm:p-10">
+        {isSent ? (
+          <div
+            role="status"
+            className="flex min-h-[380px] flex-col items-start justify-center gap-3.5"
+          >
+            <span className="bg-sand text-clay-deep grid size-14 place-items-center rounded-full">
+              <Check size={24} strokeWidth={1.6} aria-hidden="true" />
+            </span>
+            <p className="font-display text-espresso text-[32px]">
+              {t('sent.title')}
+            </p>
+            <p className="text-mocha">{t('sent.description')}</p>
+            <button
+              type="button"
+              onClick={() => setDismissedState(state)}
+              className="border-line-strong text-espresso hover:bg-sand min-h-11 rounded-full border px-[18px] text-[15px] transition-colors duration-200"
+            >
+              {t('sent.writeAnother')}
+            </button>
+          </div>
+        ) : (
           <form
-            ref={formRef}
             action={formAction}
-            className="flex flex-col gap-7"
             noValidate
+            className="flex flex-col gap-[22px]"
           >
             <input
               type="text"
@@ -74,140 +71,59 @@ export function ContactForm() {
               aria-hidden="true"
               className="sr-only"
             />
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="contact-name" className={LABEL_CLASSNAME}>
-                {t('form.nameLabel')}
-              </Label>
-              <Input
-                id="contact-name"
-                className={cn(FIELD_CLASSNAME, 'h-12')}
+            <p className="font-hand text-clay-deep mb-1.5 mr-[100px] text-[30px] leading-[1.1]">
+              {t('form.greeting')}
+            </p>
+            <div className="flex flex-wrap gap-[22px]">
+              <LetterField
                 name="name"
+                label={t('form.nameLabel')}
                 placeholder={t('form.namePlaceholder')}
-                aria-invalid={Boolean(state.fieldErrors.name)}
-                aria-describedby={
-                  state.fieldErrors.name ? 'contact-name-error' : undefined
-                }
+                autoComplete="name"
+                defaultValue={values?.name}
+                error={fieldErrors.name && t(`form.errors.${fieldErrors.name}`)}
               />
-              {state.fieldErrors.name && (
-                <p
-                  id="contact-name-error"
-                  role="alert"
-                  className="text-destructive text-[15px]"
-                >
-                  {t(`form.errors.${state.fieldErrors.name}`)}
-                </p>
-              )}
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="contact-email" className={LABEL_CLASSNAME}>
-                {t('form.emailLabel')}
-              </Label>
-              <Input
-                id="contact-email"
-                className={cn(FIELD_CLASSNAME, 'h-12')}
+              <LetterField
                 name="email"
                 type="email"
+                label={t('form.emailLabel')}
                 placeholder={t('form.emailPlaceholder')}
-                aria-invalid={Boolean(state.fieldErrors.email)}
-                aria-describedby={
-                  state.fieldErrors.email ? 'contact-email-error' : undefined
+                autoComplete="email"
+                defaultValue={values?.email}
+                error={
+                  fieldErrors.email && t(`form.errors.${fieldErrors.email}`)
                 }
               />
-              {state.fieldErrors.email && (
-                <p
-                  id="contact-email-error"
-                  role="alert"
-                  className="text-destructive text-[15px]"
-                >
-                  {t(`form.errors.${state.fieldErrors.email}`)}
-                </p>
-              )}
             </div>
-
-            <div className="flex flex-col gap-2">
-              <Label htmlFor="contact-message" className={LABEL_CLASSNAME}>
-                {t('form.messageLabel')}
-              </Label>
-              <Textarea
-                id="contact-message"
-                className={cn(FIELD_CLASSNAME, 'min-h-40 py-3')}
-                name="message"
-                rows={5}
-                placeholder={t('form.messagePlaceholder')}
-                aria-invalid={Boolean(state.fieldErrors.message)}
-                aria-describedby={
-                  state.fieldErrors.message
-                    ? 'contact-message-error'
-                    : undefined
-                }
-              />
-              {state.fieldErrors.message && (
-                <p
-                  id="contact-message-error"
-                  role="alert"
-                  className="text-destructive text-[15px]"
-                >
-                  {t(`form.errors.${state.fieldErrors.message}`)}
-                </p>
-              )}
+            <LetterField
+              name="message"
+              isMultiline
+              label={t('form.messageLabel')}
+              placeholder={t('form.messagePlaceholder')}
+              defaultValue={values?.message}
+              error={
+                fieldErrors.message && t(`form.errors.${fieldErrors.message}`)
+              }
+            />
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <span className="font-hand text-mocha text-[22px]">
+                {t('form.whatsappNote')}
+              </span>
+              <button
+                type="submit"
+                disabled={isPending}
+                className="bg-espresso text-cream inline-flex min-h-[52px] items-center gap-2.5 rounded-full px-[26px] font-medium disabled:opacity-60"
+              >
+                {isPending ? t('form.submitPending') : t('form.submit')}
+                <Send size={18} strokeWidth={1.6} aria-hidden="true" />
+              </button>
             </div>
-
-            <Button
-              type="submit"
-              disabled={pending}
-              className="h-12 self-start px-8 font-mono text-[15px] uppercase tracking-wide"
-            >
-              {pending ? t('form.submitPending') : t('form.submit')}
-            </Button>
-
-            <p aria-live="polite" className="text-[15px]">
-              {state.status === 'success' && t('form.successMessage')}
-              {state.status === 'error' &&
-                Object.keys(state.fieldErrors).length === 0 &&
-                t('form.errorMessage')}
+            <p aria-live="polite" className="text-destructive text-[15px]">
+              {hasGenericError && t('form.errorMessage')}
             </p>
           </form>
-        </Card>
-
-        <p className="text-taupe mb-[14px] mt-12 font-mono text-sm uppercase tracking-wide">
-          {t('directContact.heading')}
-        </p>
-        <div className="flex flex-wrap items-center gap-3">
-          <a
-            href={SOCIAL_LINKS.github}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={tNav('social.github')}
-            className={DIRECT_LINK_CLASSNAME}
-          >
-            <GithubIcon size={24} className="size-6" aria-hidden="true" />
-          </a>
-          <a
-            href={SOCIAL_LINKS.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={tNav('social.linkedin')}
-            className={DIRECT_LINK_CLASSNAME}
-          >
-            <LinkedinIcon size={24} className="size-6" aria-hidden="true" />
-          </a>
-          <a
-            href={SOCIAL_LINKS.whatsapp}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={tNav('social.whatsapp')}
-            className={DIRECT_LINK_CLASSNAME}
-          >
-            <WhatsappIcon size={24} className="size-6" aria-hidden="true" />
-          </a>
-          <a href={SOCIAL_LINKS.email} className={DIRECT_LINK_CLASSNAME}>
-            <Mail size={24} className="size-6" aria-hidden="true" />
-            <span className="sr-only">{tNav('social.email')}</span>
-          </a>
-        </div>
+        )}
       </div>
-    </section>
+    </div>
   );
 }

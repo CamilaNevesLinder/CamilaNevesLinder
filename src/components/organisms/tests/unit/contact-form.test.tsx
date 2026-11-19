@@ -31,15 +31,16 @@ function deferred<T>() {
 }
 
 describe('ContactForm', () => {
-  it('renders the three labeled fields', () => {
+  it('renders the three labeled fields under the letter greeting', () => {
     renderWithProviders(<ContactForm />);
 
+    expect(screen.getByText('Oi, Camila!')).toBeInTheDocument();
     expect(screen.getByLabelText('Nome')).toBeInTheDocument();
     expect(screen.getByLabelText('E-mail')).toBeInTheDocument();
     expect(screen.getByLabelText('Mensagem')).toBeInTheDocument();
   });
 
-  it('disables the submit button and shows the pending label while sending, then the success message', async () => {
+  it('disables the submit button while sending, then swaps the form for the sent letter', async () => {
     const user = userEvent.setup();
     const { promise, resolve } = deferred<{
       status: 'success';
@@ -49,11 +50,6 @@ describe('ContactForm', () => {
     renderWithProviders(<ContactForm />);
 
     await user.type(screen.getByLabelText('Nome'), 'Maria Silva');
-    await user.type(screen.getByLabelText('E-mail'), 'maria@example.com');
-    await user.type(
-      screen.getByLabelText('Mensagem'),
-      'Gostaria de saber mais sobre seus projetos.',
-    );
     await user.click(screen.getByRole('button', { name: 'Enviar mensagem' }));
 
     expect(
@@ -61,52 +57,51 @@ describe('ContactForm', () => {
     ).toBeDisabled();
 
     resolve({ status: 'success', fieldErrors: {} });
-    expect(
-      await screen.findByText('Mensagem enviada! Retorno em breve.'),
-    ).toBeInTheDocument();
+
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Mensagem enviada!',
+    );
+    expect(screen.queryByLabelText('Nome')).not.toBeInTheDocument();
   });
 
-  it('shows field errors returned by the action', async () => {
+  it('goes back to an empty form after choosing to write another message', async () => {
     const user = userEvent.setup();
     sendContactMessageMock.mockResolvedValueOnce({
-      status: 'error',
-      fieldErrors: { email: 'emailInvalid' },
+      status: 'success',
+      fieldErrors: {},
     });
     renderWithProviders(<ContactForm />);
 
+    await user.type(screen.getByLabelText('Nome'), 'Maria Silva');
     await user.click(screen.getByRole('button', { name: 'Enviar mensagem' }));
+    await user.click(
+      await screen.findByRole('button', { name: 'Escrever outra' }),
+    );
 
-    expect(
-      await screen.findByText('Digita um e-mail válido.'),
-    ).toBeInTheDocument();
+    expect(screen.getByLabelText('Nome')).toHaveValue('');
   });
 
-  it('shows the name field error returned by the action', async () => {
+  it('shows the field errors returned by the action and keeps what was typed', async () => {
     const user = userEvent.setup();
     sendContactMessageMock.mockResolvedValueOnce({
       status: 'error',
-      fieldErrors: { name: 'nameRequired' },
+      fieldErrors: {
+        name: 'nameRequired',
+        email: 'emailInvalid',
+        message: 'messageRequired',
+      },
+      values: { name: 'M', email: 'maria@', message: 'Oi' },
     });
     renderWithProviders(<ContactForm />);
 
     await user.click(screen.getByRole('button', { name: 'Enviar mensagem' }));
 
     expect(await screen.findByText('Digita seu nome.')).toBeInTheDocument();
-  });
-
-  it('shows the message field error returned by the action', async () => {
-    const user = userEvent.setup();
-    sendContactMessageMock.mockResolvedValueOnce({
-      status: 'error',
-      fieldErrors: { message: 'messageRequired' },
-    });
-    renderWithProviders(<ContactForm />);
-
-    await user.click(screen.getByRole('button', { name: 'Enviar mensagem' }));
-
+    expect(screen.getByText('Digita um e-mail válido.')).toBeInTheDocument();
     expect(
-      await screen.findByText('Escreve uma mensagem (mínimo 10 caracteres).'),
+      screen.getByText('Escreve uma mensagem (mínimo 10 caracteres).'),
     ).toBeInTheDocument();
+    expect(screen.getByLabelText('E-mail')).toHaveValue('maria@');
   });
 
   it('shows the generic error message when the action fails without field errors', async () => {
@@ -114,6 +109,7 @@ describe('ContactForm', () => {
     sendContactMessageMock.mockResolvedValueOnce({
       status: 'error',
       fieldErrors: {},
+      values: { name: 'Maria', email: 'maria@example.com', message: 'Oi!' },
     });
     renderWithProviders(<ContactForm />);
 
@@ -121,44 +117,8 @@ describe('ContactForm', () => {
 
     expect(
       await screen.findByText(
-        'Não foi possível enviar sua mensagem agora. Tenta de novo mais tarde ou usa um dos links abaixo.',
+        'Não foi possível enviar sua mensagem agora. Tenta de novo mais tarde ou usa um dos outros canais.',
       ),
     ).toBeInTheDocument();
-  });
-
-  it('renders the direct-contact links with the expected hrefs', () => {
-    renderWithProviders(<ContactForm />);
-
-    expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute(
-      'href',
-      'https://github.com/CamilaNevesLinder',
-    );
-    expect(screen.getByRole('link', { name: 'LinkedIn' })).toHaveAttribute(
-      'href',
-      'https://www.linkedin.com/in/camila-neves-linder-76a342403/',
-    );
-    expect(screen.getByRole('link', { name: 'WhatsApp' })).toHaveAttribute(
-      'href',
-      'https://wa.me/5548998558324',
-    );
-    expect(screen.getByRole('link', { name: 'E-mail' })).toHaveAttribute(
-      'href',
-      'mailto:camilaneveslindner@gmail.com',
-    );
-  });
-
-  it('scales the section heading down on small screens', () => {
-    renderWithProviders(<ContactForm />);
-
-    expect(
-      screen.getByRole('heading', { level: 2, name: 'Vamos conversar?' }),
-    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
-  });
-
-  it('lets the direct-contact icon row wrap instead of overflowing', () => {
-    renderWithProviders(<ContactForm />);
-
-    const githubLink = screen.getByRole('link', { name: 'GitHub' });
-    expect(githubLink.parentElement).toHaveClass('flex-wrap');
   });
 });

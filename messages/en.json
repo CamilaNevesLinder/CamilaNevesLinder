@@ -301,9 +301,8 @@
     }
   },
   "contactPage": {
-    "label": "Contact",
-    "heading": "Let's talk?",
-    "intro": "Send your message here, or pick whichever channel below works for you.",
+    "heading": "Shall we <em>talk?</em>",
+    "intro": "Send your message here or pick the channel you prefer.",
     "form": {
       "nameLabel": "Name",
       "namePlaceholder": "Your name",
@@ -313,16 +312,22 @@
       "messagePlaceholder": "Leave the details of what you're looking for here",
       "submit": "Send message",
       "submitPending": "Sending...",
-      "successMessage": "Message sent! I'll get back to you soon.",
-      "errorMessage": "Couldn't send your message right now. Try again later or use one of the links below.",
+      "errorMessage": "Couldn't send your message right now. Try again later or use one of the other channels.",
       "errors": {
         "nameRequired": "Enter your name.",
         "emailInvalid": "Enter a valid email.",
         "messageRequired": "Write a message (minimum 10 characters)."
-      }
+      },
+      "greeting": "Hi, Camila!",
+      "whatsappNote": "or text me on WhatsApp",
+      "stamp": "Floripa · SC · BR"
     },
-    "directContact": {
-      "heading": "Other ways to reach me"
+    "eyebrow": "Contact",
+    "otherChannels": "Other channels",
+    "sent": {
+      "title": "Message sent!",
+      "description": "I will get back to you soon.",
+      "writeAnother": "Write another"
     }
   },
   "nav": {

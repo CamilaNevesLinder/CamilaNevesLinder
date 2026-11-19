@@ -23,12 +23,16 @@ vi.mock('@/lib/navigation', () => ({
 }));
 
 describe('ContactPage', () => {
-  it('renders the contact form', () => {
+  it('renders the channels next to the letter form', () => {
     renderWithProviders(<ContactPage />);
 
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'Vamos conversar?',
+    );
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Vamos conversar?' }),
+      screen.getByRole('heading', { level: 2, name: 'Outros canais' }),
     ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Instagram/ })).toBeInTheDocument();
     expect(screen.getByLabelText('Nome')).toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: 'Enviar mensagem' }),

@@ -301,9 +301,8 @@
     }
   },
   "contactPage": {
-    "label": "Contato",
-    "heading": "Vamos conversar?",
-    "intro": "Manda sua mensagem por aqui, ou escolhe o canal que preferir abaixo.",
+    "heading": "Vamos <em>conversar?</em>",
+    "intro": "Manda sua mensagem por aqui ou escolhe o canal que preferir.",
     "form": {
       "nameLabel": "Nome",
       "namePlaceholder": "Seu nome",
@@ -313,16 +312,22 @@
       "messagePlaceholder": "Deixa aqui os detalhes do que você procura",
       "submit": "Enviar mensagem",
       "submitPending": "Enviando...",
-      "successMessage": "Mensagem enviada! Retorno em breve.",
-      "errorMessage": "Não foi possível enviar sua mensagem agora. Tenta de novo mais tarde ou usa um dos links abaixo.",
+      "errorMessage": "Não foi possível enviar sua mensagem agora. Tenta de novo mais tarde ou usa um dos outros canais.",
       "errors": {
         "nameRequired": "Digita seu nome.",
         "emailInvalid": "Digita um e-mail válido.",
         "messageRequired": "Escreve uma mensagem (mínimo 10 caracteres)."
-      }
+      },
+      "greeting": "Oi, Camila!",
+      "whatsappNote": "ou me chama no WhatsApp",
+      "stamp": "Floripa · SC · BR"
     },
-    "directContact": {
-      "heading": "Outras formas de contato"
+    "eyebrow": "Contato",
+    "otherChannels": "Outros canais",
+    "sent": {
+      "title": "Mensagem enviada!",
+      "description": "Retorno em breve.",
+      "writeAnother": "Escrever outra"
     }
   },
   "nav": {

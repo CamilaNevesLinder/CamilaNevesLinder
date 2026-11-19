@@ -3,7 +3,14 @@ import ptBr from '../../../messages/pt-br.json';
 import en from '../../../messages/en.json';
 import es from '../../../messages/es.json';
 
-const TOP_KEYS = ['label', 'heading', 'intro', 'form', 'directContact'];
+const TOP_KEYS = [
+  'heading',
+  'intro',
+  'form',
+  'eyebrow',
+  'otherChannels',
+  'sent',
+];
 const FORM_KEYS = [
   'nameLabel',
   'namePlaceholder',
@@ -13,9 +20,11 @@ const FORM_KEYS = [
   'messagePlaceholder',
   'submit',
   'submitPending',
-  'successMessage',
   'errorMessage',
   'errors',
+  'greeting',
+  'whatsappNote',
+  'stamp',
 ];
 const ERROR_KEYS = ['nameRequired', 'emailInvalid', 'messageRequired'];
 
@@ -38,9 +47,13 @@ describe('contactPage message parity', () => {
     expect(Object.keys(es.contactPage.form.errors)).toEqual(ERROR_KEYS);
   });
 
-  it('has a non-empty directContact.heading in every locale', () => {
-    expect(ptBr.contactPage.directContact.heading).toBeTruthy();
-    expect(en.contactPage.directContact.heading).toBeTruthy();
-    expect(es.contactPage.directContact.heading).toBeTruthy();
+  it('has the sent letter copy in every locale', () => {
+    for (const messages of [ptBr, en, es]) {
+      expect(Object.keys(messages.contactPage.sent)).toEqual([
+        'title',
+        'description',
+        'writeAnother',
+      ]);
+    }
   });
 });
