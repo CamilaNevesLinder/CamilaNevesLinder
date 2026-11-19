@@ -464,5 +464,136 @@
       "description": "I reply by email, LinkedIn and WhatsApp.",
       "button": "Write to me"
     }
+  },
+  "aboutPage": {
+    "eyebrow": "About",
+    "heading": "Beyond <em>the screen</em>",
+    "intro": "I like learning new things and getting truly involved in what I do. Away from code, my routine is the mat, a book and a new language.",
+    "portraitAlt": "Portrait of Camila",
+    "portraitCaption": "this is me",
+    "chips": {
+      "purpleBelt": "Purple belt",
+      "reader": "Reader",
+      "languages": "EN · ES · DE"
+    },
+    "sections": {
+      "jiujitsu": "Jiu-jitsu",
+      "books": "Bookshelf",
+      "languages": "Languages"
+    },
+    "jiujitsu": {
+      "heading": "Four years <em>on the mat</em>",
+      "description": "Purple belt. I teach kids at Gracie Barra and have competed in several tournaments.",
+      "previous": "Previous photo",
+      "next": "Next photo",
+      "goTo": "Go to photo {number}",
+      "photos": {
+        "01": {
+          "alt": "Superfight at the Compnet competition",
+          "caption": "superfight · Compnet 2025"
+        },
+        "02": {
+          "alt": "Graduation of the kids class at Gracie Barra",
+          "caption": "kids class graduation"
+        },
+        "03": {
+          "alt": "Purple belt training at Gracie Barra São José",
+          "caption": "purple belt · GB São José"
+        },
+        "04": {
+          "alt": "Compnet competition as an orange belt",
+          "caption": "Compnet 2023 · orange belt"
+        },
+        "05": {
+          "alt": "Compnet competition as an orange belt",
+          "caption": "Compnet 2023"
+        },
+        "06": {
+          "alt": "Green belt graduation with master André Déco Rachadel",
+          "caption": "green belt graduation"
+        },
+        "07": {
+          "alt": "Training at Gracie Barra Biguaçu",
+          "caption": "training · GB Biguaçu"
+        },
+        "08": {
+          "alt": "Compnet podium, 1st place",
+          "caption": "Compnet 2025 · 1st place"
+        },
+        "09": {
+          "alt": "Compnet 2025, 1st place",
+          "caption": "Compnet 2025 · 1st place"
+        },
+        "10": {
+          "alt": "Compnet 2025, 1st place",
+          "caption": "Compnet 2025 · 1st place"
+        },
+        "11": {
+          "alt": "Compnet 2025, 1st place",
+          "caption": "Compnet 2025 · 1st place"
+        },
+        "12": {
+          "alt": "Compnet 2025, 1st place",
+          "caption": "Compnet 2025 · 1st place"
+        }
+      }
+    },
+    "books": {
+      "heading": "Books <em>I recommend</em>",
+      "description": "From Clarice to Kahneman. I read a lot outside work.",
+      "previous": "Previous book",
+      "next": "Next book",
+      "goTo": "Go to book {number}",
+      "coverAlt": "Cover of {title}",
+      "titles": {
+        "01": "Como Fazer Amigos e Influenciar Pessoas",
+        "02": "Inteligência Emocional",
+        "03": "Essencialismo",
+        "04": "Mais Esperto que o Diabo",
+        "05": "A Coragem de Não Agradar",
+        "06": "Nação Dopamina",
+        "07": "A Coragem de Ser Feliz",
+        "08": "O Milagre da Manhã",
+        "09": "Nietzsche para Estressados",
+        "10": "Kafka para Sobrecarregados",
+        "11": "As Coisas que Você Só Vê Quando Desacelera",
+        "13": "A Hora da Estrela",
+        "14": "Quarto de Despejo",
+        "15": "Rápido e Devagar",
+        "16": "Dom Casmurro"
+      }
+    },
+    "languages": {
+      "heading": "English every day, <em>and others on the way</em>",
+      "english": {
+        "name": "English",
+        "note": "at work and beyond",
+        "skills": {
+          "reading": "Reading",
+          "listening": "Listening",
+          "writing": "Writing",
+          "speaking": "Speaking"
+        },
+        "ratingLabel": "{skill}: {rating} out of 5",
+        "study": {
+          "label": "How I study",
+          "items": {
+            "marioVergara": "Mario Vergara's course",
+            "duolingo": "Duolingo",
+            "foreignFilms": "Foreign films",
+            "conversation": "Conversation practice"
+          }
+        }
+      },
+      "spanish": {
+        "name": "Spanish",
+        "note": "studying"
+      },
+      "german": {
+        "name": "German",
+        "note": "studying"
+      },
+      "curiosity": "lots of curiosity for new languages"
+    }
   }
 }

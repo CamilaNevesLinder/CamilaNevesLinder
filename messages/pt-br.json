@@ -464,5 +464,136 @@
       "description": "Respondo por e-mail, LinkedIn e WhatsApp.",
       "button": "Escrever pra mim"
     }
+  },
+  "aboutPage": {
+    "eyebrow": "Sobre",
+    "heading": "Além <em>da tela</em>",
+    "intro": "Gosto de aprender coisas novas e de me envolver de verdade com o que faço. Fora do código, a rotina é tatame, livro e idioma novo.",
+    "portraitAlt": "Retrato da Camila",
+    "portraitCaption": "essa sou eu",
+    "chips": {
+      "purpleBelt": "Faixa roxa",
+      "reader": "Leitora",
+      "languages": "EN · ES · DE"
+    },
+    "sections": {
+      "jiujitsu": "Jiu-jitsu",
+      "books": "Estante",
+      "languages": "Idiomas"
+    },
+    "jiujitsu": {
+      "heading": "Quatro anos <em>no tatame</em>",
+      "description": "Faixa roxa. Dou aula pra crianças na Gracie Barra e já disputei vários campeonatos.",
+      "previous": "Foto anterior",
+      "next": "Próxima foto",
+      "goTo": "Ir para foto {number}",
+      "photos": {
+        "01": {
+          "alt": "Luta casada no campeonato Compnet",
+          "caption": "luta casada · Compnet 2025"
+        },
+        "02": {
+          "alt": "Formatura da turma de crianças na Gracie Barra",
+          "caption": "formatura da turma infantil"
+        },
+        "03": {
+          "alt": "Treino de faixa roxa na Gracie Barra São José",
+          "caption": "faixa roxa · GB São José"
+        },
+        "04": {
+          "alt": "Campeonato Compnet de faixa laranja",
+          "caption": "Compnet 2023 · faixa laranja"
+        },
+        "05": {
+          "alt": "Campeonato Compnet de faixa laranja",
+          "caption": "Compnet 2023"
+        },
+        "06": {
+          "alt": "Graduação de faixa verde com o mestre André Déco Rachadel",
+          "caption": "graduação faixa verde"
+        },
+        "07": {
+          "alt": "Treino na Gracie Barra Biguaçu",
+          "caption": "treino · GB Biguaçu"
+        },
+        "08": {
+          "alt": "Pódio do Compnet, 1º lugar",
+          "caption": "Compnet 2025 · 1º lugar"
+        },
+        "09": {
+          "alt": "Compnet 2025, 1º lugar",
+          "caption": "Compnet 2025 · 1º lugar"
+        },
+        "10": {
+          "alt": "Compnet 2025, 1º lugar",
+          "caption": "Compnet 2025 · 1º lugar"
+        },
+        "11": {
+          "alt": "Compnet 2025, 1º lugar",
+          "caption": "Compnet 2025 · 1º lugar"
+        },
+        "12": {
+          "alt": "Compnet 2025, 1º lugar",
+          "caption": "Compnet 2025 · 1º lugar"
+        }
+      }
+    },
+    "books": {
+      "heading": "Livros que <em>eu recomendo</em>",
+      "description": "De Clarice a Kahneman. Leio bastante fora do trabalho.",
+      "previous": "Livro anterior",
+      "next": "Próximo livro",
+      "goTo": "Ir para livro {number}",
+      "coverAlt": "Capa de {title}",
+      "titles": {
+        "01": "Como Fazer Amigos e Influenciar Pessoas",
+        "02": "Inteligência Emocional",
+        "03": "Essencialismo",
+        "04": "Mais Esperto que o Diabo",
+        "05": "A Coragem de Não Agradar",
+        "06": "Nação Dopamina",
+        "07": "A Coragem de Ser Feliz",
+        "08": "O Milagre da Manhã",
+        "09": "Nietzsche para Estressados",
+        "10": "Kafka para Sobrecarregados",
+        "11": "As Coisas que Você Só Vê Quando Desacelera",
+        "13": "A Hora da Estrela",
+        "14": "Quarto de Despejo",
+        "15": "Rápido e Devagar",
+        "16": "Dom Casmurro"
+      }
+    },
+    "languages": {
+      "heading": "Inglês no dia a dia, <em>e outros a caminho</em>",
+      "english": {
+        "name": "Inglês",
+        "note": "no trabalho e fora dele",
+        "skills": {
+          "reading": "Leitura",
+          "listening": "Escuta",
+          "writing": "Escrita",
+          "speaking": "Fala"
+        },
+        "ratingLabel": "{skill}: {rating} de 5",
+        "study": {
+          "label": "Como estudo",
+          "items": {
+            "marioVergara": "Curso do Mario Vergara",
+            "duolingo": "Duolingo",
+            "foreignFilms": "Filmes estrangeiros",
+            "conversation": "Conversação"
+          }
+        }
+      },
+      "spanish": {
+        "name": "Espanhol",
+        "note": "estudando"
+      },
+      "german": {
+        "name": "Alemão",
+        "note": "estudando"
+      },
+      "curiosity": "muita curiosidade por línguas novas"
+    }
   }
 }

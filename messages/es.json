@@ -464,5 +464,136 @@
       "description": "Respondo por e-mail, LinkedIn y WhatsApp.",
       "button": "Escríbeme"
     }
+  },
+  "aboutPage": {
+    "eyebrow": "Sobre mí",
+    "heading": "Más allá <em>de la pantalla</em>",
+    "intro": "Me gusta aprender cosas nuevas y involucrarme de verdad con lo que hago. Fuera del código, la rutina es tatami, libro e idioma nuevo.",
+    "portraitAlt": "Retrato de Camila",
+    "portraitCaption": "esta soy yo",
+    "chips": {
+      "purpleBelt": "Cinturón morado",
+      "reader": "Lectora",
+      "languages": "EN · ES · DE"
+    },
+    "sections": {
+      "jiujitsu": "Jiu-jitsu",
+      "books": "Estantería",
+      "languages": "Idiomas"
+    },
+    "jiujitsu": {
+      "heading": "Cuatro años <em>en el tatami</em>",
+      "description": "Cinturón morado. Doy clases a niños en Gracie Barra y ya competí en varios campeonatos.",
+      "previous": "Foto anterior",
+      "next": "Foto siguiente",
+      "goTo": "Ir a la foto {number}",
+      "photos": {
+        "01": {
+          "alt": "Lucha pactada en el campeonato Compnet",
+          "caption": "lucha pactada · Compnet 2025"
+        },
+        "02": {
+          "alt": "Graduación de la clase infantil en Gracie Barra",
+          "caption": "graduación de la clase infantil"
+        },
+        "03": {
+          "alt": "Entrenamiento de cinturón morado en Gracie Barra São José",
+          "caption": "cinturón morado · GB São José"
+        },
+        "04": {
+          "alt": "Campeonato Compnet como cinturón naranja",
+          "caption": "Compnet 2023 · cinturón naranja"
+        },
+        "05": {
+          "alt": "Campeonato Compnet como cinturón naranja",
+          "caption": "Compnet 2023"
+        },
+        "06": {
+          "alt": "Graduación de cinturón verde con el maestro André Déco Rachadel",
+          "caption": "graduación cinturón verde"
+        },
+        "07": {
+          "alt": "Entrenamiento en Gracie Barra Biguaçu",
+          "caption": "entrenamiento · GB Biguaçu"
+        },
+        "08": {
+          "alt": "Podio del Compnet, 1.er puesto",
+          "caption": "Compnet 2025 · 1.er puesto"
+        },
+        "09": {
+          "alt": "Compnet 2025, 1.er puesto",
+          "caption": "Compnet 2025 · 1.er puesto"
+        },
+        "10": {
+          "alt": "Compnet 2025, 1.er puesto",
+          "caption": "Compnet 2025 · 1.er puesto"
+        },
+        "11": {
+          "alt": "Compnet 2025, 1.er puesto",
+          "caption": "Compnet 2025 · 1.er puesto"
+        },
+        "12": {
+          "alt": "Compnet 2025, 1.er puesto",
+          "caption": "Compnet 2025 · 1.er puesto"
+        }
+      }
+    },
+    "books": {
+      "heading": "Libros que <em>recomiendo</em>",
+      "description": "De Clarice a Kahneman. Leo mucho fuera del trabajo.",
+      "previous": "Libro anterior",
+      "next": "Libro siguiente",
+      "goTo": "Ir al libro {number}",
+      "coverAlt": "Portada de {title}",
+      "titles": {
+        "01": "Como Fazer Amigos e Influenciar Pessoas",
+        "02": "Inteligência Emocional",
+        "03": "Essencialismo",
+        "04": "Mais Esperto que o Diabo",
+        "05": "A Coragem de Não Agradar",
+        "06": "Nação Dopamina",
+        "07": "A Coragem de Ser Feliz",
+        "08": "O Milagre da Manhã",
+        "09": "Nietzsche para Estressados",
+        "10": "Kafka para Sobrecarregados",
+        "11": "As Coisas que Você Só Vê Quando Desacelera",
+        "13": "A Hora da Estrela",
+        "14": "Quarto de Despejo",
+        "15": "Rápido e Devagar",
+        "16": "Dom Casmurro"
+      }
+    },
+    "languages": {
+      "heading": "Inglés en el día a día, <em>y otros en camino</em>",
+      "english": {
+        "name": "Inglés",
+        "note": "en el trabajo y fuera de él",
+        "skills": {
+          "reading": "Lectura",
+          "listening": "Comprensión auditiva",
+          "writing": "Escritura",
+          "speaking": "Expresión oral"
+        },
+        "ratingLabel": "{skill}: {rating} de 5",
+        "study": {
+          "label": "Cómo estudio",
+          "items": {
+            "marioVergara": "Curso de Mario Vergara",
+            "duolingo": "Duolingo",
+            "foreignFilms": "Películas extranjeras",
+            "conversation": "Conversación"
+          }
+        }
+      },
+      "spanish": {
+        "name": "Español",
+        "note": "estudiando"
+      },
+      "german": {
+        "name": "Alemán",
+        "note": "estudiando"
+      },
+      "curiosity": "mucha curiosidad por idiomas nuevos"
+    }
   }
 }

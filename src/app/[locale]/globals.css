@@ -24,6 +24,8 @@
   --color-lilac: #8f7a99;
   --color-olive: #8c8f74;
   --color-ochre: #c09a6b;
+  --color-belt-purple: #6e4f86;
+  --color-belt-black: #2a2220;
 
   --font-sans: var(--font-figtree), system-ui, sans-serif;
   --font-mono: var(--font-mono-numeric), ui-monospace, monospace;
