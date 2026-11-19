@@ -24,7 +24,7 @@ export function Footer() {
             className="text-espresso inline-flex items-center gap-3"
           >
             <BrandMark className="size-11" />
-            <span className="font-display text-xl">{t('name')}</span>
+            <span className="font-display text-2xl">{t('name')}</span>
           </Link>
           <p className="text-mocha mt-4 max-w-[340px]">{t('tagline')}</p>
           <p className="font-hand text-clay-deep mt-3 text-2xl">
