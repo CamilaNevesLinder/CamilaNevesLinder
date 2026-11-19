@@ -28,10 +28,10 @@ export function Projects() {
       </div>
 
       <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] gap-6">
-        {HOME_PROJECTS.map(({ key, mock, colorToken, stack }) => (
+        {HOME_PROJECTS.map(({ key, showcaseKey, mock, colorToken, stack }) => (
           <li key={key}>
             <Link
-              href="/projects"
+              href={{ pathname: '/projects', hash: showcaseKey }}
               style={projectColorStyle(colorToken)}
               className="border-line bg-paper text-body duration-250 flex h-full flex-col overflow-hidden rounded-3xl border transition-[transform,box-shadow] ease-out hover:-translate-y-1 hover:shadow-[0_18px_40px_-22px_var(--shadow-color)] motion-reduce:hover:translate-y-0"
             >

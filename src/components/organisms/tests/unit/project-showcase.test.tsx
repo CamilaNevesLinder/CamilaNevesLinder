@@ -1,5 +1,6 @@
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+import { waitFor } from '@testing-library/react';
 import { screen, renderWithProviders } from '@/tests/utils/render';
 import { ProjectShowcase } from '@/components/organisms/project-showcase';
 
@@ -67,5 +68,25 @@ describe('ProjectShowcase', () => {
     await user.click(projectButton('Ritmar'));
 
     expect(screen.queryAllByRole('button', { expanded: true })).toHaveLength(0);
+  });
+
+  it('opens and scrolls to the project named in the URL hash', async () => {
+    const scrollIntoView = vi.fn();
+    HTMLElement.prototype.scrollIntoView = scrollIntoView;
+    window.location.hash = '#praca22';
+
+    renderWithProviders(<ProjectShowcase />);
+
+    await waitFor(() =>
+      expect(projectButton('Fechar.*Praça 22')).toHaveAttribute(
+        'aria-expanded',
+        'true',
+      ),
+    );
+    expect(screen.getAllByRole('button', { expanded: true })).toHaveLength(1);
+    await waitFor(() =>
+      expect(scrollIntoView).toHaveBeenCalledWith({ block: 'start' }),
+    );
+    window.location.hash = '';
   });
 });

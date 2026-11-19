@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   PROJECT_FILTERS,
   SHOWCASE_PROJECTS,
@@ -19,6 +19,22 @@ export function ProjectShowcase() {
   const [openProject, setOpenProject] = useState<ShowcaseProjectKey | null>(
     'oniapp',
   );
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      const linkedProjectKey = SHOWCASE_PROJECTS.map(({ key }) => key).find(
+        (projectKey) => projectKey === window.location.hash.slice(1),
+      );
+      if (linkedProjectKey) {
+        setOpenProject(linkedProjectKey);
+        requestAnimationFrame(() =>
+          document
+            .getElementById(linkedProjectKey)
+            ?.scrollIntoView({ block: 'start' }),
+        );
+      }
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
   const visibleProjects = SHOWCASE_PROJECTS.filter(
     ({ group }) => activeFilter === 'all' || group === activeFilter,
   );

@@ -9,12 +9,16 @@ vi.mock('@/lib/navigation', () => ({
     className,
     style,
   }: {
-    href: string;
+    href: string | { pathname: string; hash: string };
     children: React.ReactNode;
     className?: string;
     style?: React.CSSProperties;
   }) => (
-    <a href={href} className={className} style={style}>
+    <a
+      href={typeof href === 'string' ? href : `${href.pathname}#${href.hash}`}
+      className={className}
+      style={style}
+    >
       {children}
     </a>
   ),
@@ -60,13 +64,28 @@ describe('Projects', () => {
     expect(screen.getAllByText('Saber mais')).toHaveLength(4);
   });
 
+  it('links each card to its project opened on the projects page', () => {
+    renderWithProviders(<Projects />);
+
+    expect(
+      screen
+        .getAllByRole('link', { name: /Saber mais/ })
+        .map((link) => link.getAttribute('href')),
+    ).toEqual([
+      '/projects#oniapp',
+      '/projects#seja',
+      '/projects#ritmar',
+      '/projects#praca22',
+    ]);
+  });
+
   it('tints each card with its project color token', () => {
     renderWithProviders(<Projects />);
 
     const card = screen
       .getByRole('heading', { name: 'App de comunidade e bem-estar' })
       .closest('a');
-    expect(card).toHaveAttribute('href', '/projects');
+    expect(card).toHaveAttribute('href', '/projects#seja');
     expect(card?.style.getPropertyValue('--project-color')).toBe(
       'var(--color-lilac)',
     );

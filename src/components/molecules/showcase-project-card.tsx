@@ -42,10 +42,11 @@ export function ShowcaseProjectCard({
 
   return (
     <article
+      id={projectKey}
       ref={articleRef}
       style={projectColorStyle(colorToken)}
       className={cn(
-        'bg-paper flex flex-col overflow-hidden rounded-3xl border transition-colors duration-200',
+        'bg-paper flex scroll-mt-6 flex-col overflow-hidden rounded-3xl border transition-colors duration-200',
         isOpen ? 'border-dusty col-span-full' : 'border-line',
       )}
     >
