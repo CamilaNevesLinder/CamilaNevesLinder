@@ -8,12 +8,12 @@ describe('TechnologiesPage', () => {
 
     expect(
       screen.getByRole('heading', {
-        level: 2,
+        level: 1,
         name: 'O que eu uso no dia a dia',
       }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { level: 3, name: 'Linguagens' }),
+      screen.getByRole('heading', { level: 2, name: 'Linguagens' }),
     ).toBeInTheDocument();
   });
 });

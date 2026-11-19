@@ -3,55 +3,39 @@ import { screen, renderWithProviders } from '@/tests/utils/render';
 import { TechStack } from '@/components/organisms/tech-stack';
 
 describe('TechStack', () => {
-  it('renders every category in order', () => {
+  it('shows the tool count and the page heading', () => {
     renderWithProviders(<TechStack />);
 
-    const titles = screen.getAllByRole('heading', { level: 3 });
-    expect(titles.map((t) => t.textContent)).toEqual([
-      'Linguagens',
-      'Frontend & Mobile',
-      'Backend',
-      'Ferramentas & Cloud',
-      'Testes',
-      'Arquitetura',
-    ]);
+    expect(
+      screen.getByText('Tecnologias · 31 ferramentas'),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'O que eu uso no dia a dia',
+    );
   });
 
-  it('renders technologies within each category', () => {
+  it('renders the six groups with their technologies', () => {
+    renderWithProviders(<TechStack />);
+
+    for (const title of [
+      'Front-end',
+      'Mobile',
+      'Back-end',
+      'Estado & dados',
+      'Ferramentas & Cloud',
+      'Testes',
+    ]) {
+      expect(screen.getByRole('heading', { name: title })).toBeInTheDocument();
+    }
+    expect(screen.getByText('NativeWind')).toBeInTheDocument();
+    expect(screen.getByText('Testing Library')).toBeInTheDocument();
+  });
+
+  it('lists the languages and the architecture practices', () => {
     renderWithProviders(<TechStack />);
 
     expect(screen.getByText('TypeScript')).toBeInTheDocument();
-    expect(screen.getByText('React Native')).toBeInTheDocument();
-    expect(screen.getByText('NestJS')).toBeInTheDocument();
-    expect(screen.getByText('Docker')).toBeInTheDocument();
-    expect(screen.getByText('Jest')).toBeInTheDocument();
-    expect(screen.getByText('Vitest')).toBeInTheDocument();
-    expect(screen.getByText('Testing Library')).toBeInTheDocument();
     expect(screen.getByText('Atomic Design')).toBeInTheDocument();
-    expect(screen.getByText('Arquitetura Escalável')).toBeInTheDocument();
-    expect(screen.getByText('SOLID')).toBeInTheDocument();
     expect(screen.getByText('Clean Code')).toBeInTheDocument();
-  });
-
-  it('does not render excluded technologies', () => {
-    renderWithProviders(<TechStack />);
-
-    expect(screen.queryByText('MongoDB')).not.toBeInTheDocument();
-    expect(screen.queryByText('Kotlin')).not.toBeInTheDocument();
-    expect(screen.queryByText('Python')).not.toBeInTheDocument();
-  });
-
-  it('scales the section and category headings down on small screens', () => {
-    renderWithProviders(<TechStack />);
-
-    expect(
-      screen.getByRole('heading', {
-        level: 2,
-        name: 'O que eu uso no dia a dia',
-      }),
-    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
-    expect(
-      screen.getByRole('heading', { level: 3, name: 'Linguagens' }),
-    ).toHaveClass('text-[20px]', 'sm:text-[24px]');
   });
 });

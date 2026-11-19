@@ -2,85 +2,23 @@ import { describe, expect, it } from 'vitest';
 import ptBr from '../../../messages/pt-br.json';
 import en from '../../../messages/en.json';
 import es from '../../../messages/es.json';
+import { TECH_GROUPS } from '@/lib/tech-groups';
 
-const CATEGORY_KEYS = [
-  'languages',
-  'frontendMobile',
-  'backend',
-  'toolsCloud',
-  'testing',
-  'architecture',
-] as const;
-
-const TRANSLATED_CATEGORIES = ['architecture'] as const;
-
-const EXCLUDED_TECHNOLOGIES = [
-  'MongoDB',
-  'Kotlin',
-  'Python',
-  'Shell',
-  'Nginx',
-  'Make',
-  'Angular',
-  'Ionic',
-  'Cordova',
-  'PHP',
-  'Java',
-  'Objective-C',
-  'Gherkin',
-  'SCSS',
-  'Mustache',
-] as const;
+const GROUP_KEYS = TECH_GROUPS.map(({ key }) => key);
 
 describe('technologiesPage message parity', () => {
-  it('has the same category keys in the same order across all locales', () => {
-    expect(Object.keys(ptBr.technologiesPage.categories)).toEqual(
-      CATEGORY_KEYS,
+  it('has a title and note for every tech group in every locale', () => {
+    for (const messages of [ptBr, en, es]) {
+      expect(Object.keys(messages.technologiesPage.groups)).toEqual(GROUP_KEYS);
+    }
+  });
+
+  it('has the same number of architecture practices in every locale', () => {
+    expect(en.technologiesPage.architecture.items).toHaveLength(
+      ptBr.technologiesPage.architecture.items.length,
     );
-    expect(Object.keys(en.technologiesPage.categories)).toEqual(CATEGORY_KEYS);
-    expect(Object.keys(es.technologiesPage.categories)).toEqual(CATEGORY_KEYS);
-  });
-
-  it('has matching items array lengths per category across all locales', () => {
-    for (const key of CATEGORY_KEYS) {
-      const ptItems = ptBr.technologiesPage.categories[key].items;
-      const enItems = en.technologiesPage.categories[key].items;
-      const esItems = es.technologiesPage.categories[key].items;
-
-      expect(enItems).toHaveLength(ptItems.length);
-      expect(esItems).toHaveLength(ptItems.length);
-    }
-  });
-
-  it('keeps technology names byte-identical across locales (proper nouns are not translated)', () => {
-    const untranslatedKeys = CATEGORY_KEYS.filter(
-      (key) => !(TRANSLATED_CATEGORIES as readonly string[]).includes(key),
+    expect(es.technologiesPage.architecture.items).toHaveLength(
+      ptBr.technologiesPage.architecture.items.length,
     );
-
-    for (const key of untranslatedKeys) {
-      expect(en.technologiesPage.categories[key].items).toEqual(
-        ptBr.technologiesPage.categories[key].items,
-      );
-      expect(es.technologiesPage.categories[key].items).toEqual(
-        ptBr.technologiesPage.categories[key].items,
-      );
-    }
-  });
-
-  it('never lists an excluded technology in any locale', () => {
-    const locales = { 'pt-br': ptBr, en, es };
-
-    for (const [localeName, messages] of Object.entries(locales)) {
-      const allItems = Object.values(
-        messages.technologiesPage.categories,
-      ).flatMap((category) => category.items);
-
-      for (const excluded of EXCLUDED_TECHNOLOGIES) {
-        expect(
-          allItems,
-          `${localeName} technologiesPage should not include "${excluded}"`,
-        ).not.toContain(excluded);
-      }
-    }
   });
 });

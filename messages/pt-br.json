@@ -261,53 +261,43 @@
     }
   },
   "technologiesPage": {
-    "label": "Tecnologias",
-    "heading": "O que eu uso no dia a dia",
-    "categories": {
-      "languages": {
-        "title": "Linguagens",
-        "items": ["TypeScript", "JavaScript"]
+    "eyebrow": "Tecnologias · {count} ferramentas",
+    "heading": "O que eu uso <em>no dia a dia</em>",
+    "hint": "↳ TypeScript em tudo, do app à API",
+    "languages": {
+      "label": "Linguagens",
+      "heading": "TypeScript e JavaScript, <em>do app à API</em>"
+    },
+    "groups": {
+      "frontEnd": {
+        "title": "Front-end",
+        "note": "painéis e sites"
       },
-      "frontendMobile": {
-        "title": "Frontend & Mobile",
-        "items": [
-          "React",
-          "Next.js",
-          "React Native",
-          "Expo",
-          "Expo Router",
-          "NativeWind",
-          "Tailwind CSS",
-          "Radix UI",
-          "shadcn/ui",
-          "Framer Motion",
-          "TanStack Query",
-          "Zustand",
-          "Zod",
-          "i18next"
-        ]
+      "mobile": {
+        "title": "Mobile",
+        "note": "apps nas lojas"
       },
-      "backend": {
-        "title": "Backend",
-        "items": ["Node.js", "NestJS", "TypeORM", "MySQL"]
+      "backEnd": {
+        "title": "Back-end",
+        "note": "APIs e banco"
+      },
+      "stateData": {
+        "title": "Estado & dados",
+        "note": "formulários, cache e validação"
       },
       "toolsCloud": {
         "title": "Ferramentas & Cloud",
-        "items": ["AWS", "Docker", "GitHub Actions", "Firebase"]
+        "note": "do Figma ao deploy"
       },
       "testing": {
         "title": "Testes",
-        "items": ["Jest", "Vitest", "Testing Library"]
-      },
-      "architecture": {
-        "title": "Arquitetura",
-        "items": [
-          "Atomic Design",
-          "Arquitetura Escalável",
-          "SOLID",
-          "Clean Code"
-        ]
+        "note": "antes de chamar de pronto"
       }
+    },
+    "architecture": {
+      "label": "Arquitetura",
+      "title": "Como organizo o código",
+      "items": ["Atomic Design", "Arquitetura escalável", "SOLID", "Clean Code"]
     }
   },
   "contactPage": {
