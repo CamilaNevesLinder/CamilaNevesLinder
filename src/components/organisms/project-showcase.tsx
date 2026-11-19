@@ -1,66 +1,86 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Separator } from '@/components/atoms/separator';
-import { Badge } from '@/components/atoms/badge';
-
-const PROJECT_KEYS = [
-  'oniapp',
-  'oniappAdmin',
-  'seja',
-  'sejaAdmin',
-  'praca22',
-  'ritmar',
-  'minceJoias',
-] as const;
+import { useState } from 'react';
+import {
+  PROJECT_FILTERS,
+  SHOWCASE_PROJECTS,
+  countProjectsIn,
+  type ProjectFilter,
+  type ShowcaseProjectKey,
+} from '@/lib/showcase-projects';
+import { SectionDivider } from '@/components/molecules/section-divider';
+import { ShowcaseProjectCard } from '@/components/molecules/showcase-project-card';
+import { cn } from '@/lib/utils';
 
 export function ProjectShowcase() {
   const t = useTranslations('projectsPage');
+  const [activeFilter, setActiveFilter] = useState<ProjectFilter>('all');
+  const [openProject, setOpenProject] = useState<ShowcaseProjectKey | null>(
+    'oniapp',
+  );
+  const visibleProjects = SHOWCASE_PROJECTS.filter(
+    ({ group }) => activeFilter === 'all' || group === activeFilter,
+  );
 
   return (
-    <section className="bg-cream flex justify-center px-6 py-16">
-      <div className="w-full max-w-[960px]">
-        <p className="text-taupe mb-[18px] font-mono text-sm uppercase tracking-wide">
-          {t('label')}
+    <>
+      <section className="mx-auto max-w-[1160px] px-4 pb-12 pt-14 sm:px-6 md:pt-20">
+        <p className="text-clay-deep mb-3 font-mono text-[13px] uppercase tracking-[0.08em]">
+          {t('eyebrow', { count: countProjectsIn('all') })}
         </p>
-        <h2 className="text-espresso font-serif text-[26px] font-bold sm:text-[32px]">
-          {t('heading')}
-        </h2>
-
-        <div className="mt-12">
-          {PROJECT_KEYS.map((key, index) => {
-            const features = t.raw(`items.${key}.features`) as string[];
-            const stack = t.raw(`items.${key}.stack`) as string[];
-
+        <h1 className="font-display text-espresso [&_em]:text-clay max-w-[760px] text-[clamp(40px,5.4vw,68px)] font-normal leading-[1.05] tracking-[-0.02em]">
+          {t.rich('heading', { em: (chunks) => <em>{chunks}</em> })}
+        </h1>
+        <p className="font-hand text-clay-deep mt-4 text-2xl">{t('hint')}</p>
+        <div
+          role="group"
+          aria-label={t('filterLabel')}
+          className="mt-9 flex flex-wrap gap-2"
+        >
+          {PROJECT_FILTERS.map((filter) => {
+            const isActive = filter === activeFilter;
             return (
-              <div key={key}>
-                {index > 0 && <Separator className="bg-rose/40 my-12" />}
-                <h3 className="text-espresso font-serif text-[22px] font-bold sm:text-[28px]">
-                  {t(`items.${key}.title`)}
-                </h3>
-                <p className="text-espresso/85 mt-3 text-[18px] leading-relaxed">
-                  {t(`items.${key}.role`)}
-                </p>
-                <ul className="text-taupe marker:text-rose mt-5 list-disc space-y-2 pl-5 text-[16px] leading-relaxed">
-                  {features.map((feature) => (
-                    <li key={feature}>{feature}</li>
-                  ))}
-                </ul>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {stack.map((tech) => (
-                    <Badge
-                      key={tech}
-                      className="bg-rose/[0.32] text-espresso h-auto rounded-lg px-3 py-1 font-mono text-xs uppercase tracking-wide"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
+              <button
+                key={filter}
+                type="button"
+                aria-pressed={isActive}
+                onClick={() => setActiveFilter(filter)}
+                className={cn(
+                  'inline-flex min-h-11 items-center gap-2 rounded-full border px-[18px] text-[15px] font-medium',
+                  isActive
+                    ? 'border-espresso bg-espresso text-cream'
+                    : 'border-line text-body hover:bg-sand transition-colors duration-200',
+                )}
+              >
+                {t(`filters.${filter}`)}
+                <span className="font-mono text-xs opacity-70">
+                  {countProjectsIn(filter)}
+                </span>
+              </button>
             );
           })}
         </div>
-      </div>
-    </section>
+      </section>
+
+      <SectionDivider />
+
+      <section className="mx-auto max-w-[1160px] px-4 pb-24 sm:px-6 md:pb-[104px]">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5">
+          {visibleProjects.map(({ key, initial, colorToken }) => (
+            <ShowcaseProjectCard
+              key={key}
+              projectKey={key}
+              initial={initial}
+              colorToken={colorToken}
+              isOpen={openProject === key}
+              onToggle={() =>
+                setOpenProject((current) => (current === key ? null : key))
+              }
+            />
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

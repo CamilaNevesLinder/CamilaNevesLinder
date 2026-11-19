@@ -199,17 +199,31 @@
     }
   },
   "projectsPage": {
-    "label": "Projects",
-    "heading": "What I've built",
+    "eyebrow": "Projects · {count} live",
+    "heading": "What I have <em>built</em>",
+    "hint": "↳ click a project to learn more",
+    "filterLabel": "Filter projects",
+    "filters": {
+      "all": "All",
+      "mobile": "Mobile",
+      "web": "Web",
+      "api": "Back end"
+    },
+    "learnMore": "Learn more",
+    "close": "Close",
+    "myRole": "My role",
+    "screenshot": "{title} screenshot here",
     "items": {
       "oniapp": {
         "title": "Oniapp",
-        "role": "Full stack across Oniapp — mobile, admin web, and API: on this front, per-school adaptive theming, accessibility fixes, and automated tests",
+        "kind": "Mobile app",
+        "line": "One codebase builds an app for each school.",
+        "role": "Full stack: per-school themes, accessibility and automated tests.",
         "features": [
-          "A single codebase generates a different app per school, each with its own bundle ID, theme, icon, and Moodle URL",
-          "Theme, colors, and active features (library, academy, notebook, grades, calendar) configured per school",
-          "Full Moodle integration: grades, calendar, notebook, and courses right inside the app",
-          "Automatic OTA updates via EAS on every push, in both production and preview"
+          "A single codebase builds a separate app per school, each with its own bundle ID, theme, icon and Moodle",
+          "Theme, colors and features (library, notebook, grades, calendar) configured per school",
+          "Moodle integration: grades, calendar, notebook and courses right in the app",
+          "OTA updates via EAS on every push, in production and staging"
         ],
         "stack": [
           "React Native",
@@ -223,11 +237,13 @@
       },
       "oniappAdmin": {
         "title": "Oniapp Admin",
-        "role": "Full stack across Oniapp — mobile, admin web, and API: on this front, built much of the admin panel from Figma, plus table sorting and endpoint integration",
+        "kind": "Web dashboard",
+        "line": "Dashboard where each school manages content and users.",
+        "role": "Full stack: most screens built from Figma, tables and endpoint integration.",
         "features": [
-          "Web panel where each school manages the app's content and users",
-          "Data fetching and caching with TanStack Query, forms validated with Zod and React Hook Form",
-          "UI built with shadcn/ui and Radix UI, consistent with the rest of the product"
+          "Web dashboard where each school manages the app content and users",
+          "Fetching and caching with TanStack Query, forms with Zod and React Hook Form",
+          "Interface in shadcn/ui and Radix UI, consistent with the product"
         ],
         "stack": [
           "Next.js",
@@ -240,12 +256,14 @@
       },
       "seja": {
         "title": "Seja",
-        "role": "Full stack across Seja — mobile, admin web, and API: on this front, diary, hobby scheduling, notifications, and list editing features",
+        "kind": "Mobile app",
+        "line": "Wellbeing: communities, journal and habit planner.",
+        "role": "Full stack: journal, hobby planner, notifications and list editing.",
         "features": [
-          "Wellness app with photo and audio posts in communities, a personal journal, and a hobby/task schedule",
-          "Social login via Google, Apple, and Firebase, with JWT authentication and refresh tokens",
-          "Push notifications and localized content in multiple languages with i18next",
-          "Habit calendar and theme color picker built with native gesture and animation libraries"
+          "Photo and audio posts in communities, personal journal and planner",
+          "Social login with Google, Apple and Firebase, with JWT and refresh token",
+          "Push notifications and content in several languages with i18next",
+          "Habit calendar and theme picker with native gestures and animation"
         ],
         "stack": [
           "React Native",
@@ -259,10 +277,12 @@
       },
       "sejaAdmin": {
         "title": "Seja Admin",
-        "role": "Full stack across Seja — mobile, admin web, and API: on this front, initial panel setup and brand/style adjustments",
+        "kind": "Web dashboard",
+        "line": "Report moderation and user management.",
+        "role": "Full stack: initial dashboard setup and brand and style adjustments.",
         "features": [
-          "Moderation panel for reports and community user management",
-          "Same technical base as Oniapp Admin (Next.js, TanStack Query), with Base UI/shadcn components"
+          "Dashboard for report moderation and community management",
+          "Same technical base as Oniapp Admin, with Base UI and shadcn"
         ],
         "stack": [
           "Next.js",
@@ -275,11 +295,13 @@
       },
       "praca22": {
         "title": "Praça 22",
-        "role": "Built it solo, from design through launch",
+        "kind": "Website",
+        "line": "Music school website, built from scratch.",
+        "role": "On my own, from design to launch.",
         "features": [
-          "Institutional site built from scratch through launch, with intro, teacher, and instrument catalog sections",
+          "Institutional website with introduction, teachers and instrument catalog",
           "Animations with Framer Motion and accessible components with Radix UI",
-          "Contact section with an embedded map and a direct WhatsApp link"
+          "Contact with an embedded map and a direct WhatsApp link"
         ],
         "stack": [
           "React 19",
@@ -292,21 +314,25 @@
       },
       "ritmar": {
         "title": "Ritmar",
-        "role": "Contributed to front-end development",
+        "kind": "Web + API",
+        "line": "Multi-tenant management for gyms.",
+        "role": "I worked on the front-end development.",
         "features": [
-          "Multi-tenant management platform for gyms: each one with its own isolated data and settings",
-          "Membership billing with automatic subscription renewal via Mercado Pago and Asaas",
-          "Automated tests and a continuous integration pipeline on GitHub Actions"
+          "Each gym with isolated data and settings",
+          "Memberships with automatic renewal via Mercado Pago and Asaas",
+          "Automated tests and CI on GitHub Actions"
         ],
         "stack": ["NestJS", "Next.js", "React"]
       },
       "minceJoias": {
         "title": "Mince Joias",
-        "role": "Contributed to front-end development",
+        "kind": "E-commerce",
+        "line": "Jewelry store with catalog, cart and checkout.",
+        "role": "I worked on the front-end development.",
         "features": [
-          "Online jewelry store with a full catalog, cart, and checkout",
-          "Admin panel where the store owner updates products and tracks orders",
-          "Responsive layout tested across different screen sizes"
+          "Online store with catalog, cart and full checkout",
+          "Dashboard where the owner updates products and tracks orders",
+          "Responsive layout tested on several screen sizes"
         ],
         "stack": ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "AWS"]
       }

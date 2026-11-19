@@ -199,17 +199,31 @@
     }
   },
   "projectsPage": {
-    "label": "Proyectos",
-    "heading": "Lo que ya construí",
+    "eyebrow": "Proyectos · {count} publicados",
+    "heading": "Lo que ya <em>construí</em>",
+    "hint": "↳ haz clic en un proyecto para saber más",
+    "filterLabel": "Filtrar proyectos",
+    "filters": {
+      "all": "Todos",
+      "mobile": "Mobile",
+      "web": "Web",
+      "api": "Back-end"
+    },
+    "learnMore": "Saber más",
+    "close": "Cerrar",
+    "myRole": "Mi papel",
+    "screenshot": "captura de {title} aquí",
     "items": {
       "oniapp": {
         "title": "Oniapp",
-        "role": "Full stack en Oniapp — mobile, panel web y API: en este frente, temas adaptativos por institución, accesibilidad y pruebas automatizadas",
+        "kind": "App mobile",
+        "line": "Un código fuente genera una app por institución educativa.",
+        "role": "Full stack: temas por institución, accesibilidad y tests automatizados.",
         "features": [
-          "Un único código genera apps distintas por institución educativa, cada una con su propio bundle ID, tema, ícono y URL de Moodle",
-          "Tema, colores y funciones activas (biblioteca, academy, cuaderno, notas, calendario) configurados por institución",
-          "Integración completa con Moodle: notas, calendario, cuaderno de apuntes y cursos dentro de la app",
-          "Actualización automática (OTA) vía EAS en cada push, en producción y en entorno de pruebas"
+          "Un único código genera apps distintas por escuela, cada una con bundle ID, tema, ícono y Moodle propios",
+          "Tema, colores y funcionalidades (biblioteca, cuaderno, notas, calendario) configurados por institución",
+          "Integración con Moodle: notas, calendario, cuaderno y cursos en la app",
+          "Actualización OTA vía EAS en cada push, en producción y pruebas"
         ],
         "stack": [
           "React Native",
@@ -223,11 +237,13 @@
       },
       "oniappAdmin": {
         "title": "Oniapp Admin",
-        "role": "Full stack en Oniapp — mobile, panel web y API: en este frente, construí buena parte de las pantallas del panel a partir de Figma, con ordenamiento de tablas e integración con endpoints",
+        "kind": "Panel web",
+        "line": "Panel donde cada institución gestiona contenido y usuarios.",
+        "role": "Full stack: buena parte de las pantallas desde Figma, tablas e integración con endpoints.",
         "features": [
           "Panel web donde cada institución gestiona el contenido y los usuarios de la app",
-          "Búsqueda y caché de datos con TanStack Query, formularios validados con Zod y React Hook Form",
-          "Interfaz construida con shadcn/ui y Radix UI, consistente con el resto del producto"
+          "Búsqueda y caché con TanStack Query, formularios con Zod y React Hook Form",
+          "Interfaz en shadcn/ui y Radix UI, coherente con el producto"
         ],
         "stack": [
           "Next.js",
@@ -240,12 +256,14 @@
       },
       "seja": {
         "title": "Seja",
-        "role": "Full stack en Seja — mobile, panel web y API: en este frente, funciones de diario, agenda de hobbies, notificaciones y edición de listas",
+        "kind": "App mobile",
+        "line": "Bienestar: comunidades, diario y agenda de hábitos.",
+        "role": "Full stack: diario, agenda de hobbies, notificaciones y edición de listas.",
         "features": [
-          "App de bienestar con publicaciones de foto y audio en comunidades, diario personal y agenda de hobbies y tareas",
-          "Inicio de sesión social vía Google, Apple y Firebase, con autenticación JWT y refresh token",
-          "Notificaciones push y contenido localizado en varios idiomas con i18next",
-          "Calendario de hábitos y selector de color de tema construidos con librerías nativas de gestos y animación"
+          "Posts de foto y audio en comunidades, diario personal y agenda",
+          "Login social con Google, Apple y Firebase, con JWT y refresh token",
+          "Push y contenido en varios idiomas con i18next",
+          "Calendario de hábitos y selector de tema con gestos y animación nativos"
         ],
         "stack": [
           "React Native",
@@ -259,10 +277,12 @@
       },
       "sejaAdmin": {
         "title": "Seja Admin",
-        "role": "Full stack en Seja — mobile, panel web y API: en este frente, configuración inicial del panel y ajustes de marca y estilo",
+        "kind": "Panel web",
+        "line": "Moderación de denuncias y gestión de usuarios.",
+        "role": "Full stack: configuración inicial del panel y ajustes de marca y estilo.",
         "features": [
-          "Panel de moderación de denuncias y gestión de usuarios de la comunidad",
-          "Misma base técnica que Oniapp Admin (Next.js, TanStack Query), con componentes Base UI/shadcn"
+          "Panel de moderación de denuncias y gestión de la comunidad",
+          "Misma base técnica que Oniapp Admin, con Base UI y shadcn"
         ],
         "stack": [
           "Next.js",
@@ -275,11 +295,13 @@
       },
       "praca22": {
         "title": "Praça 22",
-        "role": "Lo desarrollé sola, desde el diseño hasta la publicación",
+        "kind": "Sitio",
+        "line": "Sitio de la escuela de música, hecho desde cero.",
+        "role": "Sola, del diseño a la publicación.",
         "features": [
-          "Sitio institucional construido desde cero hasta la publicación, con secciones de presentación, profesores y catálogo de instrumentos",
+          "Sitio institucional con presentación, profesores y catálogo de instrumentos",
           "Animaciones con Framer Motion y componentes accesibles con Radix UI",
-          "Contacto integrado con mapa incorporado y enlace directo a WhatsApp"
+          "Contacto con mapa integrado y enlace directo a WhatsApp"
         ],
         "stack": [
           "React 19",
@@ -292,21 +314,25 @@
       },
       "ritmar": {
         "title": "Ritmar",
-        "role": "Participé en el desarrollo front-end",
+        "kind": "Web + API",
+        "line": "Gestión multi-tenant para gimnasios.",
+        "role": "Participé en el desarrollo front-end.",
         "features": [
-          "Plataforma de gestión multi-tenant para gimnasios: cada uno con sus propios datos y configuraciones aislados",
-          "Cobro de mensualidades con renovación automática de suscripciones vía Mercado Pago y Asaas",
-          "Pruebas automatizadas y pipeline de integración continua en GitHub Actions"
+          "Cada gimnasio con datos y configuraciones aislados",
+          "Cuotas con renovación automática vía Mercado Pago y Asaas",
+          "Tests automatizados y CI en GitHub Actions"
         ],
         "stack": ["NestJS", "Next.js", "React"]
       },
       "minceJoias": {
         "title": "Mince Joias",
-        "role": "Participé en el desarrollo front-end",
+        "kind": "E-commerce",
+        "line": "Tienda de joyas con catálogo, carrito y checkout.",
+        "role": "Participé en el desarrollo front-end.",
         "features": [
-          "Tienda de joyas online con catálogo, carrito y checkout completo",
-          "Panel administrativo donde la dueña de la tienda actualiza productos y sigue los pedidos",
-          "Diseño responsive probado en diferentes tamaños de pantalla"
+          "Tienda online con catálogo, carrito y checkout completo",
+          "Panel donde la dueña actualiza productos y sigue los pedidos",
+          "Layout responsive probado en varios tamaños de pantalla"
         ],
         "stack": ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "AWS"]
       }

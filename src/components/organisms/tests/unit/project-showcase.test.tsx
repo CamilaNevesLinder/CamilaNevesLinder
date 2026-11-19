@@ -1,13 +1,19 @@
+import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { screen, renderWithProviders } from '@/tests/utils/render';
 import { ProjectShowcase } from '@/components/organisms/project-showcase';
 
+function projectButton(title: string) {
+  return screen.getByRole('button', { name: new RegExp(title) });
+}
+
 describe('ProjectShowcase', () => {
-  it('renders every project title in order', () => {
+  it('lists every project and starts with Oniapp open', () => {
     renderWithProviders(<ProjectShowcase />);
 
-    const titles = screen.getAllByRole('heading', { level: 3 });
-    expect(titles.map((t) => t.textContent)).toEqual([
+    expect(
+      screen.getAllByRole('heading', { level: 3 }).map((h) => h.textContent),
+    ).toEqual([
       'Oniapp',
       'Oniapp Admin',
       'Seja',
@@ -16,44 +22,50 @@ describe('ProjectShowcase', () => {
       'Ritmar',
       'Mince Joias',
     ]);
-  });
-
-  it('renders features and tech stack for a project', () => {
-    renderWithProviders(<ProjectShowcase />);
-
+    expect(projectButton('^App mobile.*Fechar.*Oniapp')).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    );
     expect(
       screen.getByText(
-        'Integração completa com Moodle: notas, calendário, caderno de anotações e cursos direto no app',
+        'Full stack: temas por instituição, acessibilidade e testes automatizados.',
       ),
     ).toBeInTheDocument();
-    expect(screen.getByText('Expo Router')).toBeInTheDocument();
-    expect(screen.getByText('MongoDB')).toBeInTheDocument();
   });
 
-  it('renders my role in each project', () => {
+  it('filters the list by group and marks the pressed filter', async () => {
+    const user = userEvent.setup();
     renderWithProviders(<ProjectShowcase />);
 
+    const mobileFilter = screen.getByRole('button', { name: /^Mobile\s*2$/ });
+    await user.click(mobileFilter);
+
+    expect(mobileFilter).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('button', { name: /^Todos\s*7$/ })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    );
     expect(
-      screen.getByText(
-        'Full stack no Oniapp — mobile, admin web e API: nesta frente, temas adaptativos por instituição, acessibilidade e testes automatizados',
-      ),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText('Desenvolvi sozinha, do design à publicação'),
-    ).toBeInTheDocument();
-    expect(
-      screen.getAllByText('Participei do desenvolvimento front-end'),
-    ).toHaveLength(2);
+      screen.getAllByRole('heading', { level: 3 }).map((h) => h.textContent),
+    ).toEqual(['Oniapp', 'Seja']);
   });
 
-  it('scales the section and item headings down on small screens', () => {
+  it('keeps only one project open and closes the open one on a second click', async () => {
+    const user = userEvent.setup();
     renderWithProviders(<ProjectShowcase />);
 
-    expect(
-      screen.getByRole('heading', { level: 2, name: 'O que eu já construí' }),
-    ).toHaveClass('text-[26px]', 'sm:text-[32px]');
-    expect(
-      screen.getByRole('heading', { level: 3, name: 'Oniapp' }),
-    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+    await user.click(projectButton('Ritmar'));
+
+    expect(projectButton('Ritmar')).toHaveAttribute('aria-expanded', 'true');
+    expect(projectButton('Fechar.*Ritmar')).toHaveAttribute(
+      'aria-controls',
+      'project-ritmar-details',
+    );
+    expect(screen.getAllByRole('button', { expanded: true })).toHaveLength(1);
+    expect(screen.getByText('NestJS')).toBeInTheDocument();
+
+    await user.click(projectButton('Ritmar'));
+
+    expect(screen.queryAllByRole('button', { expanded: true })).toHaveLength(0);
   });
 });

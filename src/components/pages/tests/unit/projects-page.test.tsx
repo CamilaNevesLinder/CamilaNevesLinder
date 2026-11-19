@@ -7,7 +7,7 @@ describe('ProjectsPage', () => {
     renderWithProviders(<ProjectsPage />);
 
     expect(
-      screen.getByRole('heading', { level: 2, name: 'O que eu já construí' }),
+      screen.getByRole('heading', { level: 1, name: 'O que eu já construí' }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', { level: 3, name: 'Oniapp' }),
