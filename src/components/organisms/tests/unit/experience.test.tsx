@@ -3,60 +3,36 @@ import { screen, renderWithProviders } from '@/tests/utils/render';
 import { Experience } from '@/components/organisms/experience';
 
 describe('Experience', () => {
-  it('renders the label', () => {
+  it('renders the heading with the emphasised part', () => {
     renderWithProviders(<Experience />);
 
-    expect(screen.getByText('Experiência')).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { level: 2 });
+    expect(heading).toHaveTextContent('Por onde eu passei');
+    expect(heading.querySelector('em')).toHaveTextContent('eu passei');
   });
 
-  it('renders company name before role for every entry', () => {
+  it('lists every company in the timeline with role and summary line', () => {
     renderWithProviders(<Experience />);
 
-    const expectedRoles: Record<string, string> = {
-      Onilearning: 'Desenvolvedora Full Stack',
-      Ritmar: 'Desenvolvedora Full Stack',
-      'Praça 22 Escola de Música': 'Desenvolvedora Full Stack',
-      'Mince Joias': 'Desenvolvedora Front-end',
-    };
-
-    const companies = screen.getAllByRole('heading', { level: 3 });
-    expect(companies.map((c) => c.textContent)).toEqual(
-      Object.keys(expectedRoles),
-    );
-
-    for (const company of companies) {
-      const role = company.nextElementSibling;
-      expect(role?.textContent).toBe(expectedRoles[company.textContent!]);
-    }
-  });
-
-  it('renders no dates', () => {
-    renderWithProviders(<Experience />);
-
-    const text = document.body.textContent ?? '';
-    expect(text).not.toMatch(/202[0-9]/);
-  });
-
-  it('renders three topics per entry', () => {
-    renderWithProviders(<Experience />);
-
+    const items = screen.getAllByRole('group');
+    expect(items).toHaveLength(4);
     expect(
-      screen.getByText(/Portal do aluno multiplataforma/),
+      screen.getByText('Full stack · apps educacionais e de bem-estar'),
     ).toBeInTheDocument();
-    expect(
-      screen.getByText(/Plataforma de gestão multi-tenant/),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/Site institucional \(React e Vite\)/),
-    ).toBeInTheDocument();
-    expect(screen.getByText(/Loja de joias online/)).toBeInTheDocument();
+    expect(screen.getByText('Mince Joias')).toBeInTheDocument();
   });
 
-  it('scales the company heading down on small screens', () => {
+  it('shows the topics of each company', () => {
     renderWithProviders(<Experience />);
 
     expect(
-      screen.getByRole('heading', { level: 3, name: 'Onilearning' }),
-    ).toHaveClass('text-[22px]', 'sm:text-[28px]');
+      screen.getByText('Cobrança recorrente com Mercado Pago e Asaas'),
+    ).toBeInTheDocument();
+  });
+
+  it('renders the education list', () => {
+    renderWithProviders(<Experience />);
+
+    expect(screen.getByText('Formações e cursos')).toBeInTheDocument();
   });
 });

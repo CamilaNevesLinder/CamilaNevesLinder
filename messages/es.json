@@ -65,45 +65,45 @@
     "items": {
       "onilearning": {
         "company": "Onilearning",
-        "role": "Desarrolladora Full Stack",
+        "role": "Full stack",
         "topics": {
-          "topic1": "Portal del alumno multiplataforma en React Native y Expo (Expo Router, NativeWind), integrado con Moodle, con notas, calendario y un cuaderno de anotaciones",
-          "topic2": "App de bienestar con comunidades, diario personal y notificaciones push, con inicio de sesión social vía Firebase",
-          "topic3": "Paneles administrativos en Next.js con shadcn/ui, TanStack Query y Zustand para el estado de la aplicación",
-          "topic4": "APIs en NestJS con TypeORM, MySQL y subida de archivos vía AWS S3"
-        }
+          "topic1": "Portal del alumno en React Native y Expo, integrado con Moodle",
+          "topic2": "App de bienestar con comunidades y notificaciones push",
+          "topic3": "Paneles en Next.js con shadcn/ui y TanStack Query",
+          "topic4": "APIs en NestJS, TypeORM, MySQL y S3"
+        },
+        "line": "apps educativas y de bienestar"
       },
       "ritmar": {
         "company": "Ritmar",
-        "role": "Desarrolladora Full Stack",
+        "role": "Full stack",
         "topics": {
-          "topic1": "Plataforma de gestión multi-tenant para gimnasios, con back-end en NestJS y front-ends en Next.js y React",
-          "topic2": "Cobro de mensualidades con Mercado Pago y Asaas, con renovación automática de suscripciones",
-          "topic3": "Pruebas automatizadas y pipeline de integración continua en GitHub Actions",
-          "topic4": "Cada gimnasio con sus propios datos y configuraciones aislados dentro del mismo sistema"
-        }
+          "topic1": "Back-end NestJS, front-ends Next.js y React",
+          "topic2": "Cobro recurrente con Mercado Pago y Asaas",
+          "topic3": "Tests y CI en GitHub Actions"
+        },
+        "line": "SaaS multi-tenant para gimnasios"
       },
       "praca22": {
         "company": "Praça 22 Escola de Música",
-        "role": "Desarrolladora Full Stack",
+        "role": "Full stack",
         "topics": {
-          "topic1": "Sitio institucional (React y Vite) construido desde cero hasta la publicación",
-          "topic2": "Secciones de presentación, profesores y catálogo de instrumentos, con animaciones e íconos de lucide-react",
-          "topic3": "Diseño responsivo con Tailwind CSS y buena apariencia en el celular",
-          "topic4": "Sección de contacto integrada con mapa incorporado y enlace directo a WhatsApp"
-        }
+          "topic1": "React y Vite con Tailwind",
+          "topic2": "Catálogo, profesores y contacto por WhatsApp"
+        },
+        "line": "sitio institucional desde cero"
       },
       "minceJoias": {
         "company": "Mince Joias",
-        "role": "Desarrolladora Front-end",
+        "role": "Front-end",
         "topics": {
-          "topic1": "Tienda de joyas online con catálogo, carrito y checkout, construida en Next.js y TypeScript",
-          "topic2": "Pantallas del panel administrativo donde la dueña de la tienda actualiza productos y sigue los pedidos",
-          "topic3": "Interfaz con Tailwind CSS, en colaboración con el back-end en MongoDB y despliegue en AWS",
-          "topic4": "Diseño responsivo, probado en distintos tamaños de pantalla"
-        }
+          "topic1": "Tienda en Next.js y TypeScript",
+          "topic2": "Panel de productos y pedidos"
+        },
+        "line": "e-commerce de joyas"
       }
-    }
+    },
+    "heading": "Por dónde <em>he pasado</em>"
   },
   "education": {
     "label": "Formación y cursos",
@@ -423,13 +423,20 @@
     "sections": {
       "serviceAreas": "Lo que hago",
       "projects": "Proyectos",
-      "aiProcess": "Cómo trabajo"
+      "aiProcess": "Cómo trabajo",
+      "experience": "Experiencia",
+      "contact": "Contacto"
     },
     "serviceAreas": {
       "label": "Lo que hago",
       "mobile": "Mobile",
       "frontEnd": "Front-end",
       "backEnd": "Back-end"
+    },
+    "contactCta": {
+      "heading": "¿Tienes un proyecto? <em>Hablemos.</em>",
+      "description": "Respondo por e-mail, LinkedIn y WhatsApp.",
+      "button": "Escríbeme"
     }
   }
 }

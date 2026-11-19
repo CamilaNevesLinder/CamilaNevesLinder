@@ -65,45 +65,45 @@
     "items": {
       "onilearning": {
         "company": "Onilearning",
-        "role": "Desenvolvedora Full Stack",
+        "role": "Full stack",
         "topics": {
-          "topic1": "Portal do aluno multiplataforma em React Native e Expo (Expo Router, NativeWind), integrado ao Moodle, com notas, calendário e caderno de anotações",
-          "topic2": "App de bem-estar com comunidades, diário pessoal e notificações push, com login social via Firebase",
-          "topic3": "Painéis administrativos em Next.js com shadcn/ui, TanStack Query e Zustand pro estado da aplicação",
-          "topic4": "APIs em NestJS com TypeORM, MySQL e upload de arquivos via AWS S3"
-        }
+          "topic1": "Portal do aluno em React Native e Expo, integrado ao Moodle",
+          "topic2": "App de bem-estar com comunidades e push",
+          "topic3": "Painéis em Next.js com shadcn/ui e TanStack Query",
+          "topic4": "APIs em NestJS, TypeORM, MySQL e S3"
+        },
+        "line": "apps educacionais e de bem-estar"
       },
       "ritmar": {
         "company": "Ritmar",
-        "role": "Desenvolvedora Full Stack",
+        "role": "Full stack",
         "topics": {
-          "topic1": "Plataforma de gestão multi-tenant para academias, com back-end em NestJS e front-ends em Next.js e React",
-          "topic2": "Cobrança de mensalidades com Mercado Pago e Asaas, com renovação automática de assinaturas",
-          "topic3": "Testes automatizados e pipeline de integração contínua no GitHub Actions",
-          "topic4": "Cada academia com seus próprios dados e configurações isolados dentro do mesmo sistema"
-        }
+          "topic1": "Back-end NestJS, front-ends Next.js e React",
+          "topic2": "Cobrança recorrente com Mercado Pago e Asaas",
+          "topic3": "Testes e CI no GitHub Actions"
+        },
+        "line": "SaaS multi-tenant para academias"
       },
       "praca22": {
         "company": "Praça 22 Escola de Música",
-        "role": "Desenvolvedora Full Stack",
+        "role": "Full stack",
         "topics": {
-          "topic1": "Site institucional (React e Vite) construído do zero até a publicação",
-          "topic2": "Seções de apresentação, professores e catálogo de instrumentos, com animações e ícones via lucide-react",
-          "topic3": "Layout responsivo com Tailwind CSS e boa aparência no celular",
-          "topic4": "Contato integrado com mapa incorporado e link direto pro WhatsApp"
-        }
+          "topic1": "React e Vite com Tailwind",
+          "topic2": "Catálogo, professores e contato via WhatsApp"
+        },
+        "line": "site institucional do zero"
       },
       "minceJoias": {
         "company": "Mince Joias",
-        "role": "Desenvolvedora Front-end",
+        "role": "Front-end",
         "topics": {
-          "topic1": "Loja de joias online com catálogo, carrinho e checkout, construída em Next.js e TypeScript",
-          "topic2": "Telas do painel administrativo onde a dona da loja atualiza produtos e acompanha pedidos",
-          "topic3": "Interface estilizada com Tailwind CSS, em colaboração com o back-end em MongoDB e deploy na AWS",
-          "topic4": "Layout responsivo, testado em diferentes tamanhos de tela"
-        }
+          "topic1": "Loja em Next.js e TypeScript",
+          "topic2": "Painel de produtos e pedidos"
+        },
+        "line": "e-commerce de joias"
       }
-    }
+    },
+    "heading": "Por onde <em>eu passei</em>"
   },
   "education": {
     "label": "Formações e cursos",
@@ -423,13 +423,20 @@
     "sections": {
       "serviceAreas": "O que eu faço",
       "projects": "Projetos",
-      "aiProcess": "Como eu trabalho"
+      "aiProcess": "Como eu trabalho",
+      "experience": "Experiência",
+      "contact": "Contato"
     },
     "serviceAreas": {
       "label": "O que eu faço",
       "mobile": "Mobile",
       "frontEnd": "Front-end",
       "backEnd": "Back-end"
+    },
+    "contactCta": {
+      "heading": "Tem um projeto? <em>Vamos conversar.</em>",
+      "description": "Respondo por e-mail, LinkedIn e WhatsApp.",
+      "button": "Escrever pra mim"
     }
   }
 }

@@ -65,45 +65,45 @@
     "items": {
       "onilearning": {
         "company": "Onilearning",
-        "role": "Full Stack Developer",
+        "role": "Full stack",
         "topics": {
-          "topic1": "Cross-platform student portal in React Native and Expo (Expo Router, NativeWind), integrated with Moodle, with grades, calendar and a note-taking notebook",
-          "topic2": "Wellness app with communities, personal journal and push notifications, with social login through Firebase",
-          "topic3": "Admin panels in Next.js with shadcn/ui, TanStack Query and Zustand for application state",
-          "topic4": "APIs in NestJS with TypeORM, MySQL and file uploads through AWS S3"
-        }
+          "topic1": "Student portal in React Native and Expo, integrated with Moodle",
+          "topic2": "Wellbeing app with communities and push notifications",
+          "topic3": "Dashboards in Next.js with shadcn/ui and TanStack Query",
+          "topic4": "APIs in NestJS, TypeORM, MySQL and S3"
+        },
+        "line": "education and wellbeing apps"
       },
       "ritmar": {
         "company": "Ritmar",
-        "role": "Full Stack Developer",
+        "role": "Full stack",
         "topics": {
-          "topic1": "Multi-tenant gym management platform, with a NestJS back-end and Next.js and React front-ends",
-          "topic2": "Membership billing with Mercado Pago and Asaas, with automatic subscription renewal",
-          "topic3": "Automated tests and a continuous integration pipeline on GitHub Actions",
-          "topic4": "Each gym with its own data and settings isolated within the same system"
-        }
+          "topic1": "NestJS back end, Next.js and React front ends",
+          "topic2": "Recurring billing with Mercado Pago and Asaas",
+          "topic3": "Tests and CI on GitHub Actions"
+        },
+        "line": "multi-tenant SaaS for gyms"
       },
       "praca22": {
         "company": "Praça 22 Escola de Música",
-        "role": "Full Stack Developer",
+        "role": "Full stack",
         "topics": {
-          "topic1": "Institutional website (React and Vite) built from scratch through launch",
-          "topic2": "Introduction, teachers and instrument catalog sections, with animations and lucide-react icons",
-          "topic3": "Responsive layout with Tailwind CSS and a solid mobile experience",
-          "topic4": "Contact section integrated with an embedded map and a direct WhatsApp link"
-        }
+          "topic1": "React and Vite with Tailwind",
+          "topic2": "Catalog, teachers and contact via WhatsApp"
+        },
+        "line": "institutional website from scratch"
       },
       "minceJoias": {
         "company": "Mince Joias",
-        "role": "Front-end Developer",
+        "role": "Front-end",
         "topics": {
-          "topic1": "Online jewelry store with catalog, cart and checkout, built in Next.js and TypeScript",
-          "topic2": "Admin panel screens where the store owner updates products and tracks orders",
-          "topic3": "Interface styled with Tailwind CSS, working alongside the back-end in MongoDB and AWS deployment",
-          "topic4": "Responsive layout, tested across different screen sizes"
-        }
+          "topic1": "Store in Next.js and TypeScript",
+          "topic2": "Products and orders dashboard"
+        },
+        "line": "jewelry e-commerce"
       }
-    }
+    },
+    "heading": "Where <em>I have been</em>"
   },
   "education": {
     "label": "Education and courses",
@@ -423,13 +423,20 @@
     "sections": {
       "serviceAreas": "What I do",
       "projects": "Projects",
-      "aiProcess": "How I work"
+      "aiProcess": "How I work",
+      "experience": "Experience",
+      "contact": "Contact"
     },
     "serviceAreas": {
       "label": "What I do",
       "mobile": "Mobile",
       "frontEnd": "Front-end",
       "backEnd": "Back-end"
+    },
+    "contactCta": {
+      "heading": "Have a project? <em>Let’s talk.</em>",
+      "description": "I reply by email, LinkedIn and WhatsApp.",
+      "button": "Write to me"
     }
   }
 }

@@ -21,7 +21,8 @@ describe('HomePage', () => {
     expect(
       screen.getByRole('heading', { name: 'IA no processo, eu no controle' }),
     ).toBeInTheDocument();
-    expect(screen.getByText('Experiência')).toBeInTheDocument();
-    expect(screen.getByText('Formações e cursos')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Por onde eu passei' }),
+    ).toBeInTheDocument();
   });
 });
