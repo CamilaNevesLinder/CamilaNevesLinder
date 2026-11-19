@@ -1,6 +1,10 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { screen, renderWithProviders } from '@/tests/utils/render';
 import { ContactChannels } from '@/components/molecules/contact-channels';
+
+vi.mock('@/lib/navigation', () => ({
+  routing: { locales: ['en', 'pt-br', 'es'], defaultLocale: 'pt-br' },
+}));
 
 describe('ContactChannels', () => {
   it('lists every channel with its handle and link', () => {
