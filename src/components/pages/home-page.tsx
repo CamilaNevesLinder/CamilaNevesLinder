@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { SectionDivider } from '@/components/molecules/section-divider';
 import { AiProcess } from '@/components/organisms/ai-process';
+import { ContactCta } from '@/components/organisms/contact-cta';
 import { Experience } from '@/components/organisms/experience';
 import { Hero } from '@/components/organisms/hero';
 import { Projects } from '@/components/organisms/projects';
@@ -22,6 +23,8 @@ export function HomePage() {
       <AiProcess />
       <SectionDivider number="04" label={t('experience')} />
       <Experience />
+      <SectionDivider number="05" label={t('contact')} />
+      <ContactCta />
     </>
   );
 }

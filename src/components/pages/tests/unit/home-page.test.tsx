@@ -24,5 +24,8 @@ describe('HomePage', () => {
     expect(
       screen.getByRole('heading', { name: 'Por onde eu passei' }),
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Tem um projeto? Vamos conversar.' }),
+    ).toBeInTheDocument();
   });
 });
