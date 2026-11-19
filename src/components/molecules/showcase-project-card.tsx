@@ -45,7 +45,7 @@ export function ShowcaseProjectCard({
       ref={articleRef}
       style={projectColorStyle(colorToken)}
       className={cn(
-        'bg-paper overflow-hidden rounded-3xl border transition-colors duration-200',
+        'bg-paper flex flex-col overflow-hidden rounded-3xl border transition-colors duration-200',
         isOpen ? 'border-dusty col-span-full' : 'border-line',
       )}
     >
@@ -54,7 +54,7 @@ export function ShowcaseProjectCard({
         aria-expanded={isOpen}
         aria-controls={detailsId}
         onClick={onToggle}
-        className="duration-250 flex w-full items-stretch text-left transition-[transform,box-shadow] ease-out hover:-translate-y-[3px] hover:shadow-[0_18px_40px_-24px_var(--shadow-color)] motion-reduce:hover:translate-y-0"
+        className="duration-250 flex w-full flex-1 items-stretch text-left transition-[transform,box-shadow] ease-out hover:-translate-y-[3px] hover:shadow-[0_18px_40px_-24px_var(--shadow-color)] motion-reduce:hover:translate-y-0"
       >
         <span className="relative grid w-[88px] flex-none place-items-center overflow-hidden bg-[color-mix(in_srgb,var(--project-color)_22%,transparent)] sm:w-28">
           <span
